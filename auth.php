@@ -69,6 +69,12 @@
         }
 
     }
+    // Handle log out
+    if(isset($_POST["confirm_logout"])) {
+        logout();
+        header("Location: auth.php");
+    }
+
 
 ?>
 
@@ -282,16 +288,12 @@
                                 <form class="form-horizontal" method="POST" action="auth.php">
 
                                     <fieldset>
-                                        <legend>Are you sure you want to log out?<br /><small>You will not be able to modify the database until you log back in.</small></legend>
+                                        <legend>Are you sure you want to log out?</legend>
 
-                                        <div class="form-group">
+                                        <div class="form-group" style="padding-left: 15px;">
                                             
-                                            <div class="col-lg-10 col-lg-offset-2">
-
-                                                <a href="index.php" class="btn btn-default">Cancel</a>
-                                                <button name="confirm_logout" value="true" type="submit" class="btn btn-danger">Log Out</button>
-                                            
-                                            </div>
+                                            <a href="index.php" class="btn btn-default">Cancel</a>
+                                            <button name="confirm_logout" value="true" type="submit" class="btn btn-danger">Log Out</button>
                                         
                                         </div>
 

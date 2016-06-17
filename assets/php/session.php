@@ -52,6 +52,11 @@
         }
     }
 
+    function logout() {
+        session_unset();
+        session_regenerate_id();
+    }
+
     function switchUser($u, $p) {
         if(isset($_SESSION["host"])) {
             
