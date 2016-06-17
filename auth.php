@@ -3,12 +3,42 @@
     // Working directory of first executing file
     $cwd = dirname(__FILE__);
 
-    // to be needed later | require_once $cwd."/assets/php/session.php";
+    require_once $cwd."/assets/php/session.php";
+    $error = "";
 
     if(isset($_GET["confirm"])) {
         $confirm = $_GET["confirm"];
     } else {
         $confirm = "login";
+    }
+
+    if($confirm == "reauth") {
+        $error = '<div class="alert alert-dismissible alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>You have to reauthenticate in order to continue.</strong> The credentials that were saved in your session are invalid.
+                  </div>';
+    }
+
+    if(isset($_POST["auth_username"]) && isset($_POST["auth_password"]) && isset($_POST["auth_host"])) {
+        $u = $_POST["auth_username"];
+        $p = $_POST["auth_password"];
+        $h = $_POST["auth_host"];
+        if($u == "" || $p == "" || $h == "") {
+            $error = '<div class="alert alert-dismissible alert-danger">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Fields cannot be blank.</strong> Check all of the fields and try submitting again.
+                      </div>';
+        } else {
+            $db = connectDB($u, $p, $h);
+
+            if($db != "true") {
+                $error = '<div class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Failed to connect to database</strong> <br />Check your credentials for any typos or capitalization errors.<br />'.$db.'
+                      </div>';
+            } 
+
+        }
     }
 
 ?>
@@ -55,7 +85,9 @@
 
                 <div class="col-md-6 col-md-offset-3" style="padding-top: 40px;">
 
-                    <?php if($confirm == "login"): ?>
+                    <?php echo $error; ?>
+
+                    <?php if($confirm == "login" || $confirm == "reauth"): ?>
                         <div class="panel panel-primary">
 
                             <div class="panel-heading">
@@ -70,7 +102,7 @@
 
                                         <div class="form-group">
 
-                                            <label for="auth_username" class="col-lg-2 control-label">Username</label>
+                                            <label for="auth_username" class="col-lg-2 control-label" value="<?php echo $_SESSION["username"]; ?>">Username</label>
                                             
                                             <div class="col-lg-10">
                                                 <input type="text" class="form-control" name="auth_username" id="auth_username" placeholder="" required>
@@ -90,7 +122,7 @@
 
                                         <div class="form-group">
 
-                                            <label for="auth_host" class="col-lg-2 control-label">Host</label>
+                                            <label for="auth_host" class="col-lg-2 control-label" value="<?php echo $_SESSION["host"]; ?>">Host</label>
                                             
                                             <div class="col-lg-10">
                                                 <input type="text" class="form-control" name="auth_host" id="auth_host" placeholder="localhost" required>
