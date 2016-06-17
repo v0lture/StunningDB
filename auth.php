@@ -18,7 +18,7 @@
                     <strong>You have to reauthenticate in order to continue.</strong> The credentials that were saved in your session are invalid.
                   </div>';
     }
-
+    // Handle logging in
     if(isset($_POST["auth_username"]) && isset($_POST["auth_password"]) && isset($_POST["auth_host"])) {
         $u = $_POST["auth_username"];
         $p = $_POST["auth_password"];
@@ -36,9 +36,38 @@
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
                         <strong>Failed to connect to database</strong> <br />Check your credentials for any typos or capitalization errors.<br />'.$db.'
                       </div>';
-            } 
+            } else {
+                header("Location: index.php");
+            }
 
         }
+    }
+
+    // Handle switching users
+    if(isset($_POST["switch_username"]) && isset($_POST["switch_password"])) {
+        
+        $u = $_POST["switch_username"];
+        $p = $_POST["switch_password"];
+
+        if(testConn() != "Success") {
+            header("Location: auth.php?confirm=reauth");
+        } else if($u == "" || $p == "") {
+            $error = '<div class="alert alert-dismissible alert-danger">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Fields cannot be blank.</strong> Check all of the fields and try submitting again.
+                      </div>';
+        } else {
+            $switch = switchUser($u, $p);
+            if($switch != "success") {
+                $error = '<div class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Failed to switch users</strong> <br />Check your credentials for any typos or capitalization errors.<br />'.$switch.'
+                      </div>';
+            } else {
+                header("Location: index.php");
+            }
+        }
+
     }
 
 ?>
@@ -157,7 +186,7 @@
 
                             <div class="panel-body">
 
-                                <form class="form-horizontal" method="POST" action="auth.php">
+                                <form class="form-horizontal" method="POST" action="auth.php?confirm=switch_user">
 
                                     <fieldset>
                                         <legend>Relogin as:</legend>
@@ -209,7 +238,7 @@
 
                             <div class="panel-body">
 
-                                <form class="form-horizontal" method="POST" action="auth.php">
+                                <form class="form-horizontal" method="POST" action="auth.php?confirm=switch_host">
 
                                     <fieldset>
                                         <legend>Relogin at:</legend>

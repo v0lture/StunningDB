@@ -52,4 +52,21 @@
         }
     }
 
+    function switchUser($u, $p) {
+        if(isset($_SESSION["host"])) {
+            
+            $h = $_SESSION["host"];
+            $con = connectDB($u, $p, $h);
+            if($con != "true") {
+                return $con;
+            } else {
+                return "success";
+            }
+
+
+        } else {
+            return "Must have preexisting host";
+        }
+    }
+
 ?>
