@@ -43,7 +43,7 @@
 
                         <div class="panel-body">
 
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" method="POST" action="auth.php">
 
                                 <fieldset>
 
@@ -104,26 +104,26 @@
 
                         <div class="panel-body">
 
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" method="POST" action="auth.php">
 
                                 <fieldset>
                                     <legend>Relogin as:</legend>
                                     <div class="form-group">
 
-                                        <label for="auth_username" class="col-lg-2 control-label">Username</label>
+                                        <label for="switch_username" class="col-lg-2 control-label">Username</label>
                                         
                                         <div class="col-lg-10">
-                                            <input type="text" class="form-control" name="auth_username" id="auth_username" placeholder="" required>
+                                            <input type="text" class="form-control" name="switch_username" id="switch_username" placeholder="" required>
                                         </div>
 
                                     </div>
 
                                     <div class="form-group">
 
-                                        <label for="auth_password" class="col-lg-2 control-label">Password</label>
+                                        <label for="switch_password" class="col-lg-2 control-label">Password</label>
                                         
                                         <div class="col-lg-10">
-                                            <input type="password" class="form-control" name="auth_password" id="auth_password" placeholder="" required>
+                                            <input type="password" class="form-control" name="switch_password" id="switch_password" placeholder="" required>
                                         </div>
 
                                     </div>
@@ -132,7 +132,7 @@
                                         
                                         <div class="col-lg-10 col-lg-offset-2">
 
-                                            <button type="submit" class="btn btn-default">Log Out</button>
+                                            <a href="auth.php?confirm=logout"><button class="btn btn-default">Log Out</button></a>
                                             <button type="submit" class="btn btn-success">Switch</button>
                                         
                                         </div>
@@ -156,16 +156,16 @@
 
                         <div class="panel-body">
 
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" method="POST" action="auth.php">
 
                                 <fieldset>
                                     <legend>Relogin at:</legend>
                                     <div class="form-group">
 
-                                        <label for="auth_username" class="col-lg-2 control-label">Host</label>
+                                        <label for="switch_host" class="col-lg-2 control-label">Host</label>
                                         
                                         <div class="col-lg-10">
-                                            <input type="text" class="form-control" name="auth_username" id="auth_username" placeholder="" required>
+                                            <input type="text" class="form-control" name="switch_host" id="switch_host" placeholder="" required>
                                         </div>
 
                                     </div>
@@ -174,7 +174,7 @@
                                         
                                         <div class="col-lg-10 col-lg-offset-2">
 
-                                            <button type="submit" class="btn btn-default">Log Out</button>
+                                            <a href="auth.php?confirm=logout"><button class="btn btn-default">Log Out</button></a>
                                             <button type="submit" class="btn btn-success">Switch</button>
                                         
                                         </div>
@@ -188,10 +188,6 @@
                         </div>
 
                     </div>
-                
-                
-                
-                
                 <?php elseif($confirm == "logout"): ?>
                     <div class="panel panel-danger">
 
@@ -201,7 +197,7 @@
 
                         <div class="panel-body">
 
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" method="POST" action="auth.php">
 
                                 <fieldset>
                                     <legend>Are you sure you want to log out?<br /><small>You will not be able to modify the database until you log back in.</small></legend>
