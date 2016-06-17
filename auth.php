@@ -28,202 +28,224 @@
 
     </head>
 
-    <body class="container">
+    <body>
 
-        <div class="row">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="auth.php">v0ltureDB</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="https://github.com/v0lture/v0ltureDB">GitHub</a></li>
+                        <li><a href="info.php">v1.0</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
-            <div class="col-md-6 col-md-offset-3" style="padding-top: 40px;">
+        <div class="container">
+            <div class="row">
 
-                <?php if($confirm == "login"): ?>
-                    <div class="panel panel-primary">
+                <div class="col-md-6 col-md-offset-3" style="padding-top: 40px;">
 
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Login to a database</h3>
-                        </div>
+                    <?php if($confirm == "login"): ?>
+                        <div class="panel panel-primary">
 
-                        <div class="panel-body">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Login to a database</h3>
+                            </div>
 
-                            <form class="form-horizontal" method="POST" action="auth.php">
+                            <div class="panel-body">
 
-                                <fieldset>
+                                <form class="form-horizontal" method="POST" action="auth.php">
 
-                                    <div class="form-group">
+                                    <fieldset>
 
-                                        <label for="auth_username" class="col-lg-2 control-label">Username</label>
-                                        
-                                        <div class="col-lg-10">
-                                            <input type="text" class="form-control" name="auth_username" id="auth_username" placeholder="" required>
+                                        <div class="form-group">
+
+                                            <label for="auth_username" class="col-lg-2 control-label">Username</label>
+                                            
+                                            <div class="col-lg-10">
+                                                <input type="text" class="form-control" name="auth_username" id="auth_username" placeholder="" required>
+                                            </div>
+
                                         </div>
 
-                                    </div>
+                                        <div class="form-group">
 
-                                    <div class="form-group">
+                                            <label for="auth_password" class="col-lg-2 control-label">Password</label>
+                                            
+                                            <div class="col-lg-10">
+                                                <input type="password" class="form-control" name="auth_password" id="auth_password" placeholder="" required>
+                                            </div>
 
-                                        <label for="auth_password" class="col-lg-2 control-label">Password</label>
-                                        
-                                        <div class="col-lg-10">
-                                            <input type="password" class="form-control" name="auth_password" id="auth_password" placeholder="" required>
                                         </div>
 
-                                    </div>
+                                        <div class="form-group">
 
-                                    <div class="form-group">
+                                            <label for="auth_host" class="col-lg-2 control-label">Host</label>
+                                            
+                                            <div class="col-lg-10">
+                                                <input type="text" class="form-control" name="auth_host" id="auth_host" placeholder="localhost" required>
+                                            </div>
 
-                                        <label for="auth_host" class="col-lg-2 control-label">Host</label>
-                                        
-                                        <div class="col-lg-10">
-                                            <input type="text" class="form-control" name="auth_host" id="auth_host" placeholder="localhost" required>
                                         </div>
 
-                                    </div>
-
-                                    <div class="form-group">
-                                        
-                                        <div class="col-lg-10 col-lg-offset-2">
-                                        
-                                            <button type="submit" class="btn btn-primary">Log In</button>
-                                        
-                                        </div>
-                                    
-                                    </div>
-
-                                </fieldset>
-
-                            </form>
-
-                        </div>
-
-                    </div>
-
-                <?php elseif($confirm == "switch_user"): ?>
-                    <div class="panel panel-success">
-
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Switching users</h3>
-                        </div>
-
-                        <div class="panel-body">
-
-                            <form class="form-horizontal" method="POST" action="auth.php">
-
-                                <fieldset>
-                                    <legend>Relogin as:</legend>
-                                    <div class="form-group">
-
-                                        <label for="switch_username" class="col-lg-2 control-label">Username</label>
-                                        
-                                        <div class="col-lg-10">
-                                            <input type="text" class="form-control" name="switch_username" id="switch_username" placeholder="" required>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="form-group">
-
-                                        <label for="switch_password" class="col-lg-2 control-label">Password</label>
-                                        
-                                        <div class="col-lg-10">
-                                            <input type="password" class="form-control" name="switch_password" id="switch_password" placeholder="" required>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="form-group">
-                                        
-                                        <div class="col-lg-10 col-lg-offset-2">
-
-                                            <a href="auth.php?confirm=logout" class="btn btn-default">Log Out</a>
-                                            <button type="submit" class="btn btn-success">Switch</button>
+                                        <div class="form-group">
+                                            
+                                            <div class="col-lg-10 col-lg-offset-2">
+                                            
+                                                <button type="submit" class="btn btn-primary">Log In</button>
+                                            
+                                            </div>
                                         
                                         </div>
-                                    
-                                    </div>
 
-                                </fieldset>
+                                    </fieldset>
 
-                            </form>
+                                </form>
+
+                            </div>
 
                         </div>
 
-                    </div>
+                    <?php elseif($confirm == "switch_user"): ?>
+                        <div class="panel panel-success">
 
-                <?php elseif($confirm == "switch_host"): ?>
-                    <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Switching users</h3>
+                            </div>
 
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Switching hosts</h3>
-                        </div>
+                            <div class="panel-body">
 
-                        <div class="panel-body">
+                                <form class="form-horizontal" method="POST" action="auth.php">
 
-                            <form class="form-horizontal" method="POST" action="auth.php">
+                                    <fieldset>
+                                        <legend>Relogin as:</legend>
+                                        <div class="form-group">
 
-                                <fieldset>
-                                    <legend>Relogin at:</legend>
-                                    <div class="form-group">
+                                            <label for="switch_username" class="col-lg-2 control-label">Username</label>
+                                            
+                                            <div class="col-lg-10">
+                                                <input type="text" class="form-control" name="switch_username" id="switch_username" placeholder="" required>
+                                            </div>
 
-                                        <label for="switch_host" class="col-lg-2 control-label">Host</label>
-                                        
-                                        <div class="col-lg-10">
-                                            <input type="text" class="form-control" name="switch_host" id="switch_host" placeholder="" required>
                                         </div>
 
-                                    </div>
+                                        <div class="form-group">
 
-                                    <div class="form-group">
-                                        
-                                        <div class="col-lg-10 col-lg-offset-2">
+                                            <label for="switch_password" class="col-lg-2 control-label">Password</label>
+                                            
+                                            <div class="col-lg-10">
+                                                <input type="password" class="form-control" name="switch_password" id="switch_password" placeholder="" required>
+                                            </div>
 
-                                            <a href="auth.php?confirm=logout" class="btn btn-default">Log Out</a>
-                                            <button type="submit" class="btn btn-success">Switch</button>
+                                        </div>
+
+                                        <div class="form-group">
+                                            
+                                            <div class="col-lg-10 col-lg-offset-2">
+
+                                                <a href="auth.php?confirm=logout" class="btn btn-default">Log Out</a>
+                                                <button type="submit" class="btn btn-success">Switch</button>
+                                            
+                                            </div>
                                         
                                         </div>
-                                    
-                                    </div>
 
-                                </fieldset>
+                                    </fieldset>
 
-                            </form>
+                                </form>
+
+                            </div>
 
                         </div>
 
-                    </div>
-                <?php elseif($confirm == "logout"): ?>
-                    <div class="panel panel-danger">
+                    <?php elseif($confirm == "switch_host"): ?>
+                        <div class="panel panel-success">
 
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Confirm log out</h3>
-                        </div>
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Switching hosts</h3>
+                            </div>
 
-                        <div class="panel-body">
+                            <div class="panel-body">
 
-                            <form class="form-horizontal" method="POST" action="auth.php">
+                                <form class="form-horizontal" method="POST" action="auth.php">
 
-                                <fieldset>
-                                    <legend>Are you sure you want to log out?<br /><small>You will not be able to modify the database until you log back in.</small></legend>
+                                    <fieldset>
+                                        <legend>Relogin at:</legend>
+                                        <div class="form-group">
 
-                                    <div class="form-group">
-                                        
-                                        <div class="col-lg-10 col-lg-offset-2">
+                                            <label for="switch_host" class="col-lg-2 control-label">Host</label>
+                                            
+                                            <div class="col-lg-10">
+                                                <input type="text" class="form-control" name="switch_host" id="switch_host" placeholder="" required>
+                                            </div>
 
-                                            <a href="index.php" class="btn btn-default">Cancel</a>
-                                            <button name="confirm_logout" value="true" type="submit" class="btn btn-danger">Log Out</button>
+                                        </div>
+
+                                        <div class="form-group">
+                                            
+                                            <div class="col-lg-10 col-lg-offset-2">
+
+                                                <a href="auth.php?confirm=logout" class="btn btn-default">Log Out</a>
+                                                <button type="submit" class="btn btn-success">Switch</button>
+                                            
+                                            </div>
                                         
                                         </div>
-                                    
-                                    </div>
 
-                                </fieldset>
+                                    </fieldset>
 
-                            </form>
+                                </form>
+
+                            </div>
 
                         </div>
+                    <?php elseif($confirm == "logout"): ?>
+                        <div class="panel panel-danger">
 
-                    </div>
-                    <?php endif; ?>
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Confirm log out</h3>
+                            </div>
+
+                            <div class="panel-body">
+
+                                <form class="form-horizontal" method="POST" action="auth.php">
+
+                                    <fieldset>
+                                        <legend>Are you sure you want to log out?<br /><small>You will not be able to modify the database until you log back in.</small></legend>
+
+                                        <div class="form-group">
+                                            
+                                            <div class="col-lg-10 col-lg-offset-2">
+
+                                                <a href="index.php" class="btn btn-default">Cancel</a>
+                                                <button name="confirm_logout" value="true" type="submit" class="btn btn-danger">Log Out</button>
+                                            
+                                            </div>
+                                        
+                                        </div>
+
+                                    </fieldset>
+
+                                </form>
+
+                            </div>
+
+                        </div>
+                        <?php endif; ?>
+
+                </div>
 
             </div>
-
         </div>
 
     </body>
