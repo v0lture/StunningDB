@@ -1,6 +1,12 @@
 <?php
 
-    // Currently just design for preview sakes
+    require_once "load.php";
+    if(testConn() != "Success") {
+        header("Location: auth.php?confirm=reauth");
+    } else {
+        $h = $_SESSION["host"];
+        $u = $_SESSION["username"];
+    }
 
 ?>
 
@@ -37,7 +43,7 @@
             <ul class="nav navbar-nav navbar-right">
 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">test <span class="label label-info">localhost</span> <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $u; ?> <span class="label label-info"><?php echo $h; ?></span> <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
 
                         <li><a href="auth.php?confirm=switch_user">Switch User</a></li>

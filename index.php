@@ -3,10 +3,10 @@
     // Working directory of any
     $wd = getcwd();
     // Working directory of first executing file
-    $cwd = dirname(__FILE__);
+    $lcwd = dirname(__FILE__);
 
-    // to be needed later | require_once $cwd."/assets/php/session.php";
-
+    require_once $lcwd."/assets/php/session.php";
+    require_once $lcwd."/assets/page_rsc/load.php";
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +28,7 @@
 
         <?php 
             // require navigation bar
-            require_once $cwd."/assets/page_rsc/navbar.php";
+            require_once $lcwd."/assets/page_rsc/navbar.php";
         ?>
 
     </body>

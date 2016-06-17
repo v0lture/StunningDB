@@ -23,11 +23,32 @@
         $p = $_SESSION["password"];
         $h = $_SESSION["host"];
 
-        $db = new mysqli($h, $u, $p);
-        if($db ->connect_errno) {
-            return $mysqli->connect_error;
+        if($u == "" || $p == "" || $h == "") {
+            return "Not stored";
         } else {
-            return $db;
+            $db = new mysqli($h, $u, $p);
+            if($db ->connect_error) {
+                return $db->connect_error;
+            } else {
+                return $db;
+            }
+        }
+        
+    }
+
+    function testConn() {
+        $u = $_SESSION["username"];
+        $p = $_SESSION["password"];
+        $h = $_SESSION["host"];
+        if($u == "" || $p == "" || $h == "") {
+            return "Not stored";
+        } else {
+            $conn = new mysqli($h, $u, $p);
+            if($conn->connect_error) {
+                return "Error: [".$conn->connect_errno."]".$conn->connect_error;
+            } else {
+                return "Success";
+            }
         }
     }
 

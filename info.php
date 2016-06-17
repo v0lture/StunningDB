@@ -3,7 +3,7 @@
     // Working directory of first executing file
     $cwd = dirname(__FILE__);
 
-    // to be needed later | require_once $cwd."/assets/php/session.php";
+    require_once $cwd."/assets/php/session.php";
 
     if(isset($_GET["confirm"])) {
         $confirm = $_GET["confirm"];
@@ -17,6 +17,8 @@
 <html lang="en">
 
     <head>
+
+        
 
         <title>v0ltureDB</title>
         <meta charset="UTF-8">
@@ -59,14 +61,23 @@
                             <b>PHP Version</b> <span class="label label-success"><?php echo phpversion(); ?></span>
                             <?php
                                 if(version_compare(phpversion(), "5.0", "<")) {
-                                    echo "Your current PHP version is too old to use v0ltureDB. You must use at least <span class='label label-info'>PHP 5.0</span> in order to use v0ltureDB.";
+                                    echo "<br />Your current PHP version is too old to use v0ltureDB. You must use at least <span class='label label-info'>PHP 5.0</span> in order to use v0ltureDB.";
                                 } else {
-                                    echo "<br /><br />Your PHP version is supported with v0ltureDB.";
+                                    echo "<br />Your PHP version is supported with v0ltureDB.";
                                 }
                             ?>
                         </li>
                         <li class="list-group-item">
                             <b>v0ltureDB Version</b> <span class="label label-success">v1</span>
+                        </li>
+
+                        <li class="list-group-item">
+                            <b>Auth Status</b> <small>Status of the stored credentials against the MySQL server</small><br />
+
+                            <?php
+                                $status = testConn();
+                                echo $status;
+                            ?>
                         </li>
 
                     </ul>
