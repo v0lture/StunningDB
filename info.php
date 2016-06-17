@@ -50,7 +50,7 @@
 
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <b>PHP Version</b> <span class="label label-success"><?php echo phpversion(); ?></span>
+                            <b>PHP Version</b> <span class="label v-bg-blue"><?php echo phpversion(); ?></span>
                             <?php
                                 if(version_compare(phpversion(), "5.0", "<")) {
                                     echo "<br />Your current PHP version is too old to use v0ltureDB. You must use at least <span class='label label-info'>PHP 5.0</span> in order to use v0ltureDB.";
@@ -60,7 +60,7 @@
                             ?>
                         </li>
                         <li class="list-group-item">
-                            <b>v0ltureDB Version</b> <span class="label label-success">v1</span>
+                            <b>v0ltureDB Version</b> <span class="label v-bg-blue">v1</span>
                         </li>
 
                         <li class="list-group-item">

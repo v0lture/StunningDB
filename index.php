@@ -37,7 +37,7 @@
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <a href="#" class="btn btn-primary btn-xs pull-right" style="margin-top: -3px;">Refresh</a>
+                        <a href="#" class="btn v-bg-blue v-text-grey btn-xs pull-right" style="margin-top: -3px;">Refresh</a>
                         <h3 class="panel-title">Databases</h3>
                         
                     </div>
@@ -48,7 +48,7 @@
                             <?php
                                 $dat = fetchDatabases();
                                 while($res = $dat->fetch_assoc()) {
-                                    echo '<a href="#!" onclick="loadDb(\''.$res["Database"].'\')" class="list-group-item">
+                                    echo '<a href="#!" onclick="loadDb(\''.$res["Database"].'\')" class="list-group-item v-text-blue">
                                             '.$res["Database"].'
                                         </a>';
                                 } 

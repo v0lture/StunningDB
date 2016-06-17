@@ -2,6 +2,7 @@
 
     // Working directory of first executing file
     $cwd = dirname(__FILE__);
+    error_reporting(0);
 
     require_once $cwd."/assets/php/session.php";
     $error = "";
@@ -178,7 +179,7 @@
                         </div>
 
                     <?php elseif($confirm == "switch_user"): ?>
-                        <div class="panel panel-success">
+                        <div class="panel panel-primary">
 
                             <div class="panel-heading">
                                 <h3 class="panel-title">Switching users</h3>
@@ -215,7 +216,7 @@
                                             <div class="col-lg-10 col-lg-offset-2">
 
                                                 <a href="auth.php?confirm=logout" class="btn btn-default">Log Out</a>
-                                                <button type="submit" class="btn btn-success">Switch</button>
+                                                <button type="submit" class="btn btn-primary">Switch</button>
                                             
                                             </div>
                                         
@@ -230,7 +231,7 @@
                         </div>
 
                     <?php elseif($confirm == "switch_host"): ?>
-                        <div class="panel panel-success">
+                        <div class="panel panel-primary">
 
                             <div class="panel-heading">
                                 <h3 class="panel-title">Switching hosts</h3>
@@ -257,7 +258,7 @@
                                             <div class="col-lg-10 col-lg-offset-2">
 
                                                 <a href="auth.php?confirm=logout" class="btn btn-default">Log Out</a>
-                                                <button type="submit" class="btn btn-success">Switch</button>
+                                                <button type="submit" class="btn btn-primary">Switch</button>
                                             
                                             </div>
                                         
