@@ -1,7 +1,11 @@
 <?php
 
+    // Working directory of any
     $wd = getcwd();
-    // to be needed later | require_once $wd."/assets/php/session.php";
+    // Working directory of first executing file
+    $cwd = dirname(__FILE__);
+
+    // to be needed later | require_once $cwd."/assets/php/session.php";
 
 ?>
 
@@ -22,7 +26,10 @@
 
     <body>
 
-        
+        <?php 
+            // require navigation bar
+            require_once $cwd."/assets/page_rsc/navbar.php";
+        ?>
 
     </body>
 </html>
