@@ -40,9 +40,9 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">test <span class="label label-info">localhost</span> <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
 
-                        <li><a href="#" onclick="auth.php?confirm=switch_user">Switch User</a></li>
-                        <li><a href="#" onclick="auth.php?confirm=switch_host">Switch Host</a></li>
-                        <li><a href="#" onclick="auth.php?confirm=logout">Log Out</a></li>
+                        <li><a href="auth.php?confirm=switch_user">Switch User</a></li>
+                        <li><a href="auth.php?confirm=switch_host">Switch Host</a></li>
+                        <li><a href="auth.php?confirm=logout">Log Out</a></li>
             
                     </ul>
                 </li>
