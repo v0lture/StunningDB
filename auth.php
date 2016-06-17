@@ -132,7 +132,7 @@
                                         
                                         <div class="col-lg-10 col-lg-offset-2">
 
-                                            <a href="auth.php?confirm=logout"><button class="btn btn-default">Log Out</button></a>
+                                            <a href="auth.php?confirm=logout" class="btn btn-default">Log Out</a>
                                             <button type="submit" class="btn btn-success">Switch</button>
                                         
                                         </div>
@@ -174,7 +174,7 @@
                                         
                                         <div class="col-lg-10 col-lg-offset-2">
 
-                                            <a href="auth.php?confirm=logout"><button class="btn btn-default">Log Out</button></a>
+                                            <a href="auth.php?confirm=logout" class="btn btn-default">Log Out</a>
                                             <button type="submit" class="btn btn-success">Switch</button>
                                         
                                         </div>
@@ -206,7 +206,7 @@
                                         
                                         <div class="col-lg-10 col-lg-offset-2">
 
-                                            <a href="index.php"><button class="btn btn-default">Cancel</button></a>
+                                            <a href="index.php" class="btn btn-default">Cancel</a>
                                             <button name="confirm_logout" value="true" type="submit" class="btn btn-danger">Log Out</button>
                                         
                                         </div>
