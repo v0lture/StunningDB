@@ -189,7 +189,42 @@
 
                     </div>
                 
-                <?php endif; ?>
+                
+                
+                
+                <?php elseif($confirm == "logout"): ?>
+                    <div class="panel panel-danger">
+
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Confirm log out</h3>
+                        </div>
+
+                        <div class="panel-body">
+
+                            <form class="form-horizontal">
+
+                                <fieldset>
+                                    <legend>Are you sure you want to log out?<br /><small>You will not be able to modify the database until you log back in.</small></legend>
+
+                                    <div class="form-group">
+                                        
+                                        <div class="col-lg-10 col-lg-offset-2">
+
+                                            <a href="index.php"><button class="btn btn-default">Cancel</button></a>
+                                            <button name="confirm_logout" value="true" type="submit" class="btn btn-danger">Log Out</button>
+                                        
+                                        </div>
+                                    
+                                    </div>
+
+                                </fieldset>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+                    <?php endif; ?>
 
             </div>
 
