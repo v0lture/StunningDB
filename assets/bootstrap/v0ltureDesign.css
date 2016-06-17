@@ -1,0 +1,25 @@
+/* v0lture Programming 2016
+   This is our Font and color resource for web projects.
+**/
+
+/* Fonts */
+@import 'https://fonts.googleapis.com/css?family=Lato';
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+/* Colors */
+
+/* Bg */
+.v-bg-green        { background: #ACFFA3; }
+.v-bg-blue         { background: #75C7FF; }
+.v-bg-light-purple { background: #C630D1; }
+.v-bg-dark-purple  { background: #9233AF; }
+.v-bg-grey         { background: #4F5159; }
+
+/* Fg */
+.v-text-green        { color: #ACFFA3; }
+.v-text-blue         { color: #75C7FF; }
+.v-text-light-purple { color: #C630D1; }
+.v-text-dark-purple  { color: #9233AF; }
+.v-text-grey         { color: #4F5159; }
