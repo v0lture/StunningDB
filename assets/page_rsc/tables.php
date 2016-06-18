@@ -26,11 +26,15 @@
             $count = 0;
             while($res = $dat->fetch_assoc()) {
                 $count++;
+                $rowc = tableCount($_GET["db"], $res["Tables_in_".$_GET["db"].""]);
+                if($rowc == "MySQL error") {
+                    $rowc = "<span class='label label-primary'>N/A</span>";
+                } 
                 echo 
                 '<tr>
                     <td>'.$count.'</td>
                     <td>'.$res["Tables_in_".$_GET["db"].""].'</td>
-                    <td></td>
+                    <td>'.$rowc.'</td>
                     <td>
                         <div class="btn-group">
                             <a href="#" class="btn btn-xs btn-primary">View</a>
