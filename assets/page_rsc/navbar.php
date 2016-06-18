@@ -27,16 +27,16 @@
             <ul class="nav navbar-nav">
                 <li><a href="#">Users</a></li>
                 <li class="dropdown active">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span id="nav_db">Test</span> <span class="label label-info">Current</span> <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span id="nav_db">Test</span> <span class="label label-info">Current DB</span> <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
 
-                        <li><a id="nav_db_drop" href="confirm.php?db=">Drop</a></li>
+                        <li><a id="nav_db_drop" href="confirm.php?db=">Drop Database</a></li>
                         <li><a id="nav_db_edit" href="confirm.php?db=">Manage Tables</a></li>
-            
+
                     </ul>
                 </li>
             </ul>
-        
+
             <ul class="nav navbar-nav navbar-right">
 
                 <li class="dropdown">
@@ -46,14 +46,14 @@
                         <li><a href="auth.php?confirm=switch_user">Switch User</a></li>
                         <li><a href="auth.php?confirm=switch_host">Switch Host</a></li>
                         <li><a href="auth.php?confirm=logout">Log Out</a></li>
-            
+
                     </ul>
                 </li>
 
             </ul>
-    
+
         </div>
-  
+
     </div>
 
 </nav>

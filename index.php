@@ -10,7 +10,7 @@
 
     if(testConn() != "Success") {
         header("Location: auth.php?confirm=reauth");
-        
+
     }
 ?>
 
@@ -25,7 +25,7 @@
 
     <body>
 
-        <?php 
+        <?php
             // require navigation bar
             require_once $lcwd."/assets/page_rsc/navbar.php";
         ?>
@@ -38,24 +38,24 @@
         </div>
 
         <div class="row">
-            
+
             <div class="col-md-3" id="sidebar">
 
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <a id="sidebar-loading-btn" href="javascript:fetchDatabases();" class="btn v-bg-blue v-text-grey btn-xs pull-right" style="margin-top: -3px;" data-loading-text="...">Refresh</a>
+                        <a id="db-loading-btn" href="javascript:fetchDatabases();" class="btn v-bg-blue v-text-grey btn-xs pull-right" style="margin-top: -3px;" data-loading-text="...">Refresh</a>
                         <h3 class="panel-title">Databases</h3>
-                        
+
                     </div>
 
                     <div class="panel-body">
 
-                        <div class="progress" id="sidebar-loading" style="display: none;">
+                        <div class="progress" id="db-loading" style="display: none;">
                             <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
                         </div>
 
-                        <div id="sidebar-xhr">
+                        <div id="db-xhr">
 
                             <div class="list-group">
                                 <?php
@@ -64,45 +64,45 @@
                                         echo '<a href="#!" onclick="loadDb(\''.$res["Database"].'\')" class="list-group-item v-text-blue">
                                                 '.$res["Database"].'
                                             </a>';
-                                    } 
-                                
+                                    }
+
                                 ?>
                             </div>
 
                         </div>
-                    
+
                     </div>
 
                 </div>
 
             </div>
-            
+
             <div class="col-md-9" id="maincontent">
 
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        
-                        <a id="main-loading-btn" href="javascript:fetchDatabases();" class="btn v-bg-light-purple btn-xs pull-right" style="margin-top: -3px; color: white;" data-loading-text="...">Refresh</a>
+
+                        <a id="tables-loading-btn" href="javascript:fetchDatabases();" class="btn v-bg-light-purple btn-xs pull-right" style="margin-top: -3px; color: white;" data-loading-text="...">Refresh</a>
                         <h3 class="panel-title">Tables</h3>
-                        
+
                     </div>
 
                     <div class="panel-body">
 
-                        <div class="progress" id="main-loading" style="display: none;">
+                        <div class="progress" id="tables-loading" style="display: none;">
                             <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
                         </div>
 
-                        <div id="main-xhr">
+                        <div id="tables-xhr">
                             <h4>No database selected.</h4>
                         </div>
-                    
+
                     </div>
 
                 </div>
 
             </div>
-        
+
         </div>
 
     </body>
