@@ -38,6 +38,7 @@ function loadDb(dbname) {
                 $("#main-xhr").html(db_xhr.responseText);
                 $("#main-loading-btn").button('reset');
                 $("#main-loading-btn").attr("href", "javascript:loadDb('"+dbname+"')");
+                Sortable.init();
             }
         }
     }

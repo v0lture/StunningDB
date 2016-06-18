@@ -130,3 +130,30 @@ body {
     background: #4F5159;
     color: #75C7FF;
 }
+
+.table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>th, .table>caption+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>td, .table>thead:first-child>tr:first-child>td {
+    background: #4F5159;
+}
+
+table[data-sortable].sortable-theme-bootstrap th[data-sorted="true"][data-sorted-direction="ascending"]:after {
+    border-bottom-color: #9233AF;
+}
+
+table[data-sortable].sortable-theme-bootstrap th[data-sorted="true"][data-sorted-direction="descending"]:after {
+    border-top-color: #9233AF;
+}
+
+.table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>th, .table>caption+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>td, .table>thead:first-child>tr:first-child>td {
+    border-bottom-color: #75C7FF;
+    color: white;
+}
+
+table[data-sortable].sortable-theme-bootstrap th[data-sorted="true"] {
+    border-bottom-color: #9233AF !important;
+    color: #C630D1 !important;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd), .table-striped>tbody>tr:nth-of-type(even) {
+    background: #4F5159;
+    color: white;
+}

@@ -10,7 +10,7 @@
     }
 ?>
 
-<table class="table table-striped table-hover">
+<table class="table table-striped table-hover sortable-theme-bootstrap" data-sortable>
             
     <thead>
         <tr>
