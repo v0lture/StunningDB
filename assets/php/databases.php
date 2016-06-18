@@ -11,4 +11,11 @@
         }
     }
 
+    function fetchTables($database) {
+        global $db;
+        if($res = $db->query("SHOW TABLES IN ".$database."")) {
+            return $res;
+        }
+    }
+
 ?>

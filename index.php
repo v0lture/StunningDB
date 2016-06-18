@@ -30,9 +30,11 @@
             require_once $lcwd."/assets/page_rsc/navbar.php";
         ?>
 
-        <div class="alert alert-danger" role="alert" id="error" style="display:none;">
-            <h4>Error</h4>
-            <p>Failed to do something.</p>
+        <div class="container">
+            <div class="alert alert-danger" role="alert" id="error" style="display:none; ">
+                <h4>Error</h4>
+                <p>Failed to do something.</p>
+            </div>
         </div>
 
         <div class="row">
@@ -49,7 +51,7 @@
 
                     <div class="panel-body">
 
-                        <div class="progress" id="sidebar-loading">
+                        <div class="progress" id="sidebar-loading" style="display: none;">
                             <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
                         </div>
 
@@ -79,16 +81,21 @@
 
                 <div class="panel panel-primary">
                     <div class="panel-heading">
+                        
+                        <a id="main-loading-btn" href="javascript:fetchDatabases();" class="btn v-bg-light-purple btn-xs pull-right" style="margin-top: -3px; color: white;" data-loading-text="...">Refresh</a>
                         <h3 class="panel-title">Tables</h3>
+                        
                     </div>
 
                     <div class="panel-body">
 
-                        <div class="progress" id="main-loading">
+                        <div class="progress" id="main-loading" style="display: none;">
                             <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
                         </div>
 
-                        <h4>Click on a database on the left side to load the relating tables.</h4>
+                        <div id="main-xhr">
+                            <h4>No database selected.</h4>
+                        </div>
                     
                     </div>
 

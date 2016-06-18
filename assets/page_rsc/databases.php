@@ -1,5 +1,9 @@
 <?php
     require_once "load.php";
+    if(testConn() != "Success"){
+        http_response_code(403);
+        die();
+    }
 ?>
 
 <div class="list-group">
@@ -10,6 +14,5 @@
                     '.$res["Database"].'
                 </a>';
         } 
-    
     ?>
 </div>
