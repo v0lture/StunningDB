@@ -25,16 +25,13 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="#">Databases</a></li>
+                <li><a href="#">Users</a></li>
                 <li class="dropdown active">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Test <span class="label label-info">CURRENT DB</span> <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span id="nav_db">Test</span> <span class="label label-info">Current</span> <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
 
-                        <li class="dropdown-header">Tables</li>
-
-                        <li><a href="#" onclick="loadTable('movies');">Movies <span class="label label-info">15 rows</span></a></li>
-                        <li><a href="#" onclick="loadTable('games');">Games <span class="label label-info">37 rows</span></a></li>
-                        <li><a href="#">Something else here</a></li>
+                        <li><a id="nav_db_drop" href="confirm.php?db=">Drop</a></li>
+                        <li><a id="nav_db_edit" href="confirm.php?db=">Manage Tables</a></li>
             
                     </ul>
                 </li>

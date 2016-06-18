@@ -27,21 +27,22 @@
             while($res = $dat->fetch_assoc()) {
                 $count++;
                 $rowc = tableCount($_GET["db"], $res["Tables_in_".$_GET["db"].""]);
-                if($rowc == "MySQL error") {
-                    $rowc = "<span class='label label-primary'>N/A</span>";
+                $btn = '<div class="btn-group">
+                            <a href="#" class="btn btn-xs btn-primary">View</a>
+                            <a href="#" class="btn btn-xs btn-danger">Drop</a>
+                            <a href="#" class="btn btn-xs btn-default">Right</a>
+                        </div>';
+
+                if($rowc == "MySQL error" && !is_numeric($rowc)) {
+                    $rowc = "<span class='label label-primary'>Unknown (".$rowc.")</span>";
+                    $btn = "<span class='label label-danger'>Access Unavailable</span>";
                 } 
                 echo 
                 '<tr>
                     <td>'.$count.'</td>
                     <td>'.$res["Tables_in_".$_GET["db"].""].'</td>
                     <td>'.$rowc.'</td>
-                    <td>
-                        <div class="btn-group">
-                            <a href="#" class="btn btn-xs btn-primary">View</a>
-                            <a href="#" class="btn btn-xs btn-danger">Drop</a>
-                            <a href="#" class="btn btn-xs btn-default">Right</a>
-                        </div>
-                    </td>
+                    <td>'.$btn.'</td>
                 </tr>';
             } 
         ?>
