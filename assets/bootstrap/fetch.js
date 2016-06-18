@@ -41,7 +41,7 @@ function loadDb(dbname, compact) {
             } else {
                 $("#tables-xhr").html(db_xhr.responseText);
                 $("#tables-loading-btn").button('reset');
-                $("#tables-loading-btn").attr("href", "javascript:loadDb('"+dbname+"')");
+                $("#tables-loading-btn").attr("href", "javascript:loadDb('"+dbname+"', '"+compact+"')");
                 $("#nav_db").text(dbname);
                 $("#nav_db_drop").attr("href", "confirm.php?db="+dbname+"&action=drop");
                 $("#nav_db_edit").attr("href", "confirm.php?db="+dbname+"&action=edit");
