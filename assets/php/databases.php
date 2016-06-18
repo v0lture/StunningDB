@@ -23,12 +23,21 @@
     }
 
     function tableCount($dbs, $table) {
-        global $db;
-        if($res = $db->query("SELECT * FROM `".$dbs."`.`".$table."`")) {
-            return $res->num_rows;
-        } else {
-            return "MySQL error";
-        }
+      global $db;
+      if($res = $db->query("SELECT * FROM `".$dbs."`.`".$table."`")) {
+          return $res->num_rows;
+      } else {
+          return "MySQL error";
+      }
+    }
+
+    function fetchTableData($database, $table) {
+      global $db;
+      if($res = $db->query("SELECT * FROM `".$database."`.`".$table."`")) {
+        return $res;
+      } else {
+        return "MySQL error";
+      }
     }
 
 ?>

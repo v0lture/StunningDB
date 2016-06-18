@@ -108,8 +108,8 @@
                 <div class="panel panel-primary">
                     <div class="panel-heading">
 
-                        <a id="main-loading-btn" href="javascript:fetchDatabases();" class="btn v-bg-light-purple btn-xs pull-right" style="margin-top: -3px; color: white;" data-loading-text="...">Refresh</a>
-                        <h3 class="panel-title">Tables</h3>
+                        <a id="main-loading-btn" href="javascript:loadDb('<?php echo $_GET["db"]; ?>', 'compact');" class="btn v-bg-light-purple btn-xs pull-right" style="margin-top: -3px; color: white;" data-loading-text="...">Refresh</a>
+                        <h3 class="panel-title">Table Data</h3>
 
                     </div>
 
@@ -120,7 +120,7 @@
                         </div>
 
                         <div id="main-xhr">
-                            <h4>No database selected.</h4>
+                            <h4>No table selected.</h4>
                         </div>
 
                     </div>
