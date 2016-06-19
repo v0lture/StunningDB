@@ -3,6 +3,9 @@ function tableInit() {
   Sortable.init();
   $('[data-toggle="popover"]').popover();
   $('[data-toggle="tooltip"]').tooltip();
+
+  $('[data-toggle="popver"]').popover('hide');
+  $('.popover.fade.right').css( "display", "none", "important");
 }
 
 function fetchDatabases() {

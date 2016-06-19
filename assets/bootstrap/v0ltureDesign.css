@@ -171,7 +171,7 @@ table[data-sortable].sortable-theme-bootstrap th[data-sorted="true"] {
   background-color: #C630D1 !important;
 }
 
-/* Stackoverflow: http://stackoverflow.com/questions/22978990/ */
+/* Stackoverflow fix for tables overflowing: http://stackoverflow.com/questions/22978990/ */
 
 .table {
   table-layout:fixed;
@@ -181,4 +181,10 @@ table[data-sortable].sortable-theme-bootstrap th[data-sorted="true"] {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* Panel buttons */
+.panel-title-btn {
+  margin-top: -3px;
+  color: white;
 }
