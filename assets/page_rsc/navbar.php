@@ -27,11 +27,11 @@
             <ul class="nav navbar-nav">
                 <li><a href="#">Users</a></li>
                 <li class="dropdown active">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span id="nav_db">Test</span> <span class="label label-info">Current DB</span> <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span id="nav_db"></span> <span class="label label-info">Current DB</span> <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
 
-                        <li><a id="nav_db_drop" href="confirm.php?db=">Drop Database</a></li>
-                        <li><a id="nav_db_edit" href="confirm.php?db=">Manage Tables</a></li>
+                        <li><a id="nav_db_drop" href="#!">Drop Database</a></li>
+                        <li><a id="nav_db_edit" href="#!">Manage Tables</a></li>
 
                     </ul>
                 </li>

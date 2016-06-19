@@ -52,3 +52,26 @@ function loadDb(dbname, compact) {
     db_xhr.open("GET", "assets/page_rsc/tables.php?db="+dbname+"&view="+compact, true);
     db_xhr.send();
 }
+
+function fetchTableData(db, tbl, bypass) {
+    var db_xhr = new XMLHttpRequest();
+    $("#error").hide();
+    $("#main-loading").show();
+    $("#main-loading-btn").button('loading');
+    db_xhr.onreadystatechange = function(){
+        if(db_xhr.readyState == 4) {
+            $("#main-loading").hide();
+            if(db_xhr.status != 200) {
+                $("#error").show();
+                $("#error > h4").text("Failed fetching table data...");
+                $("#error > p").html("Double check you have the SELECT privilage to view the data on the table.<br />Try again later.");
+                $("#main-loading-btn").button('reset');
+            } else {
+                $("#main-xhr").html(db_xhr.responseText);
+                $("#main-loading-btn").button('reset');
+            }
+        }
+    }
+    db_xhr.open("GET", "assets/page_rsc/table_data.php?db="+db+"&tbl="+tbl, true);
+    db_xhr.send();
+}
