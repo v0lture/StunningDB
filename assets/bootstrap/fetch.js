@@ -1,3 +1,10 @@
+function tableInit() {
+  // Simply initalizates popovers and sortable when data is not loaded by an XHR request.
+  Sortable.init();
+  $('[data-toggle="popover"]').popover();
+  $('[data-toggle="tooltip"]').tooltip();
+}
+
 function fetchDatabases() {
     var db_xhr = new XMLHttpRequest();
     $("#error").hide();
@@ -76,6 +83,7 @@ function fetchTableData(db, tbl, bypass = "false") {
                 console.info("[v0ltureDB] Table fetched.");
                 Sortable.init();
                 $('[data-toggle="popover"]').popover();
+                $('[data-toggle="tooltip"]').tooltip();
             }
         }
     }

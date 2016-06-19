@@ -29,7 +29,7 @@
 
     </head>
 
-    <body>
+    <body onload="tableInit();">
 
         <?php
             // require navigation bar

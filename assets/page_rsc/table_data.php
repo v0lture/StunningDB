@@ -42,7 +42,7 @@
               $headers_count++;
 
               if($headers_count <= 10) {
-                $table_head .= "<th style=\"text-overflow: ellipsis;\">".$header."</th>";
+                $table_head .= "<th style=\"text-overflow: ellipsis;\" data-container=\"body\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"".$header."\">".$header."</th>";
               } else {
                 $error = '<div class="alert alert-danger" role="alert" style="margin-left: 25px; margin-right: 25px;">
                             <h4>Too many columns</h4>
@@ -90,7 +90,7 @@
             foreach($res as &$tabledat) {
               $tblcount++;
               if($tblcount <= 10) {
-                $tbldat .= '<td data-container="body" data-toggle="popover" title="Full length" data-content="'.$tabledat.'">'.$tabledat.'</td>';
+                $tbldat .= '<td data-container="body" data-toggle="popover" data-html="true" title="<span class=\'label label-danger\'>test</span>" data-content="'.$tabledat.'">'.$tabledat.'</td>';
               }
 
             }
