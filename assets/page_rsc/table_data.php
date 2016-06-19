@@ -90,9 +90,9 @@
             foreach($res as &$tabledat) {
               $tblcount++;
               if($tblcount <= 10) {
-                $tbldat .= '<td>'.$tabledat.'</td>';
+                $tbldat .= '<td data-container="body" data-toggle="popover" title="Full length" data-content="'.$tabledat.'">'.$tabledat.'</td>';
               }
-              // echo $headers_count."<br />".$tblcount;
+
             }
           $tbldat .= '</tr>';
 

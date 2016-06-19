@@ -170,3 +170,15 @@ table[data-sortable].sortable-theme-bootstrap th[data-sorted="true"] {
 .pagination>li>a, .pagination>li>span {
   background-color: #C630D1 !important;
 }
+
+/* Stackoverflow: http://stackoverflow.com/questions/22978990/ */
+
+.table {
+  table-layout:fixed;
+}
+
+.table td, .table th {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
