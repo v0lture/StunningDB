@@ -56,7 +56,7 @@
 
                           </div>';
                 } else {
-                  $btn = '<a href="loadTable("'.$tbl.'")" class="btn btn-xs btn-primary">View</a>';
+                  $btn = '<a href="javascript:fetchTableData(\''.$dbl.'\', \''.$tbl.'\')" class="btn btn-xs btn-primary">View</a>';
                 }
 
                 if($rowc == "MySQL error" && !is_numeric($rowc)) {

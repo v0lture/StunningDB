@@ -85,7 +85,7 @@
                                       $btn = '<a href="table.php?db='.$dbl.'&tbl='.$tbl.'" class="btn btn-xs btn-primary">View</a>';
 
                                       if($rowc == "MySQL error" && !is_numeric($rowc)) {
-                                          $btn = "<span class='label label-danger'>Access Unavailable</span>";
+                                          $btn = "<span class='label label-danger'>N/A</span>";
                                       }
                                       echo
                                       '<tr>
@@ -119,10 +119,10 @@
                             <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
                         </div>
 
-                        <div id="main-xhr">
-                            <h4>No table selected.</h4>
-                        </div>
+                    </div>
 
+                    <div id="main-xhr" style="max-width: 100%; width: 100%;">
+                        <?php include "assets/page_rsc/table_data.php"; ?>
                     </div>
 
                 </div>
