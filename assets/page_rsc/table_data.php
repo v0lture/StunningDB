@@ -10,6 +10,7 @@
         die("Database and table required.");
     } else {
 
+      // Variable declaration
       $dbl = $_GET["db"];
       $tbl = $_GET["tbl"];
       $page = $_GET["page"];
@@ -24,17 +25,16 @@
       if($data == "MySQL error") {
         die("Unable to fetch data from the table.");
       } elseif($data->num_rows == 0) {
-        $error = '<div class="alert alert-danger" role="alert" style="margin-left: 25px; margin-right: 25px;">
-
-                    <h4>MySQL returned empty result.</h4>
-                    <p>There were no rows with the query.
-
-                  </div>';
-
+        $error =
+        '<div class="alert alert-danger" role="alert" style="margin-left: 25px; margin-right: 25px;">
+            <h4>MySQL returned empty result.</h4>
+            <p>There were no rows with the query.
+          </div>';
       } else {
 
         while($res = $data->fetch_assoc()) {
 
+          // Table headers
           if($headers_defined == false) {
 
             $keys = array_keys($res);
@@ -43,27 +43,25 @@
 
               if($headers_count <= 10) {
                 $table_head .= "<th style=\"text-overflow: ellipsis;\" data-container=\"body\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"".$header."\">".$header."</th>";
+                $headertypearray[$headers_count] = $header;
               } else {
-                $error = '<div class="alert alert-danger" role="alert" style="margin-left: 25px; margin-right: 25px;">
-                            <h4>Too many columns</h4>
-                            <p>There are too many columns in the current table to show without possible text overflow from the view.
-                            <br /><small>
-                              You can disable this safety feature in the v0ltureDB config if this is occurring often.
-                            </small></p>
-                            <br />
-                            <div class="btn-group">
-                                <a href="javascript:loadTableData(\''.$dbl.'\', \''.$tbl.'\', \'true\');" class="btn btn-primary">Temporarily show all</a>
-                                <a href="settings.php#safety" class="btn btn-default">Edit config</a>
-                            </div>
-                          </div>
-                        ';
-
+                $error =
+                '<div class="alert alert-danger" role="alert" style="margin-left: 25px; margin-right: 25px;">
+                    <h4>Too many columns</h4>
+                    <p>There are too many columns in the current table to show without possible text overflow from the view.
+                    <br /><small>
+                      You can disable this safety feature in the v0ltureDB config if this is occurring often.
+                    </small></p>
+                    <br />
+                    <div class="btn-group">
+                        <a href="javascript:loadTableData(\''.$dbl.'\', \''.$tbl.'\', \'true\');" class="btn btn-primary">Temporarily show all</a>
+                        <a href="settings.php#safety" class="btn btn-default">Disable</a>
+                    </div>
+                  </div>
+                ';
               }
-
             }
-
             $headers_defined = true;
-
           }
 
           // Pagination for 50+ items per page
@@ -74,7 +72,6 @@
             $pages = round(tableCount($dbl, $tbl) / 50, 0, PHP_ROUND_HALF_UP);
             $pgct = 0;
             while($pgct < $pages) {
-              // echo 'test</br>';
               $pgct++;
               if($pgct == $page) {
                 $paginationmodule .= "<li class='active'><a href='table.php?db=".$dbl."&tbl=".$tbl."&page=".$pgct."'>".$pgct."</a></li>";
@@ -85,12 +82,15 @@
             }
           }
 
+
+          // Table data
           $tbldat .= '<tr>';
           $tblcount = 0;
             foreach($res as &$tabledat) {
               $tblcount++;
               if($tblcount <= 10) {
-                $tbldat .= '<td data-container="body" data-toggle="popover" data-html="true" title="<span class=\'label label-danger\'>test</span>" data-content="'.$tabledat.'">'.$tabledat.'</td>';
+                $tbltype = fetchTableType($tbl, $headertypearray[$tblcount]);
+                $tbldat .= '<td data-container="body" data-toggle="popover" data-html="true" title="Entire value <span class=\'label label-primary\'>'.$tbltype["DATA_TYPE"].'</span>" data-content="'.$tabledat.'">'.$tabledat.'</td>';
               }
 
             }

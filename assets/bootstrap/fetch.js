@@ -62,10 +62,18 @@ function loadDb(dbname, compact) {
 
 function fetchTableData(db, tbl, bypass = "false") {
     var db_xhr = new XMLHttpRequest();
+
+    // Destory old popovers and tooltips incase any were left open at load
+    $('[data-toggle="popver"]').popover('hide');
+    $('.popover.fade.right').css( "display", "none", "important");
+
     console.info("[v0ltureDB] Trying to load table "+tbl+" at database "+db+"...");
+
+    // Hide any errors if applicable, show navigation bar, and toggle refresh button state
     $("#error").hide();
     $("#main-loading").show();
     $("#main-loading-btn").button('loading');
+
     db_xhr.onreadystatechange = function(){
         if(db_xhr.readyState == 4) {
             $("#main-loading").hide();

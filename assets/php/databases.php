@@ -47,4 +47,16 @@
       }
     }
 
+    function fetchTableType($table, $col) {
+      global $db;
+
+      if($res = $db->query("SELECT DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = '".$table."' AND COLUMN_NAME = '".$col."'")) {
+        while($dat = $res->fetch_assoc()) {
+          return $dat;
+        }
+      } else {
+        return "MySQL error";
+      }
+    }
+
 ?>
