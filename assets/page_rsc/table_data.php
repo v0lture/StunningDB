@@ -1,6 +1,6 @@
 <?php
     require_once "load.php";
-    error_reporting(E_ALL);
+
     if(testConn() != "Success"){
         http_response_code(403);
         die("Not authenticated.");
@@ -12,12 +12,14 @@
 
       $dbl = $_GET["db"];
       $tbl = $_GET["tbl"];
+      $page = $_GET["page"];
       $headers_defined = false;
       $headers_count = 0;
       $table_head = "";
       $error = "";
+      $tbldat = "";
 
-      $data = fetchTableData($dbl, $tbl);
+      $data = fetchTableData($dbl, $tbl, $page);
 
       if($data == "MySQL error") {
         die("Unable to fetch data from the table.");
@@ -30,6 +32,7 @@
                   </div>';
 
       } else {
+
         while($res = $data->fetch_assoc()) {
 
           if($headers_defined == false) {
@@ -39,7 +42,7 @@
               $headers_count++;
 
               if($headers_count <= 10) {
-                $table_head .= "<th>".$header."</th>";
+                $table_head .= "<th style=\"text-overflow: ellipsis;\">".$header."</th>";
               } else {
                 $error = '<div class="alert alert-danger" role="alert" style="margin-left: 25px; margin-right: 25px;">
                             <h4>Too many columns</h4>
@@ -62,6 +65,37 @@
             $headers_defined = true;
 
           }
+
+          // Pagination for 50+ items per page
+          $paginationmodule = "";
+          if($data->num_rows < 50) {
+            $paginationmodule = "";
+          } else {
+            $pages = round(tableCount($dbl, $tbl) / 50, 0, PHP_ROUND_HALF_UP);
+            $pgct = 0;
+            while($pgct < $pages) {
+              // echo 'test</br>';
+              $pgct++;
+              if($pgct == $page) {
+                $paginationmodule .= "<li class='active'><a href='table.php?db=".$dbl."&tbl=".$tbl."&page=".$pgct."'>".$pgct."</a></li>";
+              } else {
+                $paginationmodule .= "<li><a href='table.php?db=".$dbl."&tbl=".$tbl."&page=".$pgct."'>".$pgct."</a></li>";
+              }
+
+            }
+          }
+
+          $tbldat .= '<tr>';
+          $tblcount = 0;
+            foreach($res as &$tabledat) {
+              $tblcount++;
+              if($tblcount <= 10) {
+                $tbldat .= '<td>'.$tabledat.'</td>';
+              }
+              // echo $headers_count."<br />".$tblcount;
+            }
+          $tbldat .= '</tr>';
+
         }
       }
 
@@ -70,7 +104,7 @@
 
 ?>
 
-<table class="table table-striped table-hover sortable-theme-bootstrap" data-sortable style="overflow-y: auto; width: 100%;">
+<table class="table table-striped table-hover table-responsive sortable-theme-bootstrap" data-sortable>
 
     <?php echo $error; ?>
 
@@ -80,10 +114,13 @@
         </tr>
     </thead>
     <tbody>
-        <?php
-
-
-
-        ?>
+        <?php echo $tbldat; ?>
     </tbody>
+
 </table>
+
+<nav style="margin-left: 25px; margin-right: 25px;">
+  <ul class="pagination">
+    <?php echo $paginationmodule; ?>
+  </ul>
+</nav>

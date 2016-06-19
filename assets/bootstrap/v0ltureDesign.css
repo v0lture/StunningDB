@@ -158,7 +158,15 @@ table[data-sortable].sortable-theme-bootstrap th[data-sorted="true"] {
     color: white;
 }
 
- .table-striped>tbody>tr:nth-of-type(even) {
-   background: #303030;
-   color: white;
- }
+.table-striped>tbody>tr:nth-of-type(even) {
+  background: #303030;
+  color: white;
+}
+
+.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:focus, .pagination>.active>span:focus {
+  background-color: #9233AF !important;
+}
+
+.pagination>li>a, .pagination>li>span {
+  background-color: #C630D1 !important;
+}

@@ -74,6 +74,7 @@ function fetchTableData(db, tbl, bypass = "false") {
                 $("#main-loading-btn").button('reset');
                 $("#main-loading-btn").attr("href", "javascript:fetchTableData('"+db+"', '"+tbl+"', '"+bypass+"');");
                 console.info("[v0ltureDB] Table fetched.");
+                Sortable.init();
             }
         }
     }
