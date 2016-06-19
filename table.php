@@ -107,8 +107,10 @@
 
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-
-                        <a id="main-loading-btn" href="javascript:loadDb('<?php echo $_GET["db"]; ?>', 'compact');" class="btn v-bg-light-purple btn-xs pull-right" style="margin-top: -3px; color: white;" data-loading-text="...">Refresh</a>
+                        <div class="btn-group pull-right">
+                          <a href="javascript:tableInit();" class="btn v-bg-green btn-xs panel-title-btn">Reset Popovers</a>
+                          <a id="main-loading-btn" href="javascript:loadDb('<?php echo $_GET["db"]; ?>', 'compact');" class="btn v-bg-light-purple btn-xs panel-title-btn" data-loading-text="...">Refresh</a>
+                        </div>
                         <h3 class="panel-title">Table Data</h3>
 
                     </div>

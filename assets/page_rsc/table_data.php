@@ -43,7 +43,7 @@
 
               if($headers_count <= 10) {
                 $table_head .= "<th style=\"text-overflow: ellipsis;\" data-container=\"body\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"".$header."\">".$header."</th>";
-                $headertypearray[$headers_count] = $header;
+                $headertypearray[$headers_count] = fetchTableType($tbl, $header);
               } else {
                 $error =
                 '<div class="alert alert-danger" role="alert" style="margin-left: 25px; margin-right: 25px;">
@@ -89,8 +89,8 @@
             foreach($res as &$tabledat) {
               $tblcount++;
               if($tblcount <= 10) {
-                $tbltype = fetchTableType($tbl, $headertypearray[$tblcount]);
-                $tbldat .= '<td data-container="body" data-toggle="popover" data-html="true" title="Entire value <span class=\'label label-primary\'>'.$tbltype["DATA_TYPE"].'</span>" data-content="'.$tabledat.'">'.$tabledat.'</td>';
+                
+                $tbldat .= '<td data-container="body" data-toggle="popover" data-html="true" title="Entire value <span class=\'label label-primary\'>'.$headertypearray[$tblcount]["DATA_TYPE"].'</span>" data-content="'.$tabledat.'">'.$tabledat.'</td>';
               }
 
             }
