@@ -53,8 +53,9 @@ function loadDb(dbname, compact) {
     db_xhr.send();
 }
 
-function fetchTableData(db, tbl, bypass) {
+function fetchTableData(db, tbl, bypass = "false") {
     var db_xhr = new XMLHttpRequest();
+    console.info("[v0ltureDB] Trying to load table "+tbl+" at database "+db+"...");
     $("#error").hide();
     $("#main-loading").show();
     $("#main-loading-btn").button('loading');
@@ -66,9 +67,13 @@ function fetchTableData(db, tbl, bypass) {
                 $("#error > h4").text("Failed fetching table data...");
                 $("#error > p").html("Double check you have the SELECT privilage to view the data on the table.<br />Try again later.");
                 $("#main-loading-btn").button('reset');
+                $("#main-loading-btn").attr("href", "javascript:fetchTableData('"+db+"', '"+tbl+"', '"+bypass+"');");
+                console.error("[v0ltureDB] Failed fetching table!");
             } else {
                 $("#main-xhr").html(db_xhr.responseText);
                 $("#main-loading-btn").button('reset');
+                $("#main-loading-btn").attr("href", "javascript:fetchTableData('"+db+"', '"+tbl+"', '"+bypass+"');");
+                console.info("[v0ltureDB] Table fetched.");
             }
         }
     }

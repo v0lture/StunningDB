@@ -82,7 +82,7 @@
                                       $count++;
                                       $tbl = $res["Tables_in_".$dbl.""];
                                       $rowc = tableCount($dbl, $tbl);
-                                      $btn = '<a href="table.php?db='.$dbl.'&tbl='.$tbl.'" class="btn btn-xs btn-primary">View</a>';
+                                      $btn = '<a href="javascript:fetchTableData(\''.$dbl.'\', \''.$tbl.'\', \'false\');" class="btn btn-xs btn-primary">View</a>';
 
                                       if($rowc == "MySQL error" && !is_numeric($rowc)) {
                                           $btn = "<span class='label label-danger'>N/A</span>";
