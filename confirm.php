@@ -24,7 +24,7 @@
               <strong>Password is incorrect</strong> <br />Check for capitalization/spelling errors.
             </div>';
           } else {
-            header("Location: ".$goto."?sudo=allowed");
+            header("Location: ".$goto."?sudo=allowed&token=".$_SESSION["sudotoken"]);
           }
         } else {
           // Give an incorrect error
