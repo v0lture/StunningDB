@@ -22,6 +22,7 @@
     'tbl_in_prefix' => "Tables in",
     'tbl_popover_entire_value' => "Entire value",
     'tbl_na' => "N/A",
+    'tbl_key' => "<span class='label v-bg-green'>Key</span>",
 
     // Tables
     'tblh_name' => "Name",
@@ -30,13 +31,19 @@
     'tblh_rows' => "Rows",
 
     // MySQL msgs
-    'mysql_empty_result' => "MySQL return empty result",
+    'mysql_empty_result' => "MySQL returned empty result",
     'mysql_empty_result_ctx' => "There were no rows with the query.",
     'mysql_too_many_columns' => "Too many columns",
-    "mysql_too_many_columns_ctx" => "There are too many columns in the current table to show without possible text overflow from the view.",
+    'mysql_too_many_columns_ctx' => "There are too many columns in the current table to show without possible text overflow from the view.",
+    'mysql_no_primary_key' => "This table has no primary key.",
+    'mysql_no_primary_key_ctx' => "You cannot edit/delete any rows until a primary key is set.",
+
+    // Editor modal
+    'editor_title' => "Edit row",
+    'editor_inline_update' => "Update",
+    'editor_inline_updating' => "Updating...",
 
     // Configuration
-
     'db_view_config_db'         => "<span class='label label-danger'>v0ltureDB</span>",
     'config_db_name'            => "v0ltureDB_config",
     'config_table_safety_name'  => "safety",

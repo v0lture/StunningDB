@@ -59,4 +59,14 @@
       }
     }
 
+    function fetchTablePrimaryKey($dbl, $tbl) {
+      global $db;
+
+      if($res = $db->query("SELECT `COLUMN_NAME` FROM `information_schema`.`COLUMNS` WHERE (`TABLE_SCHEMA` = '".$dbl."') AND (`TABLE_NAME` = '".$tbl."') AND (`COLUMN_KEY` = 'PRI');")) {
+        return $res;
+      } else {
+        return "MySQL error";
+      }
+    }
+
 ?>
