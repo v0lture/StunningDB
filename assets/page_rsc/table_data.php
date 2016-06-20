@@ -1,5 +1,6 @@
 <?php
     require_once "load.php";
+    global $lang;
 
     if(testConn() != "Success"){
         http_response_code(403);
@@ -27,8 +28,8 @@
       } elseif($data->num_rows == 0) {
         $error =
         '<div class="alert alert-danger" role="alert" style="margin-left: 25px; margin-right: 25px;">
-            <h4>MySQL returned empty result.</h4>
-            <p>There were no rows with the query.
+            <h4>'.$lang["mysql_empty_result"].'</h4>
+            <p>'.$lang["mysql_empty_result_ctx"].'
           </div>';
       } else {
 
@@ -47,15 +48,12 @@
               } else {
                 $error =
                 '<div class="alert alert-danger" role="alert" style="margin-left: 25px; margin-right: 25px;">
-                    <h4>Too many columns</h4>
-                    <p>There are too many columns in the current table to show without possible text overflow from the view.
-                    <br /><small>
-                      You can disable this safety feature in the v0ltureDB config if this is occurring often.
-                    </small></p>
+                    <h4>'.$lang["mysql_too_many_columns"].'</h4>
+                    <p>'.$lang["mysql_too_many_columns_ctx"].'</p>
                     <br />
                     <div class="btn-group">
-                        <a href="javascript:loadTableData(\''.$dbl.'\', \''.$tbl.'\', \'true\');" class="btn btn-primary">Temporarily show all</a>
-                        <a href="settings.php?jump=safety" class="btn btn-default">Disable</a>
+                        <a href="javascript:loadTableData(\''.$dbl.'\', \''.$tbl.'\', \'true\');" class="btn btn-primary">'.$lang["btn_temp_show_all"].'</a>
+                        <a href="settings.php?jump=safety" class="btn btn-default">'.$lang["btn_disable"].'</a>
                     </div>
                   </div>
                 ';

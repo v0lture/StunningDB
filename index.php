@@ -5,7 +5,6 @@
     // Working directory of first executing file
     $lcwd = dirname(__FILE__);
 
-    require_once $lcwd."/assets/php/session.php";
     require_once $lcwd."/assets/page_rsc/load.php";
 
     if(testConn() != "Success") {
@@ -44,7 +43,7 @@
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <a id="db-loading-btn" href="javascript:fetchDatabases();" class="btn v-bg-blue v-text-grey btn-xs pull-right" style="margin-top: -3px;" data-loading-text="...">Refresh</a>
+                        <a id="db-loading-btn" href="javascript:fetchDatabases();" class="btn v-bg-blue v-text-grey btn-xs pull-right" style="margin-top: -3px;" data-loading-text="<?php echo $lang["btn_loading"]; ?>"><?php echo $lang["btn_refresh"]; ?></a>
                         <h3 class="panel-title">Databases</h3>
 
                     </div>
@@ -82,7 +81,7 @@
                 <div class="panel panel-primary">
                     <div class="panel-heading">
 
-                        <a id="tables-loading-btn" href="javascript:fetchDatabases();" class="btn v-bg-light-purple btn-xs pull-right" style="margin-top: -3px; color: white;" data-loading-text="...">Refresh</a>
+                        <a id="tables-loading-btn" href="javascript:fetchDatabases();" class="btn v-bg-light-purple btn-xs pull-right" style="margin-top: -3px; color: white;" data-loading-text="<?php echo $lang["btn_loading"]; ?>"><?php echo $lang["btn_refresh"]; ?></a>
                         <h3 class="panel-title">Tables</h3>
 
                     </div>

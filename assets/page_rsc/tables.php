@@ -22,10 +22,10 @@
 
     <thead>
         <tr>
-            <?php if(!$compactview): ?><th>#</th><?php endif; ?>
-            <th>Name</th>
-            <?php if(!$compactview): ?><th>Rows</th><?php endif; ?>
-            <th>Options</th>
+            <?php if(!$compactview): ?><th><?php echo $lang["tblh_count"]; ?></th><?php endif; ?>
+            <th><?php echo $lang["tblh_name"]; ?></th>
+            <?php if(!$compactview): ?><th><?php echo $lang["tblh_rows"]; ?></th><?php endif; ?>
+            <th><?php echo $lang["tblh_opt"]; ?></th>
         </tr>
     </thead>
     <tbody>
@@ -51,17 +51,17 @@
                 if(!$compactview) {
                   $btn = '<div class="btn-group">
 
-                              <a href="table.php?db='.$dbl.'&tbl='.$tbl.'" class="btn btn-xs btn-primary">View</a>
-                              <a href="confirm.php?db='.$dbl.'&tbl='.$tbl.'" class="btn btn-xs btn-danger">Drop</a>
+                              <a href="table.php?db='.$dbl.'&tbl='.$tbl.'" class="btn btn-xs btn-primary">'.$lang["tbl_view"].'</a>
+                              <a href="confirm.php?db='.$dbl.'&tbl='.$tbl.'" class="btn btn-xs btn-danger">'.$lang["tbl_drop"].'</a>
 
                           </div>';
                 } else {
-                  $btn = '<a href="javascript:fetchTableData(\''.$dbl.'\', \''.$tbl.'\')" class="btn btn-xs btn-primary">View</a>';
+                  $btn = '<a href="javascript:fetchTableData(\''.$dbl.'\', \''.$tbl.'\')" class="btn btn-xs btn-primary">'.$lang["tbl_view"].'</a>';
                 }
 
                 if($rowc == "MySQL error" && !is_numeric($rowc)) {
                     $rowc = "<span class='label label-primary'>".$rowc."</span>";
-                    $btn = "<span class='label label-danger'>N/A</span>";
+                    $btn = "<span class='label label-danger'>".$lang["tbl_na"]."</span>";
                 }
 
                 echo

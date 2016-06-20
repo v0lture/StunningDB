@@ -7,6 +7,7 @@
         $h = $_SESSION["host"];
         $u = $_SESSION["username"];
     }
+    global $lang;
 
 ?>
 
@@ -27,11 +28,11 @@
             <ul class="nav navbar-nav">
                 <li><a href="#">Users</a></li>
                 <li class="dropdown active">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span id="nav_db"></span> <span class="label label-info">Current DB</span> <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span id="nav_db"></span> <span class="label label-info"><?php echo $lang["navbar_current_db"]; ?></span> <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
 
-                        <li><a id="nav_db_drop" href="#!">Drop Database</a></li>
-                        <li><a id="nav_db_edit" href="#!">Manage Tables</a></li>
+                        <li><a id="nav_db_drop" href="#!"><?php echo $lang["navbar_drop_db"]; ?></a></li>
+                        <li><a id="nav_db_edit" href="#!"><?php echo $lang["navbar_mng_tbl"]; ?></a></li>
 
                     </ul>
                 </li>
@@ -43,9 +44,8 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $u; ?> <span class="label label-info"><?php echo $h; ?></span> <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
 
-                        <li><a href="auth.php?confirm=switch_user">Switch User</a></li>
-                        <li><a href="auth.php?confirm=switch_host">Switch Host</a></li>
-                        <li><a href="auth.php?confirm=logout">Log Out</a></li>
+                        <li><a href="auth.php?confirm=switch_user"><?php echo $lang["navbar_switch_user"]; ?></a></li>
+                        <li><a href="auth.php?confirm=logout"><?php echo $lang["navbar_logout"]; ?></a></li>
 
                     </ul>
                 </li>
@@ -57,9 +57,3 @@
     </div>
 
 </nav>
-
-<div id="navigation_loading" style="display: none;">
-    <div class="progress progress-striped active" style="margin-top: -21px;">
-        <div class="progress-bar" style="width: 100%"></div>
-    </div>
-</div>
