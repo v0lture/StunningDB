@@ -55,7 +55,7 @@
                     <br />
                     <div class="btn-group">
                         <a href="javascript:loadTableData(\''.$dbl.'\', \''.$tbl.'\', \'true\');" class="btn btn-primary">Temporarily show all</a>
-                        <a href="settings.php#safety" class="btn btn-default">Disable</a>
+                        <a href="settings.php?jump=safety" class="btn btn-default">Disable</a>
                     </div>
                   </div>
                 ';
@@ -89,7 +89,7 @@
             foreach($res as &$tabledat) {
               $tblcount++;
               if($tblcount <= 10) {
-                
+
                 $tbldat .= '<td data-container="body" data-toggle="popover" data-html="true" title="Entire value <span class=\'label label-primary\'>'.$headertypearray[$tblcount]["DATA_TYPE"].'</span>" data-content="'.$tabledat.'">'.$tabledat.'</td>';
               }
 
