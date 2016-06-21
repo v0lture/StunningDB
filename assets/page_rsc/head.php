@@ -6,6 +6,7 @@
 <script src="assets/bootstrap/jquery-2.2.4.min.js"></script>
 <script src="assets/bootstrap/bootstrap.min.js"></script>
 <script src="assets/bootstrap/fetch.js"></script>
+<script src="assets/bootstrap/edit.js"></script>
 
 <!-- sortable -->
 <script src="assets/bootstrap/sortable/sortable.min.js"></script>

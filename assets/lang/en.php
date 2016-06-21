@@ -22,6 +22,7 @@
     'tbl_view' => "View",
     'tbl_drop' => "Drop",
     'tbl_in_prefix' => "",
+    // Set to blank to use column name
     'tbl_popover_entire_value' => "Entire value",
     'tbl_na' => "N/A",
     'tbl_key' => "<span class='label v-bg-blue'>Key</span>",

@@ -26,10 +26,12 @@
       $table_head = "";
       $error = "";
       $tbldat = "";
+      $keyvalues = NULL;
       $toomanycolumns = false;
       $paginationmodule = "";
       $data = fetchTableData($dbl, $tbl, $page);
       $tdct = 0;
+      $rownum = 0;
 
       if($data == "MySQL error") {
         die("Unable to fetch data from the table.");
@@ -131,6 +133,7 @@
           // Table data
           $tbldat .= '<tr>';
           $tblcount = 0;
+          $rownum++;
 
           foreach($res as &$tabledat) {
             $tblcount++;
@@ -139,12 +142,23 @@
 
               $valid = $headernamearray[$tblcount].$tdct;
 
+              if($lang["tbl_popover_entire_value"] == "") {
+                $popovervalue = $headernamearray[$tblcount];
+              } else {
+                $popovervalue = $lang["tbl_popover_entire_value"];
+              }
+
+              $cur_header = $headernamearray[$tblcount];
+              if(in_array($cur_header, $keyarray)){
+                $keyvalues[$rownum] = $tabledat;
+              }
+
               $tbldat .= '<td ondblclick="loadEditor(\''.$inlinekey.'\', \''.$headernamearray[$tblcount].'\');"     data-container="body"
                 data-placement="bottom"
                 data-toggle="popover"
                 data-html="true"
-                title="Entire value <span class=\'label label-primary\'>'.$headertypearray[$tblcount]["DATA_TYPE"].'</span>" data-content="
-                  <form action=&#34;javascript:inlineChange(&#39;'.$inlinekey.'&#39;, &#39;'.$headernamearray[$tblcount].'&#39;, &#39;'.$valid.'&#39;); &#34;>
+                title="'.$popovervalue.' <span class=\'label label-primary\'>'.$headertypearray[$tblcount]["DATA_TYPE"].'</span>" data-content="
+                  <form action=&#34;javascript:inlineChange(&#39;'.$dbl.'&#39;, &#39;'.$tbl.'&#39;, &#39;'.$inlinekey.'&#39;, &#39;'.$headernamearray[$tblcount].'&#39;, &#39;'.$valid.'&#39;, &#39;'.$keyvalues[$rownum].'&#39;); &#34;>
                     <div class=\'input-group\'>
                       <input id=\''.$valid.'\' type=\'text\' value=\''.$tabledat.'\' class=\'form-control\'>
                       <span class=\'input-group-btn\'>

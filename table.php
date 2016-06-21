@@ -36,6 +36,44 @@
             require_once $lcwd."/assets/page_rsc/navbar.php";
         ?>
 
+        <!-- Editor -->
+        <div class="modal fade" id="editorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+              <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="editorLabel"><?php echo $lang["editor_title"]; ?></h4>
+
+              </div>
+
+              <div class="modal-body">
+
+                <div class="progress" id="editor-loading" style="display: block;">
+                    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                </div>
+
+                <div id="editor-xhr">
+
+                </div>
+
+              </div>
+
+              <div class="modal-footer">
+                <div class="btn-group">
+                  <button type="button" class="btn v-bg-blue"><?php echo $lang["tbl_drop"]; ?></button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $lang["btn_close"]; ?></button>
+                  <button type="button" class="btn v-bg-dark-purple"><?php echo $lang["editor_save_changes"]; ?></button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
         <div class="container">
             <div class="alert alert-danger" role="alert" id="error" style="display:none; ">
                 <h4>Error</h4>
