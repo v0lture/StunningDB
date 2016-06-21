@@ -8,6 +8,7 @@
     'navbar_mng_tbl' => "Manage Tables",
     'navbar_switch_user' => "Switch User",
     'navbar_logout' => "Log Out",
+    'navbar_settings' => "Settings",
 
     // Buttons
     'btn_refresh' => "Refresh",
@@ -15,14 +16,15 @@
     'btn_loading' => "...",
     'btn_temp_show_all' => "Temporarily show all",
     'btn_disable' => "Disable",
+    'btn_close' => "Close",
 
     // Tables (as in data)
     'tbl_view' => "View",
     'tbl_drop' => "Drop",
-    'tbl_in_prefix' => "Tables in",
+    'tbl_in_prefix' => "",
     'tbl_popover_entire_value' => "Entire value",
     'tbl_na' => "N/A",
-    'tbl_key' => "<span class='label v-bg-green'>Key</span>",
+    'tbl_key' => "<span class='label v-bg-blue'>Key</span>",
 
     // Tables
     'tblh_name' => "Name",
@@ -42,6 +44,8 @@
     'editor_title' => "Edit row",
     'editor_inline_update' => "Update",
     'editor_inline_updating' => "Updating...",
+    'editor_inline_no_key' => "No primary key is set so changes will not be saved.",
+    'editor_save_changes' => "Update",
 
     // Configuration
     'db_view_config_db'         => "<span class='label label-danger'>v0ltureDB</span>",

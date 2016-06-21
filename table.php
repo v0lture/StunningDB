@@ -47,11 +47,10 @@
 
             <div class="col-md-3" id="tables">
 
-
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <a id="tables-loading-btn" href="javascript:loadDb('<?php echo $_GET["db"]; ?>', 'compact');" class="btn v-bg-blue v-text-grey btn-xs pull-right" style="margin-top: -3px;" data-loading-text="...">Refresh</a>
-                        <h3 class="panel-title">Tables in <?php echo $_GET["db"]; ?></h3>
+                        <h3 class="panel-title"><?php echo $lang["tbl_in_prefix"].$_GET["db"]; ?></h3>
 
                     </div>
 
@@ -108,7 +107,7 @@
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <div class="btn-group pull-right">
-                          <a href="javascript:tableInit();" class="btn v-bg-green btn-xs panel-title-btn">Reset Popovers</a>
+                          <a href="javascript:tableInit();" class="btn v-bg-grey btn-xs panel-title-btn">Reset Popovers</a>
                           <a id="main-loading-btn" href="javascript:loadDb('<?php echo $_GET["db"]; ?>', 'compact');" class="btn v-bg-light-purple btn-xs panel-title-btn" data-loading-text="...">Refresh</a>
                         </div>
                         <h3 class="panel-title">Table Data</h3>

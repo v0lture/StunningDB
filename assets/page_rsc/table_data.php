@@ -29,6 +29,7 @@
       $toomanycolumns = false;
       $paginationmodule = "";
       $data = fetchTableData($dbl, $tbl, $page);
+      $tdct = 0;
 
       if($data == "MySQL error") {
         die("Unable to fetch data from the table.");
@@ -40,22 +41,30 @@
           </div>';
       } else {
 
+        // Fetch table primary key (if applicable)
         $key = fetchTablePrimaryKey($dbl, $tbl);
         $keycount = 0;
 
         if($key->num_rows > 0) {
+          // Define all keys into an array
           while($keys = $key->fetch_assoc()) {
             $keycount++;
             if($keycount <= $columnlimit) {
               $keyarray[$keycount] = $keys["COLUMN_NAME"];
+              $inlinekey = $keys["COLUMN_NAME"];
             }
           }
+          $inlinebtn = "class='btn v-bg-light-purple'";
         } else {
+          // No primary keys
           $error .=
           '<div class="alert alert-danger" role="alert" style="margin-left: 25px; margin-right: 25px;">
               <h4>'.$lang["mysql_no_primary_key"].'</h4>
               <p>'.$lang["mysql_no_primary_key_ctx"].'</p>
             </div>';
+            $keyarray[1] = "";
+            $inlinebtn = "class='btn btn-default' data-container='body' data-toggle='tooltip' data-placement='right' title='".$lang["editor_inline_no_key"]."'";
+            $inlinekey = "ERROR_KEY_IS_NOT_SET";
         }
 
         while($res = $data->fetch_assoc()) {
@@ -74,8 +83,13 @@
                 }
 
                 $table_head .= "<th style=\"text-overflow: ellipsis;\" data-container=\"body\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"".$header."\">".$header." ".$is_primary_key."</th>";
+
+                // Dump header names and types for popovers and inline editing
                 $headertypearray[$headers_count] = fetchTableType($tbl, $header);
+                $headernamearray[$headers_count] = $header;
+
               } else {
+                // Appends error only once into the error variable
                 if($toomanycolumns == false) {
                   $error .=
                   '<div class="alert alert-danger" role="alert" style="margin-left: 25px; margin-right: 25px;">
@@ -100,7 +114,7 @@
           if($data->num_rows < 50) {
             $paginationmodule = "";
           } else {
-            $pages = round(tableCount($dbl, $tbl) / 50, 0, PHP_ROUND_HALF_UP);
+            $pages = round(tableCount($dbl, $tbl) / 50, 0, PHP_ROUND_HALF_UP) - 1;
             $pgct = 0;
             while($pgct < $pages) {
               $pgct++;
@@ -117,22 +131,38 @@
           // Table data
           $tbldat .= '<tr>';
           $tblcount = 0;
-            foreach($res as &$tabledat) {
-              $tblcount++;
-              if($tblcount <= 10) {
 
-                $tbldat .= '<td data-container="body" data-toggle="popover" data-html="true" title="Entire value <span class=\'label label-primary\'>'.$headertypearray[$tblcount]["DATA_TYPE"].'</span>" data-content="<form action=\'javascript:inlineChange();\'><div class=\'input-group\'><input type=\'text\' value=\''.$tabledat.'\' class=\'form-control\'><span class=\'input-group-btn\'><button class=\'btn v-bg-light-purple\' type=\'submit\' id=\'inlineFormBtn\' data-loading-text=\''.$lang["editor_inline_updating"].'\'>'.$lang["editor_inline_update"].'</button></span></div></form>">'.$tabledat.'</td>';
-              }
+          foreach($res as &$tabledat) {
+            $tblcount++;
+            $tdct++;
+            if($tblcount <= 10) {
 
+              $valid = $headernamearray[$tblcount].$tdct;
+
+              $tbldat .= '<td ondblclick="loadEditor(\''.$inlinekey.'\', \''.$headernamearray[$tblcount].'\');"     data-container="body"
+                data-placement="bottom"
+                data-toggle="popover"
+                data-html="true"
+                title="Entire value <span class=\'label label-primary\'>'.$headertypearray[$tblcount]["DATA_TYPE"].'</span>" data-content="
+                  <form action=&#34;javascript:inlineChange(&#39;'.$inlinekey.'&#39;, &#39;'.$headernamearray[$tblcount].'&#39;, &#39;'.$valid.'&#39;); &#34;>
+                    <div class=\'input-group\'>
+                      <input id=\''.$valid.'\' type=\'text\' value=\''.$tabledat.'\' class=\'form-control\'>
+                      <span class=\'input-group-btn\'>
+                        <button '.$inlinebtn.' type=\'submit\' id=\'inlineFormBtn\' data-loading-text=\''.$lang["editor_inline_updating"].'\'>'.$lang["editor_inline_update"].'
+                        </button>
+                      </span>
+                    </div>
+                  </form>
+                  ">'.$tabledat.'</td>';
             }
+
+          }
+
           $tbldat .= '</tr>';
 
         }
       }
-
-
     }
-
 ?>
 
 <table class="table table-striped table-hover table-responsive sortable-theme-bootstrap" data-sortable>

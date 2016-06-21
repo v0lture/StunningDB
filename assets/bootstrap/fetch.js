@@ -4,9 +4,13 @@ function tableInit() {
   $('[data-toggle="popover"]').popover();
   $('[data-toggle="tooltip"]').tooltip();
 
-  $('[data-toggle="popver"]').popover('hide');
-  $('.popover.fade.right').css( "display", "none", "important");
+  $('[data-toggle="popover"]').popover('hide');
 }
+
+$("[data-toggle='popover']").on('show.bs.popover', function () {
+  $('[data-toggle="tooltip"]').tooltip();
+  console.info("Popover shown.");
+});
 
 function fetchDatabases() {
     var db_xhr = new XMLHttpRequest();
@@ -93,8 +97,7 @@ function fetchTableData(db, tbl, bypass = "false") {
                 $("#main-loading-btn").attr("href", "javascript:fetchTableData('"+db+"', '"+tbl+"', '"+bypass+"');");
                 console.info("[v0ltureDB] Table fetched.");
                 Sortable.init();
-                $('[data-toggle="popover"]').popover();
-                $('[data-toggle="tooltip"]').tooltip();
+                tableInit();
             }
         }
     }
