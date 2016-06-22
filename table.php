@@ -87,7 +87,7 @@
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <a id="tables-loading-btn" href="javascript:loadDb('<?php echo $_GET["db"]; ?>', 'compact');" class="btn v-bg-blue v-text-grey btn-xs pull-right" style="margin-top: -3px;" data-loading-text="...">Refresh</a>
+                        <a id="tables-loading-btn" href="javascript:fetchTableData('<?php echo $_GET["db"]; ?>', '<?php echo $_GET["tbl"]; ?>');" class="btn v-bg-blue v-text-grey btn-xs pull-right" style="margin-top: -3px;" data-loading-text="..."><?php echo $lang["btn_refresh"]; ?></a>
                         <h3 class="panel-title"><?php echo $lang["tbl_in_prefix"].$_GET["db"]; ?></h3>
 
                     </div>

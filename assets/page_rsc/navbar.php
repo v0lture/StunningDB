@@ -6,6 +6,12 @@
     } else {
         $h = $_SESSION["host"];
         $u = $_SESSION["username"];
+
+        if(isset($_GET["db"])) {
+          $currentdb = $_GET["db"];
+        } else {
+          $currentdb = "";
+        }
     }
     global $lang;
 
@@ -28,7 +34,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="#">Users</a></li>
                 <li class="dropdown active">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span id="nav_db"></span> <span class="label label-info"><?php echo $lang["navbar_current_db"]; ?></span> <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span id="nav_db"><?php echo $currentdb; ?></span> <span class="label label-info"><?php echo $lang["navbar_current_db"]; ?></span> <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
 
                         <li><a id="nav_db_drop" href="#!"><?php echo $lang["navbar_drop_db"]; ?></a></li>
@@ -46,6 +52,7 @@
 
                         <li><a href="auth.php?confirm=switch_user"><?php echo $lang["navbar_switch_user"]; ?></a></li>
                         <li><a href="auth.php?confirm=logout"><?php echo $lang["navbar_logout"]; ?></a></li>
+                        <li><a href="settings.php"><?php echo $lang["navbar_settings"]; ?></a></li>
 
                     </ul>
                 </li>
