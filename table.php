@@ -37,13 +37,14 @@
         ?>
 
         <!-- Editor -->
-        <div class="modal fade" id="editorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-          <div class="modal-dialog" role="document">
+        <div class="modal fade" id="editorModal" tabindex="-1" role="dialog">
+          <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
 
               <div class="modal-header">
 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
                 <h4 class="modal-title" id="editorLabel"><?php echo $lang["editor_title"]; ?></h4>
 
               </div>
@@ -67,9 +68,42 @@
                   <button type="button" class="btn v-bg-dark-purple"><?php echo $lang["editor_save_changes"]; ?></button>
                 </div>
               </div>
-
             </div>
+          </div>
+        </div>
 
+        <div class="modal fade" id="newModal" tabindex="-1" role="dialog">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <form method="POST" action="assets/page_rsc/editor.php?do=insert">
+                <div class="modal-header">
+
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                  <h4 class="modal-title" id="newLabel"><?php echo $lang["editor_new_title"]; ?></h4>
+
+                </div>
+
+                <div class="modal-body">
+
+                  <div class="progress" id="new-loading" style="display: block;">
+                      <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                  </div>
+
+                  <div id="new-xhr">
+
+                  </div>
+
+                </div>
+
+                <div class="modal-footer">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $lang["btn_close"]; ?></button>
+                    <button type="submit" class="btn v-bg-dark-purple"><?php echo $lang["editor_new"]; ?></button>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
 
         </div>
@@ -119,7 +153,9 @@
                                       $count++;
                                       $tbl = $res["Tables_in_".$dbl.""];
                                       $rowc = tableCount($dbl, $tbl);
-                                      $btn = '<a href="javascript:fetchTableData(\''.$dbl.'\', \''.$tbl.'\', \'false\');" class="btn btn-xs btn-primary">View</a>';
+                                      $btn =
+                                      '<a href="javascript:fetchTableData(\''.$dbl.'\', \''.$tbl.'\', \'false\');" class="btn btn-xs btn-primary">'.$lang["tbl_view"].'</a>
+                                      <a href="javascript:loadInsert(\''.$dbl.'\', \''.$tbl.'\');" class="btn btn-xs v-bg-light-purple" style="color: white;">'.$lang["tbl_new"].'</a>';
 
                                       if($rowc == "MySQL error" && !is_numeric($rowc)) {
                                           $btn = "<span class='label label-danger'>N/A</span>";
@@ -127,7 +163,7 @@
                                       echo
                                       '<tr>
                                           <td style="text-overflow: ellipsis">'.$tbl.'</td>
-                                          <td>'.$btn.'</td>
+                                          <td><div class="btn-group">'.$btn.'</div></td>
                                       </tr>';
                                   }
                               ?>

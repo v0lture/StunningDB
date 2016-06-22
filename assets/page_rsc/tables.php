@@ -53,10 +53,13 @@
 
                               <a href="table.php?db='.$dbl.'&tbl='.$tbl.'" class="btn btn-xs btn-primary">'.$lang["tbl_view"].'</a>
                               <a href="confirm.php?db='.$dbl.'&tbl='.$tbl.'" class="btn btn-xs btn-danger">'.$lang["tbl_drop"].'</a>
+                              <a href="javascript:loadInsert(\''.$dbl.'\', \''.$tbl.'\')" class="btn btn-xs btn-primary">'.$lang["tbl_new"].'</a>
 
                           </div>';
                 } else {
-                  $btn = '<a href="javascript:fetchTableData(\''.$dbl.'\', \''.$tbl.'\')" class="btn btn-xs btn-primary">'.$lang["tbl_view"].'</a>';
+                  $btn =
+                 '<a href="javascript:fetchTableData(\''.$dbl.'\', \''.$tbl.'\')" class="btn btn-xs btn-primary">'.$lang["tbl_view"].'</a>
+                  <a href="javascript:loadInsert(\''.$dbl.'\', \''.$tbl.'\')" class="btn btn-xs v-bg-light-purple" style="color: white;">'.$lang["tbl_new"].'</a>';
                 }
 
                 if($rowc == "MySQL error" && !is_numeric($rowc)) {
@@ -69,7 +72,7 @@
                     '.$countline.'
                     <td>'.$tbl.'</td>
                     '.$rowline.'
-                    <td>'.$btn.'</td>
+                    <td><div class="btn-group">'.$btn.'</div></td>
                 </tr>';
             }
         ?>

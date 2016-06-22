@@ -21,7 +21,8 @@
     // Tables (as in data)
     'tbl_view' => "View",
     'tbl_drop' => "Drop",
-    'tbl_in_prefix' => "",
+    'tbl_new' => "New",
+    'tbl_in_prefix' => "Tables in ",
     // Set to blank to use column name
     'tbl_popover_entire_value' => "Entire value",
     'tbl_na' => "N/A",
@@ -47,6 +48,8 @@
     'editor_inline_updating' => "Updating...",
     'editor_inline_no_key' => "No primary key is set so changes will not be saved.",
     'editor_save_changes' => "Update",
+    'editor_new_title' => "New row",
+    'editor_new' => "Insert",
 
     // Configuration
     'db_view_config_db'         => "<span class='label label-danger'>v0ltureDB</span>",
