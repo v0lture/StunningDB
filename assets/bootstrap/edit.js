@@ -1,6 +1,32 @@
-function loadEditor(){
+function loadEditor(db, tbl, key, keyvalue){
   $("#editorModal").modal('show');
   $('[data-toggle="popover"]').popover('hide');
+
+  if(db != undefined && tbl != undefined && key != undefined && keyvalue != undefined) {
+    var editor_xhr = new XMLHttpRequest();
+    $("#error").hide();
+    editor_xhr.onreadystatechange = function(){
+      if(editor_xhr.readyState == 4) {
+        $("#editor-loading").hide();
+        if(editor_xhr.status != 200) {
+          $("#error").show();
+          $("#error > h4").text("Failed inserting new row");
+          $("#error > p").html("A remote error occurred, check you have the <b>SELECT</b> privilage and the MySQL database is online and available.<br /><small>Error: </small>"+editor_xhr.responseText);
+        } else {
+          $("#error").hide();
+          $("#editor-xhr").html(editor_xhr.responseText);
+          $("#editor-loading").hide();
+        }
+      }
+    }
+    editor_xhr.open("GET", "assets/page_rsc/modal.php?do=edit&db="+db+"&tbl="+tbl+"&key="+key+"&keyvalue="+keyvalue, true);
+    editor_xhr.send();
+  } else {
+    $("#editorModal").modal('hide');
+    $("#error").show();
+    $("#error > h4").text("Function was supplied incomplete variables");
+    $("#error > p").html("The current function that tried to run was missing variables. <br /><small>function ran <b>loadInsert(db, tbl)</b> in <b>edit.js</b>.");
+  }
 }
 
 function loadInsert(db, tbl){
@@ -13,7 +39,7 @@ function loadInsert(db, tbl){
     $("#error").hide();
     modal_xhr.onreadystatechange = function(){
       if(modal_xhr.readyState == 4) {
-        $("#db-loading").hide();
+        $("#new-loading").hide();
         if(modal_xhr.status != 200) {
           $("#error").show();
           $("#error > h4").text("Failed inserting new row");

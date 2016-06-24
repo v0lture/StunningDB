@@ -14,7 +14,7 @@
     if($result == "updated") {
       http_response_code(200);
     } else {
-      print_r($result);
+      echo $result;
       http_response_code(404);
     }
   } else {

@@ -40,35 +40,36 @@
         <div class="modal fade" id="editorModal" tabindex="-1" role="dialog">
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
+              <form method="POST" action="assets/page_rsc/editor.php?do=edit">
+                <div class="modal-header">
 
-              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
-                <h4 class="modal-title" id="editorLabel"><?php echo $lang["editor_title"]; ?></h4>
-
-              </div>
-
-              <div class="modal-body">
-
-                <div class="progress" id="editor-loading" style="display: block;">
-                    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
-                </div>
-
-                <div id="editor-xhr">
+                  <h4 class="modal-title" id="editorLabel"><?php echo $lang["editor_title"]; ?></h4>
 
                 </div>
 
-              </div>
+                <div class="modal-body">
 
-              <div class="modal-footer">
-                <div class="btn-group">
-                  <button type="button" class="btn v-bg-blue"><?php echo $lang["tbl_drop"]; ?></button>
-                  <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $lang["btn_close"]; ?></button>
-                  <button type="button" class="btn v-bg-dark-purple"><?php echo $lang["editor_save_changes"]; ?></button>
+                  <div class="progress" id="editor-loading" style="display: block;">
+                      <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                  </div>
+
+                  <div id="editor-xhr">
+
+                  </div>
+
+                </div>
+
+                <div class="modal-footer">
+                  <div class="btn-group">
+                    <button type="button" class="btn v-bg-blue"><?php echo $lang["tbl_drop"]; ?></button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $lang["btn_close"]; ?></button>
+                    <button type="submit" class="btn v-bg-dark-purple"><?php echo $lang["editor_save_changes"]; ?></button>
+                  </div>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
 
@@ -121,7 +122,7 @@
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <a id="tables-loading-btn" href="javascript:fetchTableData('<?php echo $_GET["db"]; ?>', '<?php echo $_GET["tbl"]; ?>');" class="btn v-bg-blue v-text-grey btn-xs pull-right" style="margin-top: -3px;" data-loading-text="..."><?php echo $lang["btn_refresh"]; ?></a>
+                        <a id="tables-loading-btn" href="javascript:loadDb('<?php echo $_GET["db"]; ?>', 'compact');" class="btn v-bg-blue v-text-grey btn-xs pull-right" style="margin-top: -3px;" data-loading-text="..."><?php echo $lang["btn_refresh"]; ?></a>
                         <h3 class="panel-title"><?php echo $lang["tbl_in_prefix"].$_GET["db"]; ?></h3>
 
                     </div>
@@ -182,7 +183,8 @@
                     <div class="panel-heading">
                         <div class="btn-group pull-right">
                           <a href="javascript:tableInit();" class="btn v-bg-grey btn-xs panel-title-btn">Reset Popovers</a>
-                          <a id="main-loading-btn" href="javascript:loadDb('<?php echo $_GET["db"]; ?>', 'compact');" class="btn v-bg-light-purple btn-xs panel-title-btn" data-loading-text="...">Refresh</a>
+
+                          <a id="main-loading-btn" href="javascript:fetchTableData('<?php echo $_GET["db"]; ?>', '<?php echo $_GET["tbl"]; ?>');" class="btn v-bg-light-purple btn-xs panel-title-btn" data-loading-text="...">Refresh</a>
                         </div>
                         <h3 class="panel-title">Table Data</h3>
 

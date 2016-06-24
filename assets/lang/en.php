@@ -50,6 +50,10 @@
     'editor_save_changes' => "Update",
     'editor_new_title' => "New row",
     'editor_new' => "Insert",
+    'editor_norow_title' => "Cannot edit the selected row as it does not exist.",
+    'editor_norow_msg' => "You can try closing the prompt and attempting to edit the row again.",
+    'editor_nokey_title' => "Cannot edit the selected row as it does not have a primary key.",
+    'editor_nokey_msg' => "A primary key is needed to load and submit changes to the table.",
 
     // Configuration
     'db_view_config_db'         => "<span class='label label-danger'>v0ltureDB</span>",

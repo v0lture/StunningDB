@@ -153,7 +153,7 @@
                 $keyvalues[$rownum] = $tabledat;
               }
 
-              $tbldat .= '<td ondblclick="loadEditor(\''.$inlinekey.'\', \''.$headernamearray[$tblcount].'\');"     data-container="body"
+              $tbldat .= '<td ondblclick="loadEditor(\''.$dbl.'\', \''.$tbl.'\', \''.$inlinekey.'\', \''.$keyvalues[$rownum].'\');"     data-container="body"
                 data-placement="bottom"
                 data-toggle="popover"
                 data-html="true"

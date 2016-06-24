@@ -5,12 +5,12 @@
   if(testConn() == "Success") {
     if(isset($_GET["do"])) {
 
-      if(isset($_POST) && isset($_POST["db"]) && isset($_POST["tbl"])) {
+      if(isset($_POST) && isset($_POST["modal-db"]) && isset($_POST["modal-tbl"])) {
 
         if($_GET["do"] == "insert") {
           print_r($_POST);
-          $dbl = $_POST["db"];
-          $tbl = $_POST["tbl"];
+          $dbl = $_POST["modal-db"];
+          $tbl = $_POST["modal-tbl"];
 
           if($dbl == "" || $tbl == "") {
             http_response_code(400);
@@ -53,6 +53,60 @@
               header("Location: ../../table.php?db=".$dbl."&tbl=".$tbl."&msg=".$db->error);
             }
 
+          }
+
+        } elseif($_GET["do"] == "edit") {
+          print_r($_POST);
+          $dbl = $_POST["modal-db"];
+          $tbl = $_POST["modal-tbl"];
+
+          if($dbl == "" || $tbl == "") {
+            http_response_code(400);
+            die("Database and table must be defined in order to insert a new row.");
+          } else {
+            $data = $_POST;
+
+            $datakeys = array_keys($_POST);
+
+            $update = "";
+            $updatevalues = NULL;
+            $position = 0;
+
+            // Insert keys into an array
+            foreach($datakeys as &$val) {
+              if($position > 3) {
+                $updatevalues[$position."-K"] = $val;
+              }
+              $position++;
+            }
+
+            $position = 0;
+            // Insert values into an array
+            foreach($_POST as &$val) {
+              if($position > 3) {
+                $updatevalues[$position."-V"] = $val;
+              }
+              $position++;
+            }
+
+
+            $pposition = 4;
+            $position = $position -1;
+            while($pposition <= $position) {
+
+              $update .= "`".$updatevalues[$pposition."-K"]."` = '".$updatevalues[$pposition."-V"]."', ";
+              $pposition++;
+
+            }
+
+            $update = substr($update, 0, -2);
+            print_r($update);
+
+            if($res = $db->query("UPDATE `".$dbl."`.`".$tbl."` SET ".$update." WHERE `".$_POST["modal-key"]."` = '".$_POST["modal-keyvalue"]."'")) {
+              header("Location: ../../table.php?db=".$dbl."&tbl=".$tbl);
+            } else {
+              header("Location: ../../table.php?db=".$dbl."&tbl=".$tbl."&msg=".$db->error);
+            }
           }
 
         }
