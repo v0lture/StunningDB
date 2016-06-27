@@ -69,4 +69,13 @@
       }
     }
 
+    function createDatabase($name) {
+      global $db;
+      if($res = $db->query("CREATE DATABASE `".$name."`")) {
+        return "done";
+      } else {
+        return $db->error;
+      }
+    }
+
 ?>

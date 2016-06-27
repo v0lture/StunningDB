@@ -22,7 +22,7 @@
 
     </head>
 
-    <body>
+    <body onload="tableInit();">
 
         <?php
             // require navigation bar
@@ -43,7 +43,21 @@
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <a id="db-loading-btn" href="javascript:fetchDatabases();" class="btn v-bg-blue v-text-grey btn-xs pull-right" style="margin-top: -3px;" data-loading-text="<?php echo $lang["btn_loading"]; ?>"><?php echo $lang["btn_refresh"]; ?></a>
+
+                      <div class="btn-group pull-right">
+                          <a id="db-loading-btn" href="javascript:fetchDatabases();" class="btn v-bg-blue v-text-grey btn-xs" style="margin-top: -3px;" data-loading-text="<?php echo $lang["btn_loading"]; ?>"><?php echo $lang["btn_refresh"]; ?></a>
+                          <a id="db-creating-btn" href="#!" class="btn v-bg-light-purple v-text-grey btn-xs" style="margin-top: -3px;" data-loading-text="<?php echo $lang["btn_loading"]; ?>" data-container="body" data-placement="bottom" data-toggle="popover" data-html="true" title="" data-content="
+                                   <form action='javascript:newDB();'>
+                                    <div class='input-group'>
+                                      <input id='createdbinline' placeholder='<?php echo $lang["db_create_popover_ph"]; ?>' type='text' class='form-control'>
+                                      <span class='input-group-btn'>
+                                        <button class='btn v-bg-light-purple' type='submit' id='newDBInline' data-loading-text='<?php echo $lang["db_creating_popover"]; ?>'><?php echo $lang["db_create_popover"]; ?></button>
+                                      </span>
+                                    </div>
+                                  </form>"
+                                  data-original-title="<?php echo $lang["db_create"]; ?>"><?php echo $lang["db_create"]; ?></a>
+                        </div>
+
                         <h3 class="panel-title">Databases</h3>
 
                     </div>

@@ -12,9 +12,11 @@ $("[data-toggle='popover']").on('show.bs.popover', function () {
   console.info("Popover shown.");
 });
 
-function fetchDatabases() {
+function fetchDatabases(hideerr = false) {
     var db_xhr = new XMLHttpRequest();
-    $("#error").hide();
+    if(hideerr == true) {
+      $("#error").hide();
+    }
     $("#db-loading").show();
     $("#db-loading-btn").button('loading');
     db_xhr.onreadystatechange = function(){

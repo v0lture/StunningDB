@@ -1,6 +1,7 @@
 function loadEditor(db, tbl, key, keyvalue){
   $("#editorModal").modal('show');
   $('[data-toggle="popover"]').popover('hide');
+  $("#editor-loading").show();
 
   if(db != undefined && tbl != undefined && key != undefined && keyvalue != undefined) {
     var editor_xhr = new XMLHttpRequest();
@@ -102,4 +103,34 @@ function inlineChange(db, tbl, key, col, valid, keyvalue) {
     inline_xhr.send();
 
   }
+}
+
+function newDB() {
+  $("#newDBInline").button('loading');
+  db = $("#createdbinline").val();
+  alert(db);
+
+  var inline_xhr = new XMLHttpRequest();
+  $("#error").hide();
+  inline_xhr.onreadystatechange = function(){
+    if(inline_xhr.readyState == 4) {
+
+      if(inline_xhr.status != 200) {
+        $("#error").show();
+        $("#error > h4").text("Failed synchorizing inline changes");
+        $("#error > p").html("A remote error occurred, check you have the <b>CREATE</b> privilage and the MySQL database is online and available.<br /><small>Error: </small>"+inline_xhr.responseText);
+        $("#newDBInline").button('reset');
+      } else {
+        $("#error").show();
+        $("#error > h4").text("Changes have been made.");
+        $("#error > p").html("Database list was automatically refreshed.");
+        $("#newDBInline").button('reset');
+        fetchDatabases('true');
+        tableInit();
+      }
+    }
+  }
+
+  inline_xhr.open("GET", "assets/page_rsc/databases.php?newdb="+db, true);
+  inline_xhr.send();
 }

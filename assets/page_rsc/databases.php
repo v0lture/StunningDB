@@ -2,8 +2,12 @@
     require_once "load.php";
     global $lang;
     if(testConn() != "Success"){
-        http_response_code(403);
-        die();
+      http_response_code(403);
+      die();
+    }
+    if(isset($_GET["newdb"])) {
+      $response = createDatabase($_GET["newdb"]);
+      die($response);
     }
 ?>
 

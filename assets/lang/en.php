@@ -18,6 +18,12 @@
     'btn_disable' => "Disable",
     'btn_close' => "Close",
 
+    // databases
+    'db_create' => "New DB",
+    'db_create_popover' => "Create",
+    'db_create_popover_ph' => "Database Name",
+    'db_creating_popover' => "Creating...",
+
     // Tables (as in data)
     'tbl_view' => "View",
     'tbl_drop' => "Drop",
