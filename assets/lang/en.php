@@ -64,7 +64,7 @@
     // Configuration
     'db_view_config_db'         => "<span class='label label-danger'>v0ltureDB</span>",
     'config_db_name'            => "v0lturedb_config",
-    'config_table_safety_name'  => "safety",
+    'config_table_name'         => "config",
     'config_db_edit_title'      => "You're editing v0ltureDB configuration!",
     'config_db_edit_msg'        => "You are editing the database that v0ltureDB relies on for features throughout v0ltureDB. Accidental destructive options may result in unwanted errors.",
     'config_db_edith_title'      => "Syntax",

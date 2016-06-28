@@ -93,7 +93,7 @@
             foreach($keys as &$header) {
               $headers_count++;
 
-              if($headers_count <= 10 || configItem($lang["config_table_safety_name"], 'limit_col_count') == "false") {
+              if($headers_count <= 10 || configItem('limit_col_count') == "false") {
                 $is_primary_key = "";
                 if(in_array($header, $keyarray)) {
                   $is_primary_key = $lang["tbl_key"];
@@ -153,7 +153,7 @@
           foreach($res as &$tabledat) {
             $tblcount++;
             $tdct++;
-            if($tblcount <= 10 || configItem($lang["config_table_safety_name"], 'limit_col_count') == "false") {
+            if($tblcount <= 10 || configItem('limit_col_count') == "false") {
 
               $valid = $headernamearray[$tblcount].$tdct;
 

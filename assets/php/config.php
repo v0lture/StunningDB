@@ -18,13 +18,13 @@
     }
   }
 
-  function configItem($section, $key) {
+  function configItem($key) {
     // Fetch an config item from the section and key.
     global $db;
     global $lang;
 
     if(configEnabled() == true) {
-      $resp = $db->query("SELECT `val` FROM `".$lang["config_db_name"]."`.`".$section."` WHERE `key` = '".$key."' LIMIT 1");
+      $resp = $db->query("SELECT `val` FROM `".$lang["config_db_name"]."`.`".$lang["config_table_name"]."` WHERE `key` = '".$key."' LIMIT 1");
       if($resp->num_rows == 0) {
         return "Unknown key";
       } else {

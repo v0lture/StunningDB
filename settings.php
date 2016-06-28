@@ -21,9 +21,9 @@
           if($report = $db->query("CREATE DATABASE IF NOT EXISTS ".$lang["config_db_name"]."")) {
 
             // Generate safety table
-            if($report = $db->query("CREATE TABLE IF NOT EXISTS `".$lang["config_db_name"]."`.`".$lang["config_table_safety_name"]."` ( `id` INT(6) NOT NULL AUTO_INCREMENT, `key` VARCHAR(100) NOT NULL, UNIQUE (`key`), `val` VARCHAR(100) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;")) {
+            if($report = $db->query("CREATE TABLE IF NOT EXISTS `".$lang["config_db_name"]."`.`".$lang["config_table_name"]."` ( `id` INT(6) NOT NULL AUTO_INCREMENT, `key` VARCHAR(100) NOT NULL, UNIQUE (`key`), `val` VARCHAR(100) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;")) {
 
-              if($report = $db->query("INSERT IGNORE INTO `".$lang["config_db_name"]."`.`".$lang["config_table_safety_name"]."` (`id`, `key`, `val`) VALUES (NULL, 'sudo_mode', 'true'), (NULL, 'limit_col_count', 'true')")) {
+              if($report = $db->query("INSERT IGNORE INTO `".$lang["config_db_name"]."`.`".$lang["config_table_name"]."` (`id`, `key`, `val`) VALUES (NULL, 'sudo_mode', 'true'), (NULL, 'limit_col_count', 'true'), (NULL, '', 'true')")) {
                 $error = "none";
               } else {
                 $error = "mysql";
@@ -32,7 +32,7 @@
 
             } else {
               $error = "mysql";
-              $dberror = "Failed on creating table '".$lang["config_table_safety_name"]."'... because ".$db->error;
+              $dberror = "Failed on creating table '".$lang["config_table_name"]."'... because ".$db->error;
             }
           } else {
             $error = "mysql";

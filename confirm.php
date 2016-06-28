@@ -11,7 +11,7 @@
       $goto = $_GET["action"];
     }
 
-    if(configItem($lang["config_table_safety_name"], 'sudo_mode') != "false") {
+    if(configItem('sudo_mode') != "false") {
       if(isset($_POST["state_change"])) {
         if($_POST["state_change"] == "agreed") {
           $state = "agreed";
