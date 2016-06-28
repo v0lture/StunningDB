@@ -41,11 +41,20 @@
             <p>'.$lang["config_db_edit_msg"].'</p>
           </div>';
 
-        $error .=
-        '<div class="alert alert-primary" role="alert" style="margin-left: 25px; margin-right: 25px;">
-            <h4>'.$lang["config_db_edith_title"].'</h4>
-            <p>'.$lang["config_db_edith_msg"].'</p>
-          </div>';
+        if(configItem('settings_gui') == "false") {
+          $error .=
+          '<div class="alert alert-primary" role="alert" style="margin-left: 25px; margin-right: 25px;">
+              <h4>'.$lang["config_db_edith_title"].'</h4>
+              <p>'.$lang["config_db_edith_msg"].'</p>
+            </div>';
+        } elseif(configItem('settings_gui') == "true") {
+          $error =
+          '<div class="alert alert-danger" role="alert" style="margin-left: 25px; margin-right: 25px;">
+              <h4>'.$lang["config_settings_gui_title"].'</h4>
+              <p>'.$lang["config_settings_gui_msg"].'</p>
+            </div>';
+          die($error);
+        }
       }
 
       if($data == "MySQL error") {
@@ -169,20 +178,20 @@
               }
 
               $tbldat .= '<td ondblclick="loadEditor(\''.$dbl.'\', \''.$tbl.'\', \''.$inlinekey.'\', \''.$keyvalues[$rownum].'\');"     data-container="body"
-                data-placement="bottom"
-                data-toggle="popover"
-                data-html="true"
-                title="'.$popovervalue.' <span class=\'label label-primary\'>'.$headertypearray[$tblcount]["DATA_TYPE"].'</span>" data-content="
-                  <form action=&#34;javascript:inlineChange(&#39;'.$dbl.'&#39;, &#39;'.$tbl.'&#39;, &#39;'.$inlinekey.'&#39;, &#39;'.$headernamearray[$tblcount].'&#39;, &#39;'.$valid.'&#39;, &#39;'.$keyvalues[$rownum].'&#39;); &#34;>
-                    <div class=\'input-group\'>
-                      <input id=\''.$valid.'\' type=\'text\' value=\''.$tabledat.'\' class=\'form-control\'>
-                      <span class=\'input-group-btn\'>
-                        <button '.$inlinebtn.' type=\'submit\' id=\'inlineFormBtn\' data-loading-text=\''.$lang["editor_inline_updating"].'\'>'.$lang["editor_inline_update"].'
-                        </button>
-                      </span>
-                    </div>
-                  </form>
-                  ">'.$tabledat.'</td>';
+              data-placement="bottom"
+              data-toggle="popover"
+              data-html="true"
+              title="'.$popovervalue.' <span class=\'label label-primary\'>'.$headertypearray[$tblcount]["DATA_TYPE"].'</span>" data-content="
+                <form action=&#34;javascript:inlineChange(&#39;'.$dbl.'&#39;, &#39;'.$tbl.'&#39;, &#39;'.$inlinekey.'&#39;, &#39;'.$headernamearray[$tblcount].'&#39;, &#39;'.$valid.'&#39;, &#39;'.$keyvalues[$rownum].'&#39;); &#34;>
+                  <div class=\'input-group\'>
+                    <input id=\''.$valid.'\' type=\'text\' value=\''.$tabledat.'\' class=\'form-control\'>
+                    <span class=\'input-group-btn\'>
+                      <button '.$inlinebtn.' type=\'submit\' id=\'inlineFormBtn\' data-loading-text=\''.$lang["editor_inline_updating"].'\'>'.$lang["editor_inline_update"].'
+                      </button>
+                    </span>
+                  </div>
+                </form>
+                ">'.$tabledat.'</td>';
             }
 
           }

@@ -16,6 +16,7 @@
     'btn_loading' => "...",
     'btn_temp_show_all' => "Temporarily show all",
     'btn_disable' => "Disable",
+    'btn_enable' => "Enable",
     'btn_close' => "Close",
 
     // databases
@@ -65,11 +66,19 @@
     'db_view_config_db'         => "<span class='label label-danger'>v0ltureDB</span>",
     'config_db_name'            => "v0lturedb_config",
     'config_table_name'         => "config",
+
     'config_db_edit_title'      => "You're editing v0ltureDB configuration!",
     'config_db_edit_msg'        => "You are editing the database that v0ltureDB relies on for features throughout v0ltureDB. Accidental destructive options may result in unwanted errors.",
+
     'config_db_edith_title'      => "Syntax",
     'config_db_edith_msg'        => "The values to be used when enabling/disabling features should be <span class='label label-primary'>true</span> and <span class='label label-primary'>false</span>. Anything else will cause unwanted errors.",
 
+    'config_settings_gui_title'      => "Settings GUI is enabled",
+    'config_settings_gui_msg'        => "You cannot edit any tables in the v0ltureDB config while the settings GUI is enabled.",
+
+    'config_enable_gui' => 'Enable Settings GUI',
+    'config_disable_gui' => 'Disable',
+    'config_gui_title' => 'Configuration GUI',
   );
 
 ?>

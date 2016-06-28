@@ -62,7 +62,7 @@ function loadInsert(db, tbl){
   }
 }
 
-function inlineChange(db, tbl, key, col, valid, keyvalue) {
+function inlineChange(db, tbl, key, col, valid, keyvalue, custom = false) {
   $("#inlineFormBtn").button('loading');
   $("#error").show();
   $("#error > h4").text("Changes are synchorizing...");
@@ -99,7 +99,11 @@ function inlineChange(db, tbl, key, col, valid, keyvalue) {
         }
       }
     }
-    field = $("#"+valid).val();
+    if(custom == false) {
+      field = $("#"+valid).val();
+    } else {
+      field = custom;
+    }
     inline_xhr.open("GET", "assets/page_rsc/inline.php?k="+key+"&kv="+keyvalue+"&t="+tbl+"&d="+db+"&v="+field+"&c="+col, true);
     inline_xhr.send();
 
