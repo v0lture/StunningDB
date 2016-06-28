@@ -67,6 +67,7 @@ function inlineChange(db, tbl, key, col, valid, keyvalue) {
   $("#error").show();
   $("#error > h4").text("Changes are synchorizing...");
   $("#error > p").html("The changes you made are currently being submitted to the database.<br />"+key+", "+col+", "+valid);
+  tableInit();
 
   if(key == "ERROR_KEY_IS_NOT_SET"){
     $("#error").show();

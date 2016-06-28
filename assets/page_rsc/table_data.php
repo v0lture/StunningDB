@@ -16,6 +16,7 @@
       // Variable declaration
       $dbl = $_GET["db"];
       $tbl = $_GET["tbl"];
+
       if(isset($_GET["page"])) {
         $page = $_GET["page"];
       } else {
@@ -32,6 +33,20 @@
       $data = fetchTableData($dbl, $tbl, $page);
       $tdct = 0;
       $rownum = 0;
+
+      if($dbl == $lang["config_db_name"]) {
+        $error .=
+        '<div class="alert alert-danger" role="alert" style="margin-left: 25px; margin-right: 25px;">
+            <h4>'.$lang["config_db_edit_title"].'</h4>
+            <p>'.$lang["config_db_edit_msg"].'</p>
+          </div>';
+
+        $error .=
+        '<div class="alert alert-primary" role="alert" style="margin-left: 25px; margin-right: 25px;">
+            <h4>'.$lang["config_db_edith_title"].'</h4>
+            <p>'.$lang["config_db_edith_msg"].'</p>
+          </div>';
+      }
 
       if($data == "MySQL error") {
         die("Unable to fetch data from the table.");
@@ -78,7 +93,7 @@
             foreach($keys as &$header) {
               $headers_count++;
 
-              if($headers_count <= 10) {
+              if($headers_count <= 10 || configItem($lang["config_table_safety_name"], 'limit_col_count') == "false") {
                 $is_primary_key = "";
                 if(in_array($header, $keyarray)) {
                   $is_primary_key = $lang["tbl_key"];
@@ -138,7 +153,7 @@
           foreach($res as &$tabledat) {
             $tblcount++;
             $tdct++;
-            if($tblcount <= 10) {
+            if($tblcount <= 10 || configItem($lang["config_table_safety_name"], 'limit_col_count') == "false") {
 
               $valid = $headernamearray[$tblcount].$tdct;
 
