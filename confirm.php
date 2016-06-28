@@ -11,38 +11,40 @@
       $goto = $_GET["action"];
     }
 
-    if(isset($_POST["state_change"])) {
-      if($_POST["state_change"] == "agreed") {
-        $state = "agreed";
-      } elseif($_POST["state_change"] == "auth") {
-        if(isset($_POST["sudo_pass"])) {
-          $authres = genToken($_POST["sudo_pass"]);
-          if($authres != "success") {
+    if(configItem($lang["config_table_safety_name"], 'sudo_mode') != "false") {
+      if(isset($_POST["state_change"])) {
+        if($_POST["state_change"] == "agreed") {
+          $state = "agreed";
+        } elseif($_POST["state_change"] == "auth") {
+          if(isset($_POST["sudo_pass"])) {
+            $authres = genToken($_POST["sudo_pass"]);
+            if($authres != "success") {
+              $error =
+              '<div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Password is incorrect</strong> <br />Check for capitalization/spelling errors.
+              </div>';
+            } else {
+              header("Location: ".$goto."?sudo=allowed&token=".$_SESSION["sudotoken"]);
+            }
+          } else {
+            // Give an incorrect error
             $error =
             '<div class="alert alert-danger">
               <button type="button" class="close" data-dismiss="alert">&times;</button>
               <strong>Password is incorrect</strong> <br />Check for capitalization/spelling errors.
             </div>';
-          } else {
-            header("Location: ".$goto."?sudo=allowed&token=".$_SESSION["sudotoken"]);
           }
         } else {
-          // Give an incorrect error
-          $error =
-          '<div class="alert alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Password is incorrect</strong> <br />Check for capitalization/spelling errors.
-          </div>';
+          $state = "first";
         }
       } else {
         $state = "first";
       }
     } else {
-      $state = "first";
+      issueSudoToken();
+      $state = "bypass";
     }
-
-
-
 
 ?>
 
@@ -110,48 +112,75 @@
 
                         </div>
 
-                    <?php elseif($state == "agreed"): ?>
-                        <div class="panel panel-danger">
+                  <?php elseif($state == "agreed"): ?>
+                    <div class="panel panel-danger">
 
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Enter Sudo Mode</h3>
-                            </div>
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Enter Sudo Mode</h3>
+                      </div>
 
-                            <div class="panel-body">
+                      <div class="panel-body">
 
-                                <form class="form-horizontal" method="POST" action="confirm.php?action=<?php echo $goto; ?>">
+                        <form class="form-horizontal" method="POST" action="confirm.php?action=<?php echo $goto; ?>">
 
-                                    <fieldset>
+                          <fieldset>
 
-                                        <div class="form-group">
+                            <div class="form-group">
 
-                                            <label for="sudo_pass" class="col-lg-2 control-label">Password</label>
+                              <label for="sudo_pass" class="col-lg-2 control-label">Password</label>
 
-                                            <div class="col-lg-10">
-                                                <input type="password" class="form-control" name="sudo_pass" id="sudo_pass" placeholder="" required>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="form-group">
-
-                                            <div class="col-lg-10 col-lg-offset-2">
-
-                                                <a href="<?php echo $goto; ?>?sudo=denied" class="btn btn-default">Cancel</a>
-                                                <!-- <button name="state_change" value="token" type="submit" class="btn btn-default">Use App</button> -->
-                                                <button name="state_change" value="auth" type="submit" class="btn btn-primary">Authenticate</button>
-
-                                            </div>
-
-                                        </div>
-
-                                    </fieldset>
-
-                                </form>
+                              <div class="col-lg-10">
+                                  <input type="password" class="form-control" name="sudo_pass" id="sudo_pass" placeholder="" required>
+                              </div>
 
                             </div>
 
-                        </div>
+                            <div class="form-group">
+
+                              <div class="col-lg-10 col-lg-offset-2">
+
+                                <a href="<?php echo $goto; ?>?sudo=denied" class="btn btn-default">Cancel</a>
+                                <!-- <button name="state_change" value="token" type="submit" class="btn btn-default">Use App</button> -->
+                                <button name="state_change" value="auth" type="submit" class="btn btn-primary">Authenticate</button>
+
+                              </div>
+
+                            </div>
+
+                          </fieldset>
+
+                        </form>
+
+                      </div>
+
+                    </div>
+
+                  <?php elseif($state == "bypass"): ?>
+                      <div class="panel panel-danger">
+
+                          <div class="panel-heading">
+                              <h3 class="panel-title">Entering Sudo Mode <span class="label label-primary" data-container="body" data-toggle="tooltip" data-placement="bottom" title="No password is required to enter Sudo Mode.">Passive Mode</span></h3>
+                          </div>
+
+                          <div class="panel-body">
+
+                            <p>You are trying to perform a destructive action and in the configuration sudo mode has been disabled. You will have to simply agree to the prompt before you can continue.<br /><small>This feature can be enabled and is recommended to be enabled in the configuration.</small></p>
+
+                            <br />
+
+                            <form class="form-horizontal" method="POST" action="confirm.php?action=<?php echo $goto; ?>">
+                                <fieldset>
+                                    <div class="form-group" style="padding-left: 15px;">
+                                      <a href="<?php echo $goto; ?>?sudo=denied" class="btn btn-default">Cancel</a>
+                                      <a href="<?php echo $goto; ?>?sudo=allowed&token=<?php echo $_SESSION['sudotoken']; ?>" class="btn btn-primary">Continue</a>
+                                    </div>
+                                </fieldset>
+                            </form>
+
+                          </div>
+
+                      </div>
+
                     <?php endif; ?>
 
                 </div>
