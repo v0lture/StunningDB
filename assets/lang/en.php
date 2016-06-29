@@ -9,6 +9,8 @@
     'navbar_switch_user' => "Switch User",
     'navbar_logout' => "Log Out",
     'navbar_settings' => "Settings",
+    'navbar_title_user' => "User",
+    'navbar_title_app' => "App",
 
     // Buttons
     'btn_refresh' => "Refresh",
@@ -18,6 +20,7 @@
     'btn_disable' => "Disable",
     'btn_enable' => "Enable",
     'btn_close' => "Close",
+    'btn_rst' => "Reset",
 
     // databases
     'db_create' => "New DB",

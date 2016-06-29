@@ -38,11 +38,12 @@
               // Generate safety table
               if($report = $db->query("CREATE TABLE IF NOT EXISTS `".$lang["config_db_name"]."`.`".$lang["config_table_name"]."` ( `id` INT(6) NOT NULL AUTO_INCREMENT, `key` VARCHAR(100) NOT NULL, UNIQUE (`key`), `val` VARCHAR(100) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;")) {
 
-                if($report = $db->query("INSERT IGNORE INTO `".$lang["config_db_name"]."`.`".$lang["config_table_name"]."` (`id`, `key`, `val`) VALUES (NULL, 'sudo_mode', 'true'), (NULL, 'limit_col_count', 'true'), (NULL, 'settings_gui', 'false')")) {
+                $rst = resetConfig();
+                if($rst == "Reset") {
                   $error = "none";
                 } else {
                   $error = "mysql";
-                  $dberror = "Failed on creating table entries because ".$db->error;
+                  $dberror = $rst;
                 }
 
               } else {
@@ -106,8 +107,6 @@
                  </div>
              </div>
          </nav>
-
-        <?php print_r($error); ?>
 
         <div class="container">
           <div class="row">
@@ -210,6 +209,23 @@
                           </tr>
                         </thead>
                         <tbody>
+
+                          <!-- sudo_mode -->
+                          <tr>
+                            <td data-container="body"
+                            data-placement="bottom"
+                            data-toggle="popover"
+                            data-html="true"
+                            title="No default." data-content="Resets the current configuration to the application stock version - useful for when a config change broke a feature or updating the config.">Reset the config<br /><i>Cannot be undone.</i></td>
+                            <td>
+
+                              <div class="btn-group">
+                                <a href="assets/page_rsc/config.php?action=rst" class="btn btn-default"><?php echo $lang["btn_rst"]; ?></a>
+                              </div>
+
+                            </td>
+                          </tr>
+
                           <!-- sudo_mode -->
                           <tr>
                             <td data-container="body"
@@ -268,6 +284,24 @@
 
                             </td>
                           </tr>
+
+                          <!-- limit_col_count -->
+                          <tr>
+                            <td data-container="body"
+                            data-placement="bottom"
+                            data-toggle="popover"
+                            data-html="true"
+                            title="Default <span class='label label-primary'>false</span>" data-content="Toggles visibility of the databases relating to MySQL like mysql, performance_schema, and information_schema.">show_system_tables<br /><i>Currently <?php echo configItem('show_system_tables'); ?></i></td>
+                            <td>
+
+                              <div class="btn-group">
+                                <a href="javascript:inlineChange('<?php echo $lang["config_db_name"]; ?>', '<?php echo $lang["config_table_name"]; ?>', 'id', 'val', '?', '2', 'false');" class="btn btn-default"><?php echo $lang["btn_disable"]; ?></a>
+                                <a href="javascript:inlineChange('<?php echo $lang["config_db_name"]; ?>', '<?php echo $lang["config_table_name"]; ?>', 'id', 'val', '?', '2', 'true');" class="btn btn-primary"><?php echo $lang["btn_enable"]; ?></a>
+                              </div>
+
+                            </td>
+                          </tr>
+
                         </tbody>
 
                       </table>
