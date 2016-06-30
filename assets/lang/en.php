@@ -1,5 +1,11 @@
 <?php
 
+  $systemdbs = Array(
+    "1" => "mysql",
+    "2" => "performance_schema",
+    "3" => "information_schema",
+  );
+
   $lang = Array(
 
     // Navbar
@@ -82,6 +88,10 @@
     'config_enable_gui' => 'Enable Settings GUI',
     'config_disable_gui' => 'Disable',
     'config_gui_title' => 'Configuration GUI',
+
+    // v0ltureDB
+    'app_system_hidden_title' => "Cannot load tables due to configuration.",
+    'app_system_hidden_msg' => "The flag <code>show_system_tables</code> is currently disabled which disallows this database to be loaded."
   );
 
 ?>

@@ -220,7 +220,11 @@
                             <td>
 
                               <div class="btn-group">
-                                <a href="assets/page_rsc/config.php?action=rst" class="btn btn-default"><?php echo $lang["btn_rst"]; ?></a>
+                                <a href="#!" class="btn btn-default" data-container="body"
+                                data-placement="bottom"
+                                data-toggle="popover"
+                                data-html="true"
+                                title="Are you sure you want to reset?" data-content="You cannot undo the reset after it has been performed.<br /><br /><a href='assets/page_rsc/config.php?action=rst' class='btn btn-danger' style='width: 100%;'>Confirm</a>"><?php echo $lang["btn_rst"]; ?></a>
                               </div>
 
                             </td>
@@ -295,8 +299,8 @@
                             <td>
 
                               <div class="btn-group">
-                                <a href="javascript:inlineChange('<?php echo $lang["config_db_name"]; ?>', '<?php echo $lang["config_table_name"]; ?>', 'id', 'val', '?', '2', 'false');" class="btn btn-default"><?php echo $lang["btn_disable"]; ?></a>
-                                <a href="javascript:inlineChange('<?php echo $lang["config_db_name"]; ?>', '<?php echo $lang["config_table_name"]; ?>', 'id', 'val', '?', '2', 'true');" class="btn btn-primary"><?php echo $lang["btn_enable"]; ?></a>
+                                <a href="javascript:inlineChange('<?php echo $lang["config_db_name"]; ?>', '<?php echo $lang["config_table_name"]; ?>', 'id', 'val', '?', '4', 'false');" class="btn btn-default"><?php echo $lang["btn_disable"]; ?></a>
+                                <a href="javascript:inlineChange('<?php echo $lang["config_db_name"]; ?>', '<?php echo $lang["config_table_name"]; ?>', 'id', 'val', '?', '4', 'true');" class="btn btn-primary"><?php echo $lang["btn_enable"]; ?></a>
                               </div>
 
                             </td>

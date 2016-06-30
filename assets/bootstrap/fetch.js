@@ -82,26 +82,29 @@ function fetchTableData(db, tbl, bypass = "false") {
     $("#error").hide();
     $("#main-loading").show();
     $("#main-loading-btn").button('loading');
+    $("#tableName").text("...");
 
     db_xhr.onreadystatechange = function(){
-        if(db_xhr.readyState == 4) {
-            $("#main-loading").hide();
-            if(db_xhr.status != 200) {
-                $("#error").show();
-                $("#error > h4").text("Failed fetching table data...");
-                $("#error > p").html("Double check you have the SELECT privilage to view the data on the table.<br />Try again later.");
-                $("#main-loading-btn").button('reset');
-                $("#main-loading-btn").attr("href", "javascript:fetchTableData('"+db+"', '"+tbl+"', '"+bypass+"');");
-                console.error("[v0ltureDB] Failed fetching table!");
-            } else {
-                $("#main-xhr").html(db_xhr.responseText);
-                $("#main-loading-btn").button('reset');
-                $("#main-loading-btn").attr("href", "javascript:fetchTableData('"+db+"', '"+tbl+"', '"+bypass+"');");
-                console.info("[v0ltureDB] Table fetched.");
-                Sortable.init();
-                tableInit();
-            }
+      if(db_xhr.readyState == 4) {
+        $("#main-loading").hide();
+        if(db_xhr.status != 200) {
+          $("#error").show();
+          $("#error > h4").text("Failed fetching table data...");
+          $("#error > p").html("Double check you have the SELECT privilage to view the data on the table.<br />Try again later.");
+          $("#main-loading-btn").button('reset');
+          $("#main-loading-btn").attr("href", "javascript:fetchTableData('"+db+"', '"+tbl+"', '"+bypass+"');");
+          console.error("[v0ltureDB] Failed fetching table!");
+          $("#tableName").text("Unable to load table");
+        } else {
+          $("#main-xhr").html(db_xhr.responseText);
+          $("#main-loading-btn").button('reset');
+          $("#main-loading-btn").attr("href", "javascript:fetchTableData('"+db+"', '"+tbl+"', '"+bypass+"');");
+          console.info("[v0ltureDB] Table fetched.");
+          Sortable.init();
+          tableInit();
+          $("#tableName").text(tbl);
         }
+      }
     }
     db_xhr.open("GET", "assets/page_rsc/table_data.php?db="+db+"&tbl="+tbl, true);
     db_xhr.send();

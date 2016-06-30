@@ -1,7 +1,5 @@
 <?php
 
-    // Working directory of any
-    $wd = getcwd();
     // Working directory of first executing file
     $lcwd = dirname(__FILE__);
 
@@ -9,7 +7,6 @@
 
     if(testConn() != "Success") {
         header("Location: auth.php?confirm=reauth");
-
     }
 ?>
 
@@ -28,6 +25,41 @@
             // require navigation bar
             require_once $lcwd."/assets/page_rsc/navbar.php";
         ?>
+
+        <div class="modal fade" id="newModal" tabindex="-1" role="dialog">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <form method="POST" action="assets/page_rsc/editor.php?do=insert">
+                <div class="modal-header">
+
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                  <h4 class="modal-title" id="newLabel"><?php echo $lang["editor_new_title"]; ?></h4>
+
+                </div>
+
+                <div class="modal-body">
+
+                  <div class="progress" id="new-loading" style="display: block;">
+                      <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                  </div>
+
+                  <div id="new-xhr">
+
+                  </div>
+
+                </div>
+
+                <div class="modal-footer">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $lang["btn_close"]; ?></button>
+                    <button type="submit" class="btn v-bg-dark-purple"><?php echo $lang["editor_new"]; ?></button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
 
         <div class="container">
             <div class="alert alert-danger" role="alert" id="error" style="display:none; ">
@@ -69,17 +101,7 @@
 
                         <div id="db-xhr">
 
-                            <div class="list-group">
-                                <?php
-                                    $dat = fetchDatabases();
-                                    while($res = $dat->fetch_assoc()) {
-                                        echo '<a href="#!" onclick="loadDb(\''.$res["Database"].'\')" class="list-group-item v-text-blue">
-                                                '.$res["Database"].'
-                                            </a>';
-                                    }
-
-                                ?>
-                            </div>
+                          <?php include_once("assets/page_rsc/databases.php"); ?>
 
                         </div>
 

@@ -9,14 +9,17 @@
     require_once $lcwd."/assets/page_rsc/load.php";
 
     if(testConn() != "Success") {
-        header("Location: auth.php?confirm=reauth");
+      header("Location: auth.php?confirm=reauth");
 
-        if(!isset($_GET["db"])) {
-          header("Location: index.php");
-        } else {
-          $db = $_GET["db"];
-        }
+      if(!isset($_GET["db"])) {
+        header("Location: index.php");
+      } else {
+        $db = $_GET["db"];
+      }
+    }
 
+    if(!isset($_GET["view"])) {
+      header("Location: table.php?db=".$_GET["db"]."&tbl=".$_GET["tbl"]."&view=compact");
     }
 ?>
 
@@ -137,39 +140,7 @@
 
                     <div id="tables-xhr">
 
-                      <table class="table table-striped table-hover sortable-theme-bootstrap" data-sortable>
-
-                          <thead>
-                              <tr>
-                                  <th>Name</th>
-                                  <th>Options</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              <?php
-                                  $dbl = $_GET["db"];
-                                  $dat = fetchTables($dbl);
-                                  $count = 0;
-                                  while($res = $dat->fetch_assoc()) {
-                                      $count++;
-                                      $tbl = $res["Tables_in_".$dbl.""];
-                                      $rowc = tableCount($dbl, $tbl);
-                                      $btn =
-                                      '<a href="javascript:fetchTableData(\''.$dbl.'\', \''.$tbl.'\', \'false\');" class="btn btn-xs btn-primary">'.$lang["tbl_view"].'</a>
-                                      <a href="javascript:loadInsert(\''.$dbl.'\', \''.$tbl.'\');" class="btn btn-xs v-bg-light-purple" style="color: white;">'.$lang["tbl_new"].'</a>';
-
-                                      if($rowc == "MySQL error" && !is_numeric($rowc)) {
-                                          $btn = "<span class='label label-danger'>N/A</span>";
-                                      }
-                                      echo
-                                      '<tr>
-                                          <td style="text-overflow: ellipsis">'.$tbl.'</td>
-                                          <td><div class="btn-group">'.$btn.'</div></td>
-                                      </tr>';
-                                  }
-                              ?>
-                          </tbody>
-                      </table>
+                      <?php include "assets/page_rsc/tables.php"; ?>
 
                     </div>
 
@@ -184,9 +155,9 @@
                         <div class="btn-group pull-right">
                           <a href="javascript:tableInit();" class="btn v-bg-grey btn-xs panel-title-btn">Reset Popovers</a>
 
-                          <a id="main-loading-btn" href="javascript:fetchTableData('<?php echo $_GET["db"]; ?>', '<?php echo $_GET["tbl"]; ?>');" class="btn v-bg-light-purple btn-xs panel-title-btn" data-loading-text="...">Refresh</a>
+                          <a id="main-loading-btn" href="javascript:fetchTableData('<?php echo $_GET["db"]; ?>', '<?php echo $_GET["tbl"]; ?>');" class="btn v-bg-light-purple btn-xs panel-title-btn" data-loading-text="..."><?php echo $lang["btn_refresh"]; ?></a>
                         </div>
-                        <h3 class="panel-title">Table Data</h3>
+                        <h3 class="panel-title" id="tableName"><?php echo $_GET["tbl"]; ?></h3>
 
                     </div>
 

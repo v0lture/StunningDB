@@ -16,6 +16,14 @@
         $compactview = true;
       }
     }
+
+    if(configItem('show_system_tables') == "false" && in_array($_GET["db"], $systemdbs)) {
+      die('<div class="alert alert-danger" role="alert" style="margin: 15px;">
+        <h4>'.$lang["app_system_hidden_title"].'</h4>
+        <p>'.$lang["app_system_hidden_msg"].'</p>
+      </div>');
+    }
+
 ?>
 
 <table class="table table-striped table-hover sortable-theme-bootstrap" data-sortable>
