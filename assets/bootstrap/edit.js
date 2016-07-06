@@ -112,7 +112,6 @@ function inlineChange(db, tbl, key, col, valid, keyvalue, custom = false) {
 function newDB() {
 
   db = $("#createdbinline").val();
-  alert(db);
 
   var inline_xhr = new XMLHttpRequest();
   $("#error").hide();

@@ -61,10 +61,26 @@
         }
 
       } elseif(configItem('show_system_tables') == "false" && $res["Database"] != $lang["config_db_name"]) {
-        echo
-        '<a href="#!" onclick="loadDb(\''.$res["Database"].'\')" class="list-group-item v-text-blue">
-          '.$res["Database"].'
-        </a>';
+        echo "<li>";
+        echo '<div class="collapsible-header grey white-text"><i class="material-icons">dns</i>'.$res["Database"].'</div>';
+
+        if(configItem('db_load_wo_tbl_load') == "true") {
+          echo
+          '<div class="collapsible-body">
+            <p>No tables have been loaded due to the configuration disallowing this.<br />You can manually load tables by pressing the button below.</p>
+            <a class="waves-effect waves-light btn v-bg-blue white-text">Load Database</a>
+          </div>';
+        } else {
+          echo '<div class="collapsible-body"><div class="collection">';
+          $tables = fetchTables($res["Database"]);
+
+          while($data = $tables->fetch_assoc()) {
+            echo "<a href='javascript:fetchTableData(\"".$res["Database"]."\", \"".$data["Tables_in_".$res["Database"]]."\");' class='collection-item grey darken-1 v-text-blue waves-effect waves-light'>".$data["Tables_in_".$res["Database"]]."</a>";
+          }
+          echo '</div></div>';
+        }
+
+        echo "</li>";
       }
     }
   ?>

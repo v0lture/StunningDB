@@ -1,6 +1,4 @@
 <?php
-  error_reporting(E_ALL);
-
   $cwd = dirname(__FILE__);
   require_once $cwd.'/../page_rsc/load.php';
   // Sudo mode for v0ltureDB

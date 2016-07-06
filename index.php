@@ -95,12 +95,28 @@
         </div>
 
         <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-          <a class="btn-floating btn-large v-bg-light-purple tooltipped" data-position="left" data-delay="50" id="newrow" data-tooltip="New Row" onclick="loadInsert(<?= $new; ?>)">
+          <a class="btn-floating btn-large v-bg-light-purple tooltipped" data-position="left" data-delay="50" id="newrow" data-tooltip="New..." onclick="$('.fixed-action-btn').openFAB();">
             <i class="large material-icons">add</i>
           </a>
           <ul>
-            <li><a href="javascript:$('#newdb').openModal();" class="btn-floating v-bg-dark-purple tooltipped" data-position="left" data-delay="50" data-tooltip="New Database"><i class="material-icons">dns</i></a></li>
-            <li><a class="btn-floating v-bg-dark-purple tooltipped" data-position="left" data-delay="50" data-tooltip="New Table"><i class="material-icons">border_all</i></a></li>
+
+            <li>
+              <a href="javascript:$('#newdb').openModal();" class="btn-floating v-bg-dark-purple tooltipped" data-position="left" data-delay="50" data-tooltip="New Database">
+                <i class="material-icons">dns</i>
+              </a>
+            </li>
+
+            <li>
+              <a class="btn-floating v-bg-dark-purple tooltipped" data-position="left" data-delay="50" data-tooltip="New Table">
+                <i class="material-icons">border_all</i>
+              </a>
+            </li>
+
+            <li>
+              <a class="btn-floating v-bg-dark-purple tooltipped" data-position="left" data-delay="50" id="newrow" data-tooltip="New Row" onclick="loadInsert(<?= $new; ?>)">
+                <i class="large material-icons">drag_handle</i>
+              </a>
+            </li>
           </ul>
         </div>
 
