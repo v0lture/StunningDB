@@ -8,7 +8,7 @@
       if(isset($_POST) && isset($_POST["modal-db"]) && isset($_POST["modal-tbl"])) {
 
         if($_GET["do"] == "insert") {
-          print_r($_POST);
+          
           $dbl = $_POST["modal-db"];
           $tbl = $_POST["modal-tbl"];
 
@@ -48,9 +48,9 @@
             $keysetup .= ")";
 
             if($res = $db->query("INSERT INTO `".$dbl."`.`".$tbl."` ".$keysetup." VALUES ".$datavalues)) {
-              header("Location: ../../table.php?db=".$dbl."&tbl=".$tbl);
+              header("Location: ../../index.php?db=".$dbl."&tbl=".$tbl);
             } else {
-              header("Location: ../../table.php?db=".$dbl."&tbl=".$tbl."&msg=".$db->error);
+              header("Location: ../../index.php?db=".$dbl."&tbl=".$tbl."&msg=".$db->error);
             }
 
           }
@@ -103,9 +103,9 @@
             print_r($update);
 
             if($res = $db->query("UPDATE `".$dbl."`.`".$tbl."` SET ".$update." WHERE `".$_POST["modal-key"]."` = '".$_POST["modal-keyvalue"]."'")) {
-              header("Location: ../../table.php?db=".$dbl."&tbl=".$tbl);
+              header("Location: ../../index.php?db=".$dbl."&tbl=".$tbl);
             } else {
-              header("Location: ../../table.php?db=".$dbl."&tbl=".$tbl."&msg=".$db->error);
+              header("Location: ../../index.php?db=".$dbl."&tbl=".$tbl."&msg=".$db->error);
             }
           }
 

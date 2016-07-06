@@ -1,10 +1,5 @@
 <?php
 
-  if(testConn() != "Success") {
-    http_response_code(403);
-    die();
-  }
-
   function configEnabled() {
     // Is the config enabled and prepared?
     global $db;

@@ -7,6 +7,7 @@
 body {
     font-family: 'Lato', sans-serif;
     font-weight: 400;
+    background: #303030;
 }
 
 .text-light {
@@ -17,145 +18,48 @@ body {
 /* Colors */
 
 /* Bg */
-.v-bg-green        { background: #ACFFA3; }
-.v-bg-blue         { background: #75C7FF; }
-.v-bg-light-purple { background: #C630D1; }
-.v-bg-dark-purple  { background: #9233AF; }
-.v-bg-grey         { background: #4F5159; }
+.v-bg-green        { background: #ACFFA3 !important; }
+.v-bg-blue         { background: #75C7FF !important; }
+.v-bg-light-purple { background: #C630D1 !important; }
+.v-bg-dark-purple  { background: #9233AF !important; }
+.v-bg-grey         { background: #4F5159 !important; }
 
 /* Fg */
-.v-text-green        { color: #ACFFA3; }
+.v-text-green        { color: #ACFFA3 !important; }
 .v-text-blue         { color: #75C7FF !important; }
-.v-text-light-purple { color: #C630D1; }
-.v-text-dark-purple  { color: #9233AF; }
-.v-text-grey         { color: #4F5159; }
+.v-text-light-purple { color: #C630D1 !important; }
+.v-text-dark-purple  { color: #9233AF !important; }
+.v-text-grey         { color: #4F5159 !important; }
 
 /* project specific */
-.navbar-default {
-    background: #9233AF !important;
-}
-
-.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
-    background: #C630D1;
-}
-
-.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
-    color: #75C7FF;
-}
-
-.panel-primary>.panel-heading {
-    background-color: #75C7FF;
-    border-color: #75C7FF;
-}
-.panel-primary {
-    border-color: #75C7FF;
-}
-
-.panel-danger>.panel-heading {
-    background-color: #C630D1;
-    border-color: #C630D1;
-}
-.panel-danger {
-    border-color: #C630D1;
-}
-
-.btn-danger {
-    background-color: #C630D1;
-    border-color: #C630D1;
-}
-
-.btn-danger:hover {
-    background-color: rgba(198,48,209,0.75);
-    border-color: rgba(198,48,209,0.75);
-    color: white !important;
-}
-
-.btn-success {
-    background-color: #ACFFA3;
-    border-color: #ACFFA3;
-    color: #4F5159;
-}
-
-.btn-success:hover {
-    background-color: rgba(198,48,209,0.75);
-    border-color: rgba(198,48,209,0.75);
-    color: white !important;
-}
-
-.btn-primary {
-    background-color: #75C7FF;
-    border-color: #75C7FF;
-    color: #fff;
-}
-
-.btn-primary:hover {
-    background-color: rgba(117,199,255,0.75);
-    border-color: rgba(117,199,255,0.75);
-    color: #4F5159 !important;
-}
-
-.btn-default:hover {
-    background-color: #4F5159;
-    border-color: #4F5159;
-    color: white !important;
-}
-
-.panel-success>.panel-heading {
-    background-color: #ACFFA3;
-    border-color: #ACFFA3;
-    color: #4F5159;
-}
-.panel-success {
-    border-color: #ACFFA3;
-}
-
-body {
-    background: #4F5159;
-}
-
-.btn:hover, .btn:focus, .btn.focus {
-    color: #4F5159;
-}
-
-.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
-    background: #ACFFA3;
-    color: #4F5159;
-}
-
-.panel.panel-default > .panel-heading > .panel-title {
-    color: #75C7FF;
-}
-
-.alert-danger {
-    background: #C630D1;
-    border-color: #C630D1;
-}
-
-.form-control, input, textarea {
-    background: #4F5159;
-    color: #75C7FF;
-}
-
 .table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>th, .table>caption+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>td, .table>thead:first-child>tr:first-child>td {
-    background: #303030;
+  background: #303030;
+}
+
+table[data-sortable].sortable-theme-bootstrap tbody td {
+  padding: 14px;
+}
+
+table {
+  font-family: 'Lato', sans-serif !important;
 }
 
 table[data-sortable].sortable-theme-bootstrap th[data-sorted="true"][data-sorted-direction="ascending"]:after {
-    border-bottom-color: #9233AF;
+  border-bottom-color: #9233AF;
 }
 
 table[data-sortable].sortable-theme-bootstrap th[data-sorted="true"][data-sorted-direction="descending"]:after {
-    border-top-color: #9233AF;
+  border-top-color: #9233AF;
 }
 
 .table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>th, .table>caption+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>td, .table>thead:first-child>tr:first-child>td {
-    border-bottom-color: #75C7FF;
-    color: white;
+  border-bottom-color: #75C7FF;
+  color: white;
 }
 
 table[data-sortable].sortable-theme-bootstrap th[data-sorted="true"] {
-    border-bottom-color: #9233AF !important;
-    color: #C630D1 !important;
+  border-bottom-color: #9233AF !important;
+  color: #C630D1 !important;
 }
 
 .table-striped>tbody>tr:nth-of-type(odd) {
@@ -168,28 +72,78 @@ table[data-sortable].sortable-theme-bootstrap th[data-sorted="true"] {
   color: white;
 }
 
-.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:focus, .pagination>.active>span:focus {
-  background-color: #9233AF !important;
+
+/* MaterializeCSS  */
+.dropdown-content li>a, .dropdown-content li>span {
+  color: #9233AF;
 }
 
-.pagination>li>a, .pagination>li>span {
-  background-color: #C630D1 !important;
+.row {
+  margin-bottom: 0px;
 }
 
-/* Stackoverflow fix for tables overflowing: http://stackoverflow.com/questions/22978990/ */
-
-.table {
-  table-layout:fixed;
+.scrollbar {
+  overflow: hidden !important;
 }
 
-.table td, .table th {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.scrollbar:hover {
+  overflow: auto !important;
 }
 
-/* Panel buttons */
-.panel-title-btn {
-  margin-top: -3px;
-  color: white;
+.input-field label {
+  color: #fff;
+}
+
+.input-field input[type=text]:focus + label {
+  color: #ACFFA3;
+}
+
+.input-field input[type=password]:focus + label {
+  color: #ACFFA3;
+}
+
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #ACFFA3;
+  box-shadow: 0 1px 0 0 #ACFFA3;
+}
+
+.input-field input[type=password]:focus {
+  border-bottom: 1px solid #ACFFA3;
+  box-shadow: 0 1px 0 0 #ACFFA3;
+}
+
+.mdtst {
+  padding-top: 24dp;
+  padding-bottom: 24dp;
+  padding-left: 80dp;
+}
+
+.mdtst > a {
+  float: right;
+  padding-left: 25px;
+  padding-right: 24dp;
+}
+
+.tabs .tab a {
+  color: #C630D1;
+}
+
+.tabs .tab a:hover {
+  color: #9233AF;
+}
+
+.tabs .tab {
+  background: #4F5159;
+}
+
+.tabs .tab.disabled a {
+  color: #fff !important;
+}
+
+.tabs .indicator {
+  background-color: #75C7FF;
+}
+
+.pagination li {
+  margin-top: -6px;
 }

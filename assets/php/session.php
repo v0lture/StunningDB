@@ -3,7 +3,7 @@
     session_start();
 
     function connectDB($username, $password, $host) {
-        $db = new mysqli($host, $username, $password); 
+        $db = new mysqli($host, $username, $password);
 
         session_regenerate_id();
 
@@ -33,7 +33,7 @@
                 return $db;
             }
         }
-        
+
     }
 
     function testConn() {
@@ -59,7 +59,7 @@
 
     function switchUser($u, $p) {
         if(isset($_SESSION["host"])) {
-            
+
             $h = $_SESSION["host"];
             $con = connectDB($u, $p, $h);
             if($con != "true") {

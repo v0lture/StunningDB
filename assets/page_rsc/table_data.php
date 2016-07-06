@@ -35,24 +35,17 @@
       $rownum = 0;
 
       if($dbl == $lang["config_db_name"]) {
-        $error .=
-        '<div class="alert alert-danger" role="alert" style="margin-left: 25px; margin-right: 25px;">
-            <h4>'.$lang["config_db_edit_title"].'</h4>
-            <p>'.$lang["config_db_edit_msg"].'</p>
-          </div>';
 
         if(configItem('settings_gui') == "false") {
-          $error .=
-          '<div class="alert alert-primary" role="alert" style="margin-left: 25px; margin-right: 25px;">
-              <h4>'.$lang["config_db_edith_title"].'</h4>
-              <p>'.$lang["config_db_edith_msg"].'</p>
-            </div>';
+
         } elseif(configItem('settings_gui') == "true") {
           $error =
-          '<div class="alert alert-danger" role="alert" style="margin-left: 25px; margin-right: 25px;">
-              <h4>'.$lang["config_settings_gui_title"].'</h4>
+          '<div class="card v-bg-light-purple white-text" role="alert" style="margin-left: 25px; margin-right: 25px;">
+            <div class="card-content">
+              <span class="card-title">'.$lang["config_settings_gui_title"].'</span>
               <p>'.$lang["config_settings_gui_msg"].'</p>
-            </div>';
+            </div>
+          </div>';
           die($error);
         }
       }
@@ -61,10 +54,12 @@
         die("Unable to fetch data from the table.");
       } elseif($data->num_rows == 0) {
         $error .=
-        '<div class="alert alert-danger" role="alert" style="margin-left: 25px; margin-right: 25px;">
-            <h4>'.$lang["mysql_empty_result"].'</h4>
+        '<div class="card v-bg-light-purple white-text" role="alert" style="margin-left: 25px; margin-right: 25px;">
+          <div class="card-content">
+            <span class="card-title">'.$lang["mysql_empty_result"].'</span>
             <p>'.$lang["mysql_empty_result_ctx"].'</p>
-          </div>';
+          </div>
+        </div>';
       } else {
 
         // Fetch table primary key (if applicable)
@@ -84,13 +79,16 @@
         } else {
           // No primary keys
           $error .=
-          '<div class="alert alert-danger" role="alert" style="margin-left: 25px; margin-right: 25px;">
-              <h4>'.$lang["mysql_no_primary_key"].'</h4>
+          '<div class="card v-bg-light-purple white-text" role="alert" style="margin-left: 25px; margin-right: 25px;">
+            <div class="card-content">
+              <span class="card-title">'.$lang["mysql_no_primary_key"].'</span>
               <p>'.$lang["mysql_no_primary_key_ctx"].'</p>
-            </div>';
-            $keyarray[1] = "";
-            $inlinebtn = "class='btn btn-default' data-container='body' data-toggle='tooltip' data-placement='right' title='".$lang["editor_inline_no_key"]."'";
-            $inlinekey = "ERROR_KEY_IS_NOT_SET";
+            </div>
+          </div>';
+
+          $keyarray[1] = "";
+          $inlinebtn = "class='btn btn-default' data-container='body' data-toggle='tooltip' data-placement='right' title='".$lang["editor_inline_no_key"]."'";
+          $inlinekey = "ERROR_KEY_IS_NOT_SET";
         }
 
         while($res = $data->fetch_assoc()) {
@@ -108,7 +106,7 @@
                   $is_primary_key = $lang["tbl_key"];
                 }
 
-                $table_head .= "<th style=\"text-overflow: ellipsis;\" data-container=\"body\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"".$header."\">".$header." ".$is_primary_key."</th>";
+                $table_head .= "<th class=\"tooltipped\" style=\"text-overflow: ellipsis;\"  data-position=\"bottom\" data-delay=\"50\" data-tooltip=\"".$header."\">".$header." ".$is_primary_key."</th>";
 
                 // Dump header names and types for popovers and inline editing
                 $headertypearray[$headers_count] = fetchTableType($tbl, $header);
@@ -118,15 +116,15 @@
                 // Appends error only once into the error variable
                 if($toomanycolumns == false) {
                   $error .=
-                  '<div class="alert alert-danger" role="alert" style="margin-left: 25px; margin-right: 25px;">
-                      <h4>'.$lang["mysql_too_many_columns"].'</h4>
+                  '<div class="card v-bg-light-purple white-text" role="alert" style="margin-left: 25px; margin-right: 25px;">
+                    <div class="card-content">
+                      <span class="card-title">'.$lang["mysql_too_many_columns"].'</span>
                       <p>'.$lang["mysql_too_many_columns_ctx"].'</p>
-                      <br />
-                      <div class="btn-group">
-                          <a href="javascript:loadTableData(\''.$dbl.'\', \''.$tbl.'\', \'true\');" class="btn btn-primary">'.$lang["btn_temp_show_all"].'</a>
-                          <a href="settings.php?jump=safety" class="btn btn-default">'.$lang["btn_disable"].'</a>
-                      </div>
                     </div>
+                    <div class="card-action">
+                      <a href="settings.php" class="v-text-blue">'.$lang["btn_disable"].'</a>
+                    </div>
+                  </div>
                   ';
                   $toomanycolumns = true;
                 }
@@ -147,7 +145,7 @@
               if($pgct == $page) {
                 $paginationmodule .= "<li class='active'><a href='table.php?db=".$dbl."&tbl=".$tbl."&page=".$pgct."'>".$pgct."</a></li>";
               } else {
-                $paginationmodule .= "<li><a href='table.php?db=".$dbl."&tbl=".$tbl."&page=".$pgct."'>".$pgct."</a></li>";
+                $paginationmodule .= "<li class='waves-effect waves-light'><a href='table.php?db=".$dbl."&tbl=".$tbl."&page=".$pgct."' class=' white-text'>".$pgct."</a></li>";
               }
 
             }
@@ -177,21 +175,7 @@
                 $keyvalues[$rownum] = $tabledat;
               }
 
-              $tbldat .= '<td ondblclick="loadEditor(\''.$dbl.'\', \''.$tbl.'\', \''.$inlinekey.'\', \''.$keyvalues[$rownum].'\');"     data-container="body"
-              data-placement="bottom"
-              data-toggle="popover"
-              data-html="true"
-              title="'.$popovervalue.' <span class=\'label label-primary\'>'.$headertypearray[$tblcount]["DATA_TYPE"].'</span>" data-content="
-                <form action=&#34;javascript:inlineChange(&#39;'.$dbl.'&#39;, &#39;'.$tbl.'&#39;, &#39;'.$inlinekey.'&#39;, &#39;'.$headernamearray[$tblcount].'&#39;, &#39;'.$valid.'&#39;, &#39;'.$keyvalues[$rownum].'&#39;); &#34;>
-                  <div class=\'input-group\'>
-                    <input id=\''.$valid.'\' type=\'text\' value=\''.$tabledat.'\' class=\'form-control\'>
-                    <span class=\'input-group-btn\'>
-                      <button '.$inlinebtn.' type=\'submit\' id=\'inlineFormBtn\' data-loading-text=\''.$lang["editor_inline_updating"].'\'>'.$lang["editor_inline_update"].'
-                      </button>
-                    </span>
-                  </div>
-                </form>
-                ">'.$tabledat.'</td>';
+              $tbldat .= '<td ondblclick="loadEditor(\''.$dbl.'\', \''.$tbl.'\', \''.$inlinekey.'\', \''.$keyvalues[$rownum].'\');">'.$tabledat.'</td>';
             }
 
           }
@@ -218,8 +202,6 @@
 
 </table>
 
-<nav style="margin-left: 25px; margin-right: 25px;">
-  <ul class="pagination">
-    <?php echo $paginationmodule; ?>
-  </ul>
-</nav>
+<ul class="pagination center-align white-text">
+  <?php echo $paginationmodule; ?>
+</ul>

@@ -1,16 +1,16 @@
 <?php
 
     if(testConn() == "Success") {
-        $db = resumeConnection();
+      $db = resumeConnection();
     }
 
     function fetchDatabases() {
-        global $db;
-        if($res = $db->query("SHOW DATABASES")) {
-            return $res;
-        } else {
-            return "MySQL error";
-        }
+      global $db;
+      if($res = $db->query("SHOW DATABASES")) {
+          return $res;
+      } else {
+          return "MySQL error";
+      }
     }
 
     function fetchTables($database) {

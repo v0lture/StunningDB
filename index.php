@@ -6,7 +6,19 @@
     require_once $lcwd."/assets/page_rsc/load.php";
 
     if(testConn() != "Success") {
-        header("Location: auth.php?confirm=reauth");
+      header("Location: auth.php?confirm=reauth");
+    } else {
+      if(isset($_GET["db"]) && isset($_GET["tbl"])) {
+        $dbl = $_GET["db"];
+        $tbl = $_GET["tbl"];
+        $new = "'".$dbl."', '".$tbl."'";
+        $cls = "";
+      } else {
+        $dbl = "";
+        $tbl = "";
+        $new = "";
+        $cls = "style='display:none;'";
+      }
     }
 ?>
 
@@ -26,116 +38,125 @@
             require_once $lcwd."/assets/page_rsc/navbar.php";
         ?>
 
-        <div class="modal fade" id="newModal" tabindex="-1" role="dialog">
-          <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-              <form method="POST" action="assets/page_rsc/editor.php?do=insert">
-                <div class="modal-header">
+        <div id="newdb" class="modal bottom-sheet v-bg-grey white-text">
+          <div class="modal-content">
+            <h4><?= $lang["db_create"]; ?></h4>
 
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <div class="input-field">
 
-                  <h4 class="modal-title" id="newLabel"><?php echo $lang["editor_new_title"]; ?></h4>
+              <input id="createdbinline" type="text">
 
-                </div>
+              <label for="createdbinline"><?= $lang["db_create_popover_ph"]; ?></label>
 
-                <div class="modal-body">
-
-                  <div class="progress" id="new-loading" style="display: block;">
-                      <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
-                  </div>
-
-                  <div id="new-xhr">
-
-                  </div>
-
-                </div>
-
-                <div class="modal-footer">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $lang["btn_close"]; ?></button>
-                    <button type="submit" class="btn v-bg-dark-purple"><?php echo $lang["editor_new"]; ?></button>
-                  </div>
-                </div>
-              </form>
             </div>
+
+          </div>
+          <div class="modal-footer v-bg-grey">
+            <a href="javascript:newDB()" class="waves-effect waves-light btn-flat v-text-light-purple"><?= $lang["db_create_popover"]; ?></a>
           </div>
         </div>
 
-        <div class="container">
-            <div class="alert alert-danger" role="alert" id="error" style="display:none; ">
-                <h4>Error</h4>
-                <p>Failed to do something.</p>
+        <div id="editorModal" class="modal modal-fixed-footer v-bg-grey white-text">
+          <form method="POST" action="assets/page_rsc/editor.php?do=edit">
+            <div class="modal-content">
+              <h4><?= $lang["editor_title"]; ?></h4>
+
+              <div id="editor-xhr">
+
+
+
+              </div>
+
             </div>
+            <div class="modal-footer v-bg-grey">
+              <button type="submit" class="waves-effect waves-light btn-flat v-text-blue"><?= $lang["editor_save_changes"]; ?></button>
+              <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat v-text-light-purple"><?= $lang["btn_close"]; ?></a>
+            </div>
+          </form>
         </div>
 
-        <div class="row">
+        <div id="newModal" class="modal modal-fixed-footer v-bg-grey white-text">
+          <form method="POST" action="assets/page_rsc/editor.php?do=insert">
+            <div class="modal-content">
+              <h4><?= $lang["editor_new_title"]; ?></h4>
 
-            <div class="col-md-3" id="sidebar">
+              <div id="new-xhr">
 
-                <div class="panel panel-default">
-                    <div class="panel-heading">
 
-                      <div class="btn-group pull-right">
-                          <a id="db-loading-btn" href="javascript:fetchDatabases();" class="btn v-bg-blue v-text-grey btn-xs" style="margin-top: -3px;" data-loading-text="<?php echo $lang["btn_loading"]; ?>"><?php echo $lang["btn_refresh"]; ?></a>
-                          <a id="db-creating-btn" href="#!" class="btn v-bg-light-purple v-text-grey btn-xs" style="margin-top: -3px;" data-loading-text="<?php echo $lang["btn_loading"]; ?>" data-container="body" data-placement="bottom" data-toggle="popover" data-html="true" title="" data-content="
-                                   <form action='javascript:newDB();'>
-                                    <div class='input-group'>
-                                      <input id='createdbinline' placeholder='<?php echo $lang["db_create_popover_ph"]; ?>' type='text' class='form-control'>
-                                      <span class='input-group-btn'>
-                                        <button class='btn v-bg-light-purple' type='submit' id='newDBInline' data-loading-text='<?php echo $lang["db_creating_popover"]; ?>'><?php echo $lang["db_create_popover"]; ?></button>
-                                      </span>
-                                    </div>
-                                  </form>"
-                                  data-original-title="<?php echo $lang["db_create"]; ?>"><?php echo $lang["db_create"]; ?></a>
-                        </div>
 
-                        <h3 class="panel-title">Databases</h3>
+              </div>
 
-                    </div>
+            </div>
+            <div class="modal-footer v-bg-grey">
+              <button type="submit" class="waves-effect waves-light btn-flat v-text-blue"><?= $lang["editor_new"]; ?></button>
+              <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat v-text-light-purple"><?= $lang["btn_close"]; ?></a>
+            </div>
+          </form>
+        </div>
 
-                    <div class="panel-body">
+        <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+          <a class="btn-floating btn-large v-bg-light-purple tooltipped" data-position="left" data-delay="50" id="newrow" data-tooltip="New Row" onclick="loadInsert(<?= $new; ?>)">
+            <i class="large material-icons">add</i>
+          </a>
+          <ul>
+            <li><a href="javascript:$('#newdb').openModal();" class="btn-floating v-bg-dark-purple tooltipped" data-position="left" data-delay="50" data-tooltip="New Database"><i class="material-icons">dns</i></a></li>
+            <li><a class="btn-floating v-bg-dark-purple tooltipped" data-position="left" data-delay="50" data-tooltip="New Table"><i class="material-icons">border_all</i></a></li>
+          </ul>
+        </div>
 
-                        <div class="progress" id="db-loading" style="display: none;">
-                            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
-                        </div>
+        <div class="row" id="fullview" style="height: calc(100vh - 64px);">
 
-                        <div id="db-xhr">
+          <div class="col s3 grey darken-3 scrollbar" style="height: calc(100vh - 64px); padding-top: 25px; overflow: auto;" id="dbview">
 
-                          <?php include_once("assets/page_rsc/databases.php"); ?>
+            <div class="progress v-bg-grey" id="db-loading" style="margin-top: -25px; margin-bottom: 25px; display:none;">
+              <div class="indeterminate v-bg-blue"></div>
+            </div>
 
-                        </div>
+            <div style="color: white; padding-left: 25px; padding-right: 25px;">
 
-                    </div>
-
-                </div>
+              <h5>Databases</h5>
+              <div class="right" style="margin-top: -40px;">
+                <a href="javascript:fetchDatabases()" class="btn waves-effect waves-light v-bg-blue" ><i class="material-icons">refresh</i></a>
+              </div>
 
             </div>
 
-            <div class="col-md-9" id="maincontent">
+            <div id="db-xhr">
+              <?php include "assets/page_rsc/databases.php"; ?>
+            </div>
 
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
+          </div>
 
-                        <a id="tables-loading-btn" href="javascript:fetchDatabases();" class="btn v-bg-light-purple btn-xs pull-right" style="margin-top: -3px; color: white;" data-loading-text="<?php echo $lang["btn_loading"]; ?>"><?php echo $lang["btn_refresh"]; ?></a>
-                        <h3 class="panel-title">Tables</h3>
+          <div class="col s9" style="padding: 0px;" id="dataview">
 
-                    </div>
+            <div class="progress v-bg-grey" id="main-loading" style="margin-top: -0.5px; margin-bottom: 0px; display: none;">
+              <div class="indeterminate v-bg-blue"></div>
+            </div>
 
-                    <div class="panel-body">
-
-                        <div class="progress" id="tables-loading" style="display: none;">
-                            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
-                        </div>
-
-                        <div id="tables-xhr">
-                            <h4>No database selected.</h4>
-                        </div>
-
-                    </div>
-
+            <!-- control nav -->
+            <nav style="margin-bottom: -5px;">
+              <div class="nav-wrapper v-bg-dark-purple">
+                <div class="col s12">
+                  <a href="#!" class="breadcrumb"><?= $h; ?></a>
+                  <a href="javascript:dbOnly('show')" class="breadcrumb" <?= $cls; ?> id="bc-db"><?= $dbl; ?></a>
+                  <a href="#!" class="breadcrumb" id="bc-tbl" <?= $cls; ?>><?= $tbl; ?></a>
                 </div>
+              </div>
+            </nav>
+
+            <div id="main-xhr" class="scrollbar" style="height: calc(100vh - 139px); overflow: auto; width: 100%;">
+
+              <?php
+                if($dbl != "" || $tbl != "") {
+
+                  include "assets/page_rsc/table_data.php";
+
+                }
+              ?>
 
             </div>
+
+          </div>
 
         </div>
 

@@ -17,6 +17,7 @@
     'navbar_settings' => "Settings",
     'navbar_title_user' => "User",
     'navbar_title_app' => "App",
+    'navbar_app' => "v0ltureDB",
 
     // Buttons
     'btn_refresh' => "Refresh",
@@ -28,8 +29,17 @@
     'btn_close' => "Close",
     'btn_rst' => "Reset",
 
+    // auth
+    'auth_blank' => "Fields cannot be blank.",
+    'auth_blank_ctx' => "Check all of the fields and try submitting again.",
+    'auth_invalid' => "Invalid credentials",
+    'auth_invalid_ctx' => "Check for any capitalization and spelling errors and try again.",
+    'auth_username' => "Username",
+    'auth_password' => "Password",
+    'auth_host' => "Host",
+
     // databases
-    'db_create' => "New DB",
+    'db_create' => "New Database",
     'db_create_popover' => "Create",
     'db_create_popover_ph' => "Database Name",
     'db_creating_popover' => "Creating...",
@@ -42,7 +52,7 @@
     // Set to blank to use column name
     'tbl_popover_entire_value' => "Entire value",
     'tbl_na' => "N/A",
-    'tbl_key' => "<span class='label v-bg-blue'>Key</span>",
+    'tbl_key' => "<span class='material-icons'>vpn_key</span>",
 
     // Tables
     'tblh_name' => "Name",
@@ -60,9 +70,6 @@
 
     // Editor modal
     'editor_title' => "Edit row",
-    'editor_inline_update' => "Update",
-    'editor_inline_updating' => "Updating...",
-    'editor_inline_no_key' => "No primary key is set so changes will not be saved.",
     'editor_save_changes' => "Update",
     'editor_new_title' => "New row",
     'editor_new' => "Insert",
@@ -91,7 +98,11 @@
 
     // v0ltureDB
     'app_system_hidden_title' => "Cannot load tables due to configuration.",
-    'app_system_hidden_msg' => "The flag <code>show_system_tables</code> is currently disabled which disallows this database to be loaded."
+    'app_system_hidden_msg' => "The flag <code>show_system_tables</code> is currently disabled which disallows this database to be loaded.",
+
+    // Create tables
+    'createtbl_db_info' => "Inserting table into ",
+    'createtbl_db_name' => "Database name: ",
   );
 
 ?>

@@ -22,10 +22,10 @@
       }
 
       $fields .=
-      '<div class="input-group">
+      '<div class="input-field">
 
-        <input type="text" name="'.$colarray["Field"].'" class="form-control" placeholder="'.$colarray["Type"].'" aria-describedby="'.$colarray["Field"].'">
-        <span class="input-group-addon" id="'.$colarray["Field"].'">'.$colarray["Field"].' '.$key.'</span>
+        <input type="text" id="'.$colarray["Field"].'" name="'.$colarray["Field"].'" placeholder="'.$colarray["Type"].'">
+        <label for="'.$colarray["Field"].'">'.$colarray["Field"].'</label>
 
       </div><br />';
     }
@@ -66,10 +66,10 @@
             foreach($fieldarray as &$arrv) {
               if($position < $keycount) {
                 $fields .=
-                '<div class="input-group">
+                '<div class="input-field">
 
-                  <input type="text" name="'.$fieldarray[$position."-KEY"].'" class="form-control" value="'.$fieldarray[$position."-VAL"].'" aria-describedby="'.$fieldarray[$position."-KEY"].'">
-                  <span class="input-group-addon" id="'.$fieldarray[$position."-KEY"].'">'.$fieldarray[$position."-KEY"].'</span>
+                  <input type="text" id="'.$fieldarray[$position."-KEY"].'" name="'.$fieldarray[$position."-KEY"].'" value="'.$fieldarray[$position."-VAL"].'">
+                  <label for="'.$fieldarray[$position."-KEY"].'">'.$fieldarray[$position."-KEY"].'</label>
 
                 </div><br />';
 
@@ -99,9 +99,5 @@
   }
 
  ?>
-
-<fieldset>
-
-  <?php echo $fields; ?>
-
-</fieldset>
+<p>Press 'Update' to submit all of the changes made.</p>
+<?php echo $fields; ?>

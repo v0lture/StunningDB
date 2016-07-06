@@ -1,10 +1,11 @@
 function tableInit() {
   // Simply initalizates popovers and sortable when data is not loaded by an XHR request.
   Sortable.init();
-  $('[data-toggle="popover"]').popover();
-  $('[data-toggle="tooltip"]').tooltip();
-
-  $('[data-toggle="popover"]').popover('hide');
+  $('.collapsible').collapsible({
+    accordion : false
+  });
+  $('.tooltipped').tooltip({delay: 50});
+  Materialize.updateTextFields();
 }
 
 $("[data-toggle='popover']").on('show.bs.popover', function () {
@@ -18,20 +19,18 @@ function fetchDatabases(hideerr = false) {
       $("#error").hide();
     }
     $("#db-loading").show();
-    $("#db-loading-btn").button('loading');
     db_xhr.onreadystatechange = function(){
-        if(db_xhr.readyState == 4) {
-            $("#db-loading").hide();
-            if(db_xhr.status != 200) {
-                $("#error").show();
-                $("#error > h4").text("Failed updating database(s)...");
-                $("#error > p").html("Database fetch resulted an error.<br />Try again later.");
-                $("#db-loading-btn").button('reset');
-            } else {
-                $("#db-xhr").html(db_xhr.responseText);
-                $("#db-loading-btn").button('reset');
-            }
+      if(db_xhr.readyState == 4) {
+        $("#db-loading").hide();
+        if(db_xhr.status != 200) {
+          $("#error").show();
+          $("#error > h4").text("Failed updating database(s)...");
+          $("#error > p").html("Database fetch resulted an error.<br />Try again later.");
+        } else {
+          $("#db-xhr").html(db_xhr.responseText);
+          tableInit();
         }
+      }
     }
     db_xhr.open("GET", "assets/page_rsc/databases.php", true);
     db_xhr.send();
@@ -71,18 +70,21 @@ function loadDb(dbname, compact) {
 
 function fetchTableData(db, tbl, bypass = "false") {
     var db_xhr = new XMLHttpRequest();
+    dbOnly('hide');
 
     // Destory old popovers and tooltips incase any were left open at load
-    $('[data-toggle="popver"]').popover('hide');
-    $('.popover.fade.right').css( "display", "none", "important");
-
     console.info("[v0ltureDB] Trying to load table "+tbl+" at database "+db+"...");
 
     // Hide any errors if applicable, show navigation bar, and toggle refresh button state
     $("#error").hide();
     $("#main-loading").show();
-    $("#main-loading-btn").button('loading');
     $("#tableName").text("...");
+
+    $("#bc-db").text(db);
+    $("#bc-tbl").text("loading "+tbl);
+
+    $("#bc-db").show();
+    $("#bc-tbl").show();
 
     db_xhr.onreadystatechange = function(){
       if(db_xhr.readyState == 4) {
@@ -91,14 +93,17 @@ function fetchTableData(db, tbl, bypass = "false") {
           $("#error").show();
           $("#error > h4").text("Failed fetching table data...");
           $("#error > p").html("Double check you have the SELECT privilage to view the data on the table.<br />Try again later.");
-          $("#main-loading-btn").button('reset');
+
           $("#main-loading-btn").attr("href", "javascript:fetchTableData('"+db+"', '"+tbl+"', '"+bypass+"');");
           console.error("[v0ltureDB] Failed fetching table!");
           $("#tableName").text("Unable to load table");
+          $("#bc-tbl").text("failed loading "+tbl);
         } else {
+          $("#bc-tbl").text(tbl);
           $("#main-xhr").html(db_xhr.responseText);
-          $("#main-loading-btn").button('reset');
+
           $("#main-loading-btn").attr("href", "javascript:fetchTableData('"+db+"', '"+tbl+"', '"+bypass+"');");
+          $("#newrow").attr("onclick", "loadInsert('"+db+"', '"+tbl+"')");
           console.info("[v0ltureDB] Table fetched.");
           Sortable.init();
           tableInit();
