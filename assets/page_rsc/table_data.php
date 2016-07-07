@@ -35,19 +35,8 @@
       $rownum = 0;
 
       if($dbl == $lang["config_db_name"]) {
-
-        if(configItem('settings_gui') == "false") {
-
-        } elseif(configItem('settings_gui') == "true") {
-          $error =
-          '<div class="card v-bg-light-purple white-text" role="alert" style="margin-left: 25px; margin-right: 25px;">
-            <div class="card-content">
-              <span class="card-title">'.$lang["config_settings_gui_title"].'</span>
-              <p>'.$lang["config_settings_gui_msg"].'</p>
-            </div>
-          </div>';
-          die($error);
-        }
+        include "../../settings.php";
+        die();
       }
 
       if($data == "MySQL error") {

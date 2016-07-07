@@ -7,70 +7,14 @@
     global $db;
     $error = "";
 
-    if(configEnabled() == true) {
-
-      if(configItem('settings_gui') == "true") {
-        $error = "gui";
-      } else {
-        $error = "none";
-      }
-
-    } elseif(configEnabled() == false && !isset($_GET["sudo"])) {
-
-      header("Location: confirm.php?action=settings.php");
-
-    } elseif(configEnabled() == false && isset($_GET["sudo"])) {
-
-      $sudotoken = $_GET["sudo"];
-
-      if($sudotoken == "denied") {
-
-        $error = "denied";
-
-      } elseif($sudotoken == "allowed" && isset($_GET["token"])) {
-
-        if(verifySudoToken($_GET["token"])) {
-
-          if(configEnabled() != true) {
-            // Generate DB and tables
-            if($report = $db->query("CREATE DATABASE IF NOT EXISTS ".$lang["config_db_name"]."")) {
-
-              // Generate safety table
-              if($report = $db->query("CREATE TABLE IF NOT EXISTS `".$lang["config_db_name"]."`.`".$lang["config_table_name"]."` ( `id` INT(6) NOT NULL AUTO_INCREMENT, `key` VARCHAR(100) NOT NULL, UNIQUE (`key`), `val` VARCHAR(100) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;")) {
-
-                $rst = resetConfig();
-                if($rst == "Reset") {
-                  $error = "none";
-                } else {
-                  $error = "mysql";
-                  $dberror = $rst;
-                }
-
-              } else {
-                $error = "mysql";
-                $dberror = "Failed on creating table '".$lang["config_table_name"]."'... because ".$db->error;
-              }
-
-            } else {
-              $error = "mysql";
-              $dberror = "Failed on creating database '".$lang["config_db_name"]."' because ".$db->error;
-            }
-
-          } else {
-            if(configItem('settings_gui') == "true") {
-              $error = "gui";
-            } else {
-              $error = "none";
-            }
-          }
-
-        } else {
-          $error = "denied";
-        }
-      } else {
-        $error = "denied";
-      }
+    if(prepConfig() == "Ready") {
+      die("ready!");
+    } else {
+      echo "<h3 class='center-align white-text'>Failed to setup configuration.</h3>";
+      echo "<h4 class='center-align white-text'>".prepConfig()."</h4>";
+      die();
     }
+
   } else {
     header("Location: auth.php?confirm=reauth");
   }

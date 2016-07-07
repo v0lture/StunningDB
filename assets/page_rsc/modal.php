@@ -2,6 +2,11 @@
 
   require_once "load.php";
 
+  if(testConn() != "Success") {
+    header("Location: ../../auth.php");
+    die();
+  }
+
   if(isset($_GET["db"]) && isset($_GET["tbl"]) && $_GET["do"] == "insert") {
     $dbl = $_GET["db"];
     $tbl = $_GET["tbl"];

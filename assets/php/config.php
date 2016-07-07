@@ -54,4 +54,30 @@
       return "Config never been initialized.";
     }
   }
+
+  function prepConfig() {
+
+    global $db;
+    global $lang;
+
+    if($report = $db->query("CREATE DATABASE IF NOT EXISTS ".$lang["config_db_name"]."")) {
+
+      // Generate safety table
+      if($report = $db->query("CREATE TABLE IF NOT EXISTS `".$lang["config_db_name"]."`.`".$lang["config_table_name"]."` ( `id` INT(6) NOT NULL AUTO_INCREMENT, `key` VARCHAR(100) NOT NULL, UNIQUE (`key`), `val` VARCHAR(100) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;")) {
+
+        return "Ready";
+
+      } else {
+
+        return "Failed to create table. Error: ".$db->error;
+
+      }
+
+    } else {
+
+      return "Failed to create database. Error: ".$db->error;
+      
+    }
+
+  }
  ?>

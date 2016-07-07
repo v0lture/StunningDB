@@ -16,7 +16,7 @@
   <?php
     $dat = fetchDatabases();
     while($res = $dat->fetch_assoc()) {
-      if(configItem('show_system_tables') == "true" && $res["Database"] != $lang["config_db_name"]) {
+      if(configItem('show_system_tables') == "true" || configItem('show_system_tables') == "Unknown key" || configItem('show_system_tables') == "Not enabled" && $res["Database"] != $lang["config_db_name"]) {
         echo "<li>";
         echo '<div class="collapsible-header grey white-text"><i class="material-icons">dns</i>'.$res["Database"].'</div>';
 

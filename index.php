@@ -1,4 +1,5 @@
 <?php
++
 
     // Working directory of first executing file
     $lcwd = dirname(__FILE__);
@@ -153,7 +154,7 @@
             <nav style="margin-bottom: -5px;">
               <div class="nav-wrapper v-bg-dark-purple">
                 <div class="col s12">
-                  <a href="#!" class="breadcrumb"><?= $h; ?></a>
+                  <a href="#!" class="breadcrumb"><?= $h; ?></a> 
                   <a href="javascript:dbOnly('show')" class="breadcrumb" <?= $cls; ?> id="bc-db"><?= $dbl; ?></a>
                   <a href="#!" class="breadcrumb" id="bc-tbl" <?= $cls; ?>><?= $tbl; ?></a>
                 </div>
