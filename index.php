@@ -96,7 +96,7 @@
         </div>
 
         <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-          <a class="btn-floating btn-large v-bg-light-purple tooltipped" data-position="left" data-delay="50" id="newrow" data-tooltip="New..." onclick="$('.fixed-action-btn').openFAB();">
+          <a class="btn-floating btn-large v-bg-light-purple tooltipped" data-position="left" data-delay="50" data-tooltip="New..." onclick="$('.fixed-action-btn').openFAB();">
             <i class="large material-icons">add</i>
           </a>
           <ul>
@@ -154,7 +154,7 @@
             <nav style="margin-bottom: -5px;">
               <div class="nav-wrapper v-bg-dark-purple">
                 <div class="col s12">
-                  <a href="#!" class="breadcrumb"><?= $h; ?></a> 
+                  <a href="#!" class="breadcrumb"><?= $h; ?></a>
                   <a href="javascript:dbOnly('show')" class="breadcrumb" <?= $cls; ?> id="bc-db"><?= $dbl; ?></a>
                   <a href="#!" class="breadcrumb" id="bc-tbl" <?= $cls; ?>><?= $tbl; ?></a>
                 </div>
