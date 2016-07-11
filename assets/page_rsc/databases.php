@@ -35,8 +35,6 @@
           echo '<div class="collapsible-body"><div class="collection">';
           $tables = fetchTables($res["Database"]);
 
-          print_r($tables);
-
           if($tables != "MySQL error") {
 
             while($data = $tables->fetch_assoc()) {

@@ -10,9 +10,7 @@
     if(prepConfig() == "Ready") {
       die("ready!");
     } else {
-      echo "<h3 class='center-align white-text'>Failed to setup configuration.</h3>";
-      echo "<h4 class='center-align white-text'>".prepConfig()."</h4>";
-      die();
+      die("<script>ohno(\"".prepConfig()."\",'PHP \'php/config.php\' ')</script>");
     }
 
   } else {
