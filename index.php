@@ -39,6 +39,23 @@
             require_once $lcwd."/assets/page_rsc/navbar.php";
         ?>
 
+        <div id="errormodal" class="modal v-bg-grey white-text">
+          <div class="modal-content">
+            <h4><?= $lang["modal_error_title"]; ?></h4>
+
+            <p><?= $lang["modal_error_action"]; ?></p>
+
+            <p>
+              <?= $lang["modal_error_response"]; ?> <code id="errorresponse"></code><br />
+              <?= $lang["modal_error_src"]; ?> <code id="errorsrc"></code>
+            </p>
+
+          </div>
+          <div class="modal-footer v-bg-grey">
+            <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat v-text-light-purple"><?= $lang["modal_error_dismiss"]; ?></a>
+          </div>
+        </div>
+
         <div id="newdb" class="modal bottom-sheet v-bg-grey white-text">
           <div class="modal-content">
             <h4><?= $lang["db_create"]; ?></h4>

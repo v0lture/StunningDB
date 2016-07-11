@@ -8,6 +8,13 @@
 
   $lang = Array(
 
+    // modal
+    'modal_error_title' => "Failed to complete operation.",
+    'modal_error_dismiss' => "Okay",
+    'modal_error_action' => "Check that you have the required previliges and the server is online. Also check that all required fields are filled.",
+    'modal_error_response' => "Server responed with: ",
+    'modal_error_src' => "Source of error: ",
+
     // Navbar
     'navbar_current_db' => "Current DB",
     'navbar_drop_db' => "Drop Database",

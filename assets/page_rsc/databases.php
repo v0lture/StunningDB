@@ -7,6 +7,11 @@
     }
     if(isset($_GET["newdb"])) {
       $response = createDatabase($_GET["newdb"]);
+      if($response != "done") {
+        http_response_code(400);
+      } else {
+        http_response_code(200);
+      }
       die($response);
     }
 
@@ -30,8 +35,16 @@
           echo '<div class="collapsible-body"><div class="collection">';
           $tables = fetchTables($res["Database"]);
 
-          while($data = $tables->fetch_assoc()) {
-            echo "<a href='javascript:fetchTableData(\"".$res["Database"]."\", \"".$data["Tables_in_".$res["Database"]]."\");' class='collection-item grey darken-1 v-text-blue waves-effect waves-light'>".$data["Tables_in_".$res["Database"]]."</a>";
+          print_r($tables);
+
+          if($tables != "MySQL error") {
+
+            while($data = $tables->fetch_assoc()) {
+              echo "<a href='javascript:fetchTableData(\"".$res["Database"]."\", \"".$data["Tables_in_".$res["Database"]]."\");' class='collection-item grey darken-1 v-text-blue waves-effect waves-light'>".$data["Tables_in_".$res["Database"]]."</a>";
+            }
+
+          } else {
+            echo '<p>Cannot load tables. Check you have the <b>SELECT</b> privilege.';
           }
           echo '</div></div>';
         }

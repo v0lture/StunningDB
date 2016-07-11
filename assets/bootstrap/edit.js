@@ -8,9 +8,7 @@ function loadEditor(db, tbl, key, keyvalue){
       if(editor_xhr.readyState == 4) {
         $("#editor-loading").hide();
         if(editor_xhr.status != 200) {
-          $("#error").show();
-          $("#error > h4").text("Failed inserting new row");
-          $("#error > p").html("A remote error occurred, check you have the <b>SELECT</b> privilage and the MySQL database is online and available.<br /><small>Error: </small>"+editor_xhr.responseText);
+          ohno(inline_xhr.responseText, "JS 'loadEditor()' -> PHP 'PAGE_RSC/modal.php'");
         } else {
           $("#error").hide();
           $("#editor-xhr").html(editor_xhr.responseText);
@@ -22,9 +20,7 @@ function loadEditor(db, tbl, key, keyvalue){
     editor_xhr.send();
   } else {
     $("#editorModal").closeModal();
-    $("#error").show();
-    $("#error > h4").text("Function was supplied incomplete variables");
-    $("#error > p").html("The current function that tried to run was missing variables. <br /><small>function ran <b>loadInsert(db, tbl)</b> in <b>edit.js</b>.");
+    ohno('Missing variables that are required to complete function.', "JS 'loadEditor()'");
   }
 }
 
@@ -39,11 +35,8 @@ function loadInsert(db, tbl){
       if(modal_xhr.readyState == 4) {
 
         if(modal_xhr.status != 200) {
-
           $("#newModal").closeModal();
-          $("#error").show();
-          $("#error > h4").text("Failed inserting new row");
-          $("#error > p").html("A remote error occurred, check you have the <b>INSERT</b> privilage and the MySQL database is online and available.<br /><small>Error: </small>"+modal_xhr.responseText);
+          ohno(inline_xhr.responseText, "JS 'loadInsert()' -> PHP 'PAGE_RSC/modal.php'");
         } else {
 
           $("#new-xhr").html(modal_xhr.responseText);
@@ -88,9 +81,7 @@ function inlineChange(db, tbl, key, col, valid, keyvalue, custom = false) {
       if(inline_xhr.readyState == 4) {
         $("#db-loading").hide();
         if(inline_xhr.status != 200) {
-          $("#error").show();
-          $("#error > h4").text("Failed synchorizing inline changes");
-          $("#error > p").html("A remote error occurred, check you have the <b>UPDATE</b> privilage and the MySQL database is online and available.<br /><small>Error: </small>"+inline_xhr.responseText);
+          ohno(inline_xhr.responseText, "JS 'inlineChange()' -> PHP 'PAGE_RSC/inline.php'");
         } else {
           $("#error").show();
           $("#error > h4").text("Refresh to show recent changes.");
@@ -119,14 +110,8 @@ function newDB() {
     if(inline_xhr.readyState == 4) {
 
       if(inline_xhr.status != 200) {
-        $("#error").show();
-        $("#error > h4").text("Failed synchorizing inline changes");
-        $("#error > p").html("A remote error occurred, check you have the <b>CREATE</b> privilage and the MySQL database is online and available.<br /><small>Error: </small>"+inline_xhr.responseText);
-
+        ohno(inline_xhr.responseText, "JS 'newDB()' -> PHP 'databases.php'");
       } else {
-        $("#error").show();
-        $("#error > h4").text("Changes have been made.");
-        $("#error > p").html("Database list was automatically refreshed.");
         $("#newdb").closeModal();
         Materialize.toast('Database "'+db+'" was created.', 5000, 'mdtst');
         fetchDatabases('true');

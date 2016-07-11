@@ -20,12 +20,16 @@
 
     if(configEnabled() == true) {
       $resp = $db->query("SELECT `val` FROM `".$lang["config_db_name"]."`.`".$lang["config_table_name"]."` WHERE `key` = '".$key."' LIMIT 1");
-      if($resp->num_rows == 0) {
-        return "Unknown key";
-      } else {
-        while($data = $resp->fetch_assoc()) {
-          return $data["val"];
+      if($resp) {
+        if($resp->num_rows == 0) {
+          return "Unknown key";
+        } else {
+          while($data = $resp->fetch_assoc()) {
+            return $data["val"];
+          }
         }
+      } else {
+        return "Unknown key";
       }
     } else {
       return "Not enabled";
@@ -76,7 +80,7 @@
     } else {
 
       return "Failed to create database. Error: ".$db->error;
-      
+
     }
 
   }

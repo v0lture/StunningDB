@@ -16,9 +16,9 @@
     function fetchTables($database) {
         global $db;
         if($res = $db->query("SHOW TABLES IN ".$database."")) {
-            return $res;
+          return $res;
         } else {
-            return "MySQL error";
+          return "MySQL error";
         }
     }
 

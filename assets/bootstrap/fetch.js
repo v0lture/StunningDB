@@ -15,17 +15,13 @@ $("[data-toggle='popover']").on('show.bs.popover', function () {
 
 function fetchDatabases(hideerr = false) {
     var db_xhr = new XMLHttpRequest();
-    if(hideerr == true) {
-      $("#error").hide();
-    }
+
     $("#db-loading").show();
     db_xhr.onreadystatechange = function(){
       if(db_xhr.readyState == 4) {
         $("#db-loading").hide();
         if(db_xhr.status != 200) {
-          $("#error").show();
-          $("#error > h4").text("Failed updating database(s)...");
-          $("#error > p").html("Database fetch resulted an error.<br />Try again later.");
+          ohno(db_xhr.responseText, "JS 'fetchDatabases()' -> PHP 'PAGE_RSC/databases.php'");
         } else {
           $("#db-xhr").html(db_xhr.responseText);
           tableInit();
@@ -48,19 +44,19 @@ function loadDb(dbname, compact) {
         if(db_xhr.readyState == 4) {
             $("#tables-loading").hide();
             if(db_xhr.status != 200) {
-                $("#error").show();
-                $("#error > h4").text("Failed fetching tables");
-                $("#error > p").html("Could not fetch tables from database '"+dbname+"' a "+db_xhr.status+" error occurred.<br />Try again later or check your user permissions.");
-                $("#tables-loading-btn").button('reset');
-                $("#nav_db").text("Failed to load");
+
+              ohno(db_xhr.responseText, "JS 'loadDb()' -> PHP 'PAGE_RSC/tables.php'");
+
+              $("#tables-loading-btn").button('reset');
+              $("#nav_db").text("Failed to load");
             } else {
-                $("#tables-xhr").html(db_xhr.responseText);
-                $("#tables-loading-btn").button('reset');
-                $("#tables-loading-btn").attr("href", "javascript:loadDb('"+dbname+"', '"+compact+"')");
-                $("#nav_db").text(dbname);
-                $("#nav_db_drop").attr("href", "confirm.php?db="+dbname+"&action=drop");
-                $("#nav_db_edit").attr("href", "confirm.php?db="+dbname+"&action=edit");
-                Sortable.init();
+              $("#tables-xhr").html(db_xhr.responseText);
+              $("#tables-loading-btn").button('reset');
+              $("#tables-loading-btn").attr("href", "javascript:loadDb('"+dbname+"', '"+compact+"')");
+              $("#nav_db").text(dbname);
+              $("#nav_db_drop").attr("href", "confirm.php?db="+dbname+"&action=drop");
+              $("#nav_db_edit").attr("href", "confirm.php?db="+dbname+"&action=edit");
+              Sortable.init();
             }
         }
     }
@@ -90,9 +86,7 @@ function fetchTableData(db, tbl, bypass = "false") {
       if(db_xhr.readyState == 4) {
         $("#main-loading").hide();
         if(db_xhr.status != 200) {
-          $("#error").show();
-          $("#error > h4").text("Failed fetching table data...");
-          $("#error > p").html("Double check you have the SELECT privilage to view the data on the table.<br />Try again later.");
+          ohno(db_xhr.responseText, "JS 'fetchTableData()' -> PHP 'PAGE_RSC/table_data.php'");
 
           $("#main-loading-btn").attr("href", "javascript:fetchTableData('"+db+"', '"+tbl+"', '"+bypass+"');");
           console.error("[v0ltureDB] Failed fetching table!");

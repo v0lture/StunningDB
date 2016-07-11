@@ -15,3 +15,12 @@ function dbOnly(state) {
 
   }
 }
+
+function ohno(response, src) {
+  $("#errormodal").openModal();
+
+  $("#errorresponse").html(response);
+  $("#errorsrc").html(src);
+
+  console.error("[oh no] Something bad happened at "+src+". Response received was "+response);
+}
