@@ -20,6 +20,10 @@
         $new = "";
         $cls = "style='display:none;'";
       }
+
+      if(isset($_GET["msg"])) {
+        $script = 'ohno("'.$_GET["msg"].'", "PHP");';
+      }
     }
 ?>
 
@@ -48,6 +52,23 @@
             <p>
               <?= $lang["modal_error_response"]; ?> <code id="errorresponse"></code><br />
               <?= $lang["modal_error_src"]; ?> <code id="errorsrc"></code>
+            </p>
+
+          </div>
+          <div class="modal-footer v-bg-grey">
+            <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat v-text-light-purple"><?= $lang["modal_error_dismiss"]; ?></a>
+          </div>
+        </div>
+
+        <div id="warnmodal" class="modal v-bg-grey white-text">
+          <div class="modal-content">
+            <h4><?= $lang["modal_warn_title"]; ?></h4>
+
+            <p><?= $lang["modal_warn_action"]; ?></p>
+
+            <p>
+              <?= $lang["modal_warn_response"]; ?> <code id="warnresponse"></code><br />
+              <?= $lang["modal_warn_src"]; ?> <code id="warnsrc"></code>
             </p>
 
           </div>
@@ -182,9 +203,7 @@
 
               <?php
                 if($dbl != "" || $tbl != "") {
-
                   include "assets/page_rsc/table_data.php";
-
                 }
               ?>
 
@@ -193,6 +212,16 @@
           </div>
 
         </div>
+
+        <script>
+          <?php
+
+            if(isset($script)) {
+              echo $script;
+            }
+
+           ?>
+        </script>
 
     </body>
 </html>

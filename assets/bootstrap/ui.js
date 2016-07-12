@@ -24,3 +24,12 @@ function ohno(response, src) {
 
   console.error("[oh no] Something bad happened at "+src+". Response received was "+response);
 }
+
+function oh(response, src) {
+  $("#warnmodal").openModal();
+
+  $("#warnresponse").html(response);
+  $("#warnsrc").html(src);
+
+  console.warn("[oh] Hey there hot shot, watch out! "+src+" responded "+response);
+}

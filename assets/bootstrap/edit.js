@@ -51,7 +51,7 @@ function loadInsert(db, tbl){
   } else {
 
     $("#newModal").closeModal();
-    Materialize.toast('An active database and table are needed to add a row.', 5000);
+    ohno('An active database and table are needed to insert a new row.', 'JS \'loadInsert()\'');
 
   }
 }

@@ -68,15 +68,9 @@
         } else {
           // No primary keys
           $error .=
-          '<div class="card v-bg-light-purple white-text" role="alert" style="margin-left: 25px; margin-right: 25px;">
-            <div class="card-content">
-              <span class="card-title">'.$lang["mysql_no_primary_key"].'</span>
-              <p>'.$lang["mysql_no_primary_key_ctx"].'</p>
-            </div>
-          </div>';
+          '<script>oh("'.$lang["mysql_no_primary_key"].'", "PHP \'tabla_data.php\'")</script>';
 
           $keyarray[1] = "";
-          $inlinebtn = "class='btn btn-default' data-container='body' data-toggle='tooltip' data-placement='right' title='".$lang["editor_inline_no_key"]."'";
           $inlinekey = "ERROR_KEY_IS_NOT_SET";
         }
 
@@ -105,16 +99,7 @@
                 // Appends error only once into the error variable
                 if($toomanycolumns == false) {
                   $error .=
-                  '<div class="card v-bg-light-purple white-text" role="alert" style="margin-left: 25px; margin-right: 25px;">
-                    <div class="card-content">
-                      <span class="card-title">'.$lang["mysql_too_many_columns"].'</span>
-                      <p>'.$lang["mysql_too_many_columns_ctx"].'</p>
-                    </div>
-                    <div class="card-action">
-                      <a href="settings.php" class="v-text-blue">'.$lang["btn_disable"].'</a>
-                    </div>
-                  </div>
-                  ';
+                  '<script>oh("'.$lang["mysql_too_many_columns"].'", "PHP \'table_data.php\'")</script>';
                   $toomanycolumns = true;
                 }
               }
@@ -132,9 +117,9 @@
             while($pgct < $pages) {
               $pgct++;
               if($pgct == $page) {
-                $paginationmodule .= "<li class='active'><a href='table.php?db=".$dbl."&tbl=".$tbl."&page=".$pgct."'>".$pgct."</a></li>";
+                $paginationmodule .= "<li class='active'><a href='index.php?db=".$dbl."&tbl=".$tbl."&page=".$pgct."'>".$pgct."</a></li>";
               } else {
-                $paginationmodule .= "<li class='waves-effect waves-light'><a href='table.php?db=".$dbl."&tbl=".$tbl."&page=".$pgct."' class=' white-text'>".$pgct."</a></li>";
+                $paginationmodule .= "<li class='waves-effect waves-light'><a href='index.php?db=".$dbl."&tbl=".$tbl."&page=".$pgct."' class=' white-text'>".$pgct."</a></li>";
               }
 
             }
@@ -178,8 +163,6 @@
 
 <table class="table table-striped table-hover table-responsive sortable-theme-bootstrap" data-sortable>
 
-    <?php echo $error; ?>
-
     <thead>
         <tr>
             <?php echo $table_head; ?>
@@ -194,3 +177,5 @@
 <ul class="pagination center-align white-text">
   <?php echo $paginationmodule; ?>
 </ul>
+
+<?php echo $error; ?>

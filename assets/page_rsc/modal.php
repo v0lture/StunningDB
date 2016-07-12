@@ -84,10 +84,7 @@
           }
         } else {
           $fields .=
-          '<div class="alert v-bg-blue" style="color:white;" role="alert">
-            <h4>'.$lang["editor_norow_title"].'</h4>
-            <p>'.$lang["editor_norow_msg"].'</p>
-          </div>';
+          '<script>ohno("'.$lang["editor_norow_title"].'", "PHP \'modal.php\'")</script>';
         }
 
       } else {
@@ -95,11 +92,8 @@
       }
 
     } else {
-      $fields =
-      '<div class="alert v-bg-blue" style="color:white;" role="alert">
-        <h4>'.$lang["editor_nokey_title"].'</h4>
-        <p>'.$lang["editor_nokey_msg"].'</p>
-      </div>';
+      $fields .=
+      '<script>ohno("'.$lang["editor_nokey_title"].'", "PHP \'modal.php\'")</script>';
     }
   }
 

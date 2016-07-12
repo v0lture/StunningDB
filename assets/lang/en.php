@@ -15,6 +15,11 @@
     'modal_error_response' => "Server responed with: ",
     'modal_error_src' => "Source of error: ",
 
+    'modal_warn_action' => "This warning should not effect the operation performed unless an error occurs after this event.",
+    'modal_warn_response' => "Server warning: ",
+    'modal_warn_src' => "Source of warning: ",
+    'modal_warn_title' => "Warning.",
+
     // Navbar
     'navbar_current_db' => "Current DB",
     'navbar_drop_db' => "Drop Database",
@@ -68,12 +73,9 @@
     'tblh_rows' => "Rows",
 
     // MySQL msgs
-    'mysql_empty_result' => "MySQL returned empty result",
-    'mysql_empty_result_ctx' => "There were no rows with the query.",
-    'mysql_too_many_columns' => "Too many columns",
-    'mysql_too_many_columns_ctx' => "There are too many columns in the current table to show without possible text overflow from the view.",
-    'mysql_no_primary_key' => "This table has no primary key.",
-    'mysql_no_primary_key_ctx' => "You cannot edit/delete any rows until a primary key is set.",
+    'mysql_empty_result' => "There were no rows with the query",
+    'mysql_too_many_columns' => "There are too many columns in the current table to show without possible text overflow from the view.",
+    'mysql_no_primary_key' => "The table has no primary key.",
 
     // Editor modal
     'editor_title' => "Edit row",
