@@ -20,6 +20,14 @@
     'modal_warn_src' => "Source of warning: ",
     'modal_warn_title' => "Warning.",
 
+    'modal_query_title' => "Run Query",
+    'modal_query_info' => "Runs a query on the currently authenticated user.",
+    'modal_query_running' => "Running query...",
+    'modal_query_failed' => "Query failed",
+    'modal_query_success' => "Query OK",
+    'modal_query_field' => "Query",
+    'modal_query_btn' => "Run Query",
+
     // Navbar
     'navbar_current_db' => "Current DB",
     'navbar_drop_db' => "Drop Database",

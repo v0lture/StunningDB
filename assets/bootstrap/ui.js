@@ -33,3 +33,29 @@ function oh(response, src) {
 
   console.warn("[oh] Hey there hot shot, watch out! "+src+" responded "+response);
 }
+
+function updateNwTbl(db) {
+  $("#newtable").attr("onclick", "newTable('"+db+"');");
+  $("#bc-db").text(db);
+  $("#bc-db").show();
+}
+
+function newtable_openprompt(field, select) {
+  if($(select).val() == "DEFINED") {
+    openPrompt("#"+field, 'Set default value');
+  }
+}
+
+function openPrompt(field, title) {
+  $("#txtbtn").attr("onclick", "impromptuCallback('"+field+"')");
+  $("#txtprompt").openModal();
+  $("#txttitle").text(title);
+  $("#txtfield").val($(field).val());
+  $("#txtbtn").attr("onclick", "impromptuCallback('"+field+"')");
+}
+
+function impromptuCallback(field) {
+  $("#txtprompt").closeModal();
+  Materialize.toast('Value set.', 5000);
+  $(field).val($("#txtfield").val());
+}

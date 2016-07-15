@@ -123,3 +123,40 @@ function newDB() {
   inline_xhr.open("GET", "assets/page_rsc/databases.php?newdb="+db, true);
   inline_xhr.send();
 }
+
+function runQuery(usefield) {
+  if(usefield == false) {
+    $("#queryprompt").openModal();
+    $("#queryrunning").hide();
+    $("#queryresponse").hide();
+    $("#queryaction").show();
+    $("#queryfieldbox").show();
+  } else {
+    $("#queryaction").hide();
+    $("#queryrunning").show();
+    $("#queryfieldbox").hide();
+
+    var queryxhr = new XMLHttpRequest();
+    queryxhr.onreadystatechange = function(){
+      if(queryxhr.readyState == 4) {
+        $("#queryrunning").hide();
+        $("#queryresponse").show();
+        $("#queryresponsefailed").hide();
+        $("#queryresponsesuccess").hide();
+        $("#queryaction").show();
+        $("#queryfieldbox").show();
+        if(queryxhr.status != 200) {
+          $("#queryresponsefailed").show();
+          $("#queryresponsetext").html(queryxhr.responseText);
+        } else {
+          $("#queryresponsesuccess").show();
+          $("#queryresponsetext").html(queryxhr.responseText);
+        }
+      }
+    }
+
+    queryxhr.open("POST", "assets/page_rsc/query.php", true);
+    queryxhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    queryxhr.send("query="+$("#queryfield").val());
+  }
+}

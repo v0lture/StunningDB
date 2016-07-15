@@ -43,6 +43,61 @@
             require_once $lcwd."/assets/page_rsc/navbar.php";
         ?>
 
+        <div id="txtprompt" class="modal v-bg-grey white-text">
+          <div class="modal-content">
+            <h4 id="txttitle"><?= $lang["impromptu_title"]; ?></h4>
+
+            <div class="input-field">
+
+              <input type="text" id="txtfield">
+              <label for="txtfield"><?= $lang["impromptu_field"]; ?></label>
+
+            </div>
+
+          </div>
+          <div class="modal-footer v-bg-grey">
+            <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat v-text-light-purple"><?= $lang["btn_close"]; ?></a>
+            <a href="#!" id="txtbtn" onclick="impromptuCallback()" class="modal-action modal-close waves-effect waves-light btn-flat v-text-light-purple"><?= $lang["btn_submit"]; ?></a>
+
+          </div>
+        </div>
+
+        <div id="queryprompt" class="modal v-bg-grey white-text">
+
+          <div class="modal-content">
+            <h4><?= $lang["modal_query_title"]; ?></h4>
+            <p><?= $lang["modal_query_info"]; ?></p>
+
+            <div class="center-align" id="queryrunning">
+              <div class="progress grey darken-2">
+                <div class="indeterminate v-bg-blue"></div>
+              </div>
+              <h5 class="v-text-blue"><?= $lang["modal_query_running"]; ?></h5>
+            </div>
+
+            <div class="center-align" id="queryresponse">
+              <h5 class="v-text-light-purple" id="queryresponsefailed"><?= $lang["modal_query_failed"]; ?></h5>
+
+              <h5 class="v-text-blue" id="queryresponsesuccess"><?= $lang["modal_query_success"]; ?></h5>
+
+              <p id="queryresponsetext">waiting</p>
+            </div>
+
+            <div class="input-field" id="queryfieldbox">
+
+              <input type="text" id="queryfield">
+              <label for="queryfield"><?= $lang["modal_query_field"]; ?></label>
+
+            </div>
+
+          </div>
+
+          <div class="modal-footer v-bg-grey" id="queryaction">
+            <a href="javascript:runQuery(true)" class="waves-effect waves-light btn-flat v-text-blue"><?= $lang["modal_query_btn"]; ?></a>
+          </div>
+
+        </div>
+
         <div id="errormodal" class="modal v-bg-grey white-text">
           <div class="modal-content">
             <h4><?= $lang["modal_error_title"]; ?></h4>
@@ -140,13 +195,19 @@
           <ul>
 
             <li>
+              <a href="javascript:runQuery(false)" class="btn-floating black tooltipped" data-position="left" data-delay="50" data-tooltip="Run Query...">
+                <i class="material-icons">code</i>
+              </a>
+            </li>
+
+            <li>
               <a href="javascript:$('#newdb').openModal();" class="btn-floating v-bg-dark-purple tooltipped" data-position="left" data-delay="50" data-tooltip="New Database">
                 <i class="material-icons">dns</i>
               </a>
             </li>
 
             <li>
-              <a class="btn-floating v-bg-dark-purple tooltipped" data-position="left" data-delay="50" data-tooltip="New Table">
+              <a class="btn-floating v-bg-dark-purple tooltipped" onclick="newTable(<?= $new; ?>)" id="newtable" data-position="left" data-delay="50" data-tooltip="New Table">
                 <i class="material-icons">border_all</i>
               </a>
             </li>
