@@ -1,6 +1,15 @@
 # v0ltureDB
 A web app for managing MySQL databases without a desktop application by v0lture Programming.
 
+# 0.0.1.6 Changelog
+:bulb: Added settings menu that replaces the old version broken by the UI changes
+
+:x: Removed sudo_mode flag
+
+:wrench: Changed the default value of limit_col_count to false, set settings_gui to true
+
+:boom: Fixed a bug where direct settings database and table caused the settings menu not to load.
+
 # 0.0.1.5 Changelog
 :bulb: Redesigned the entire UI with Material Design in mind
 
