@@ -35,8 +35,14 @@
       $rownum = 0;
 
       if($dbl == $lang["config_db_name"]) {
-        include "../../settings.php";
-        die();
+        if(configItem('settings_gui') == "true") {
+          include "settings.php";
+          include "../../settings.php";
+          die();
+        } elseif(configItem('settings_gui') == "Unknown key") {
+          resetConfig();
+          die('<h5 class="center-align white-text">Initializing settings...</h5>');
+        }
       }
 
       if($data == "MySQL error") {

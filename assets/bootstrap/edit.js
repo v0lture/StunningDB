@@ -58,20 +58,15 @@ function loadInsert(db, tbl){
 
 function inlineChange(db, tbl, key, col, valid, keyvalue, custom = false) {
 
-  $("#error").show();
-  $("#error > h4").text("Changes are synchorizing...");
-  $("#error > p").html("The changes you made are currently being submitted to the database.<br />"+key+", "+col+", "+valid);
   tableInit();
 
   if(key == "ERROR_KEY_IS_NOT_SET"){
-    $("#error").show();
-    $("#error > h4").text("Local changes could not be saved.");
-    $("#error > p").html("A primary key is missing from the table thus changes could not be saved.<br /><small>Error occurred locally and no database contact occurred.</small>");
+
+    ohno('Table has no primary key therefore you cannot edit the rows.', 'JS inlineChange()');
 
   } else if(key == "" || col == "" || valid == "") {
-    $("#error").show();
-    $("#error > h4").text("Function error");
-    $("#error > p").html("Variables supplied with the function are blank which makes the required actions by the function impossible.<br /><small>Error occurred locally and no database contact occurred.</small>");
+
+    ohno('Function is missing required variables. Check the function variables and try again.', 'JS -> inlineChange()');
 
   } else {
 
@@ -82,10 +77,6 @@ function inlineChange(db, tbl, key, col, valid, keyvalue, custom = false) {
         $("#db-loading").hide();
         if(inline_xhr.status != 200) {
           ohno(inline_xhr.responseText, "JS 'inlineChange()' -> PHP 'PAGE_RSC/inline.php'");
-        } else {
-          $("#error").show();
-          $("#error > h4").text("Refresh to show recent changes.");
-          $("#error > p").html("You have made changes from the inline edit prompt and those changes are currently not reflected.");
         }
       }
     }
@@ -97,6 +88,16 @@ function inlineChange(db, tbl, key, col, valid, keyvalue, custom = false) {
     inline_xhr.open("GET", "assets/page_rsc/inline.php?k="+key+"&kv="+keyvalue+"&t="+tbl+"&d="+db+"&v="+field+"&c="+col, true);
     inline_xhr.send();
 
+  }
+}
+
+function updateConfig(db, tbl, id, chck) {
+  if($("#"+chck).prop('checked')) {
+    Materialize.toast("Enabling...", 2500);
+    inlineChange(db, tbl, "id", "val", "null", id, "true");
+  } else {
+    Materialize.toast('Disabling...', 2500);
+    inlineChange(db, tbl, "id", "val", "null", id, "false");
   }
 }
 
@@ -158,5 +159,27 @@ function runQuery(usefield) {
     queryxhr.open("POST", "assets/page_rsc/query.php", true);
     queryxhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     queryxhr.send("query="+$("#queryfield").val());
+  }
+}
+
+function dropDB(database) {
+  if(confirm('Are you sure you want to drop database '+database+'?')) {
+
+    var queryxhr = new XMLHttpRequest();
+    queryxhr.onreadystatechange = function(){
+      if(queryxhr.readyState == 4) {
+
+        if(queryxhr.status != 200) {
+          ohno(queryxhr.responseText, 'JS dropDB("'+database+'") -> PHP page_rsc/query.php');
+        } else {
+          Materialize.toast('Database '+database+' was dropped.', 5000);
+        }
+      }
+    }
+
+    queryxhr.open("POST", "assets/page_rsc/query.php", true);
+    queryxhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    queryxhr.send("query=DROP DATABASE `"+database+"`");
+
   }
 }

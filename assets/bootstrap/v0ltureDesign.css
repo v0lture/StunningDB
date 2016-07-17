@@ -147,3 +147,11 @@ table[data-sortable].sortable-theme-bootstrap th[data-sorted="true"] {
 .pagination li {
   margin-top: -6px;
 }
+
+.switch label input[type=checkbox]:checked+.lever:after {
+  background-color: #9233AF;
+}
+
+.switch label input[type=checkbox]:checked+.lever {
+  background-color: #C630D1;
+}

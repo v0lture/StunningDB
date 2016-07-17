@@ -6,9 +6,9 @@
     if($_GET["action"] == "rst") {
       $rst = resetConfig();
       if($rst == "Reset") {
-        header("Location: ../../settings.php");
+        header("Location: ../../index.php?db=".$lang["config_db_name"]."&tbl=".$lang["config_table_name"]."");
       } else {
-        header("Location: ../../settings.php?msg=".$rst);
+        header("Location: ../../index.php?db=".$lang["config_db_name"]."&tbl=".$lang["config_table_name"]."&msg=".$rst);
       }
     }
 
