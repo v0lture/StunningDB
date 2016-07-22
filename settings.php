@@ -66,6 +66,7 @@
 
     <div class="card-action">
       <a href="assets/page_rsc/config.php?action=rst" class="v-text-blue"><?= $lang["btn_rst"]; ?></a>
+      <a href="assets/page_rsc/config.php?action=update" class="v-text-blue"><?= $lang["config_gui_update"]; ?></a>
     </div>
   </div>
 

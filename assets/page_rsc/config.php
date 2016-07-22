@@ -10,6 +10,13 @@
       } else {
         header("Location: ../../index.php?db=".$lang["config_db_name"]."&tbl=".$lang["config_table_name"]."&msg=".$rst);
       }
+    } elseif($_GET["action"] == "update") {
+      $rst = updateConfig();
+      if($rst == "Updated") {
+        header("Location: ../../index.php?db=".$lang["config_db_name"]."&tbl=".$lang["config_table_name"]."");
+      } else {
+        header("Location: ../../index.php?db=".$lang["config_db_name"]."&tbl=".$lang["config_table_name"]."&msg=".$rst);
+      }
     }
 
   } else {

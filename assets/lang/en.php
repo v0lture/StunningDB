@@ -107,6 +107,8 @@
     'config_disable_gui' => 'Disable',
     'config_gui_title' => 'Configuration GUI',
 
+    'config_gui_update' => 'Update Configuration',
+
     // v0ltureDB
     'app_system_hidden_title' => "Cannot load tables due to configuration.",
     'app_system_hidden_msg' => "The flag <code>show_system_tables</code> is currently disabled which disallows this database to be loaded.",

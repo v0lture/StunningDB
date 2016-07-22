@@ -6,6 +6,7 @@ function tableInit() {
   });
   $('.tooltipped').tooltip({delay: 50});
   Materialize.updateTextFields();
+  $('select').material_select();
 }
 
 $("[data-toggle='popover']").on('show.bs.popover', function () {

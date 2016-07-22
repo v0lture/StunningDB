@@ -1,5 +1,7 @@
 <?php
 
+  require_once "load.php";
+
   if(isset($_POST["query"])) {
 
     require_once "load.php";

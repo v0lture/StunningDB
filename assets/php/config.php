@@ -1,5 +1,16 @@
 <?php
 
+  function getKeys() {
+    global $keys;
+    global $defaults;
+    $values = "";
+    foreach($keys as &$key) {
+      $values .= "(NULL, '".$key."', '".$defaults[$key]."'), ";
+    }
+    $values = substr($values, 0, -2);
+    return $values;
+  }
+
   function configEnabled() {
     // Is the config enabled and prepared?
     global $db;
@@ -44,7 +55,7 @@
 
       if($res = $db->query('TRUNCATE `'.$lang["config_db_name"].'`.`'.$lang["config_table_name"].'`')) {
 
-        if($res = $db->query("INSERT IGNORE INTO `".$lang["config_db_name"]."`.`".$lang["config_table_name"]."` (`id`, `key`, `val`) VALUES (NULL, 'limit_col_count', 'false'), (NULL, 'settings_gui', 'true'), (NULL, 'show_system_tables', 'true')")) {
+        if($res = $db->query("INSERT IGNORE INTO `".$lang["config_db_name"]."`.`".$lang["config_table_name"]."` (`id`, `key`, `val`) VALUES ".getKeys())) {
           return "Reset";
         } else {
           return "Cannot insert rows. Error: ".$db->error;
@@ -56,6 +67,21 @@
 
     } else {
       return "Config never been initialized.";
+    }
+  }
+
+  function updateConfig() {
+    global $db;
+    global $lang;
+
+    if(configEnabled() == true) {
+      if($res = $db->query("INSERT IGNORE INTO `".$lang["config_db_name"]."`.`".$lang["config_table_name"]."` (`id`, `key`, `val`) VALUES ".getKeys())) {
+        return "Updated";
+      } else {
+        return "Cannot insert rows. Error: ".$db->error;
+      }
+    } else {
+      return "Config never been initialized";
     }
   }
 

@@ -23,6 +23,11 @@ Afterwards, as long as the user has the `SELECT` privilege the configuration wil
 ## Changelogs
 Changelogs are labeled as release.beta.alpha.nightly.
 
+### 0.0.1.7
+:wrench: Improved ways of adding new flags to be a bit easier
+
+:bulb: Added Update Configuration option which will update your config to support any new flags without wiping your old changes
+
 ### 0.0.1.6
 :bulb: Added settings menu that replaces the old version broken by the UI changes
 
