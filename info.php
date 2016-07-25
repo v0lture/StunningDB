@@ -24,25 +24,7 @@
 
     <body onload="tableInit()">
 
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.php">v0ltureDB <small>INFO</small></a>
-          </div>
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="https://github.com/v0lture/v0ltureDB">GitHub</a></li>
-              <li><a href="v0lture.com/docs/v0ltureDB/">Docs</a></li>
-            </ul>
-          </div>
-      </div>
-    </nav>
+      <?php require_once "assets/page_rsc/authlessnav.php"; ?>
 
     <div class="container">
 
@@ -50,63 +32,35 @@
 
         <div class="col-md-6 col-md-offset-3" style="padding-top: 40px;">
 
-          <center><h4>v0ltureDB Information</h4></center>
+          <div class="card v0lture-norm-card">
+            <div class="card-content">
+              <span class="card-title">PHP compatibility</span>
 
-            <ul class="list-group">
+              <p>v0ltureDB needs at least PHP version 5.5 to ensure support.</p>
 
-                <li class="list-group-item">
-                    <b>PHP Version</b> <span class="label v-bg-blue"><?php echo phpversion(); ?></span>
-                    <?php
-                        if(version_compare(phpversion(), "5.0", "<")) {
-                            echo "<br />Your current PHP version is too old to use v0ltureDB. You must use at least <span class='label label-info'>PHP 5.0</span> in order to use v0ltureDB.";
-                        } else {
-                            echo "<br />Your PHP version is supported with v0ltureDB.";
-                        }
-                    ?>
-                </li>
+              <?php
+                  if(version_compare(phpversion(), "5.5", "<")) {
+                      echo "<p>Your PHP version is under the required <b>PHP 5.5</b></p>";
+                  } else {
+                      echo "<p>Your installation (<b>".phpversion()."</b>) looks good!</p>";
+                  }
+              ?>
 
-                <li class="list-group-item">
-                    <b>v0ltureDB Version</b> <span class="label v-bg-blue">v1</span>
-                </li>
+            </div>
+          </div>
 
-                <li class="list-group-item">
-                  <b>Configuration Status</b><br />
-                  <?php
-                    if(configEnabled() == true) {
-                      echo "Configuration is <b>enabled</b>.";
-                    } else {
-                      echo "Configuration is currently <b>disabled</b> as it is not setup.<br /><br />";
-                      echo "<a href='settings.php' class='btn btn-primary' data-container='body' data-toggle='tooltip' data-placement='bottom' title='' data-original-title='Requires sudo mode.'>Setup configuration</a>";
-                    }
-                  ?>
-                </li>
+          <div class="card v0lture-norm-card">
+            <div class="card-content">
+              <span class="card-title">v0ltureDB installation</span>
 
-                <li class="list-group-item">
-                  <b>Auth Status</b> <small>Status of the stored credentials against the MySQL server</small><br />
+              <p>Version installed <b>v0.0.1.8</b>.</p>
 
-                  <?php
-                    echo testConn();
-                  ?>
-                </li>
+            </div>
 
-                <li class="list-group-item">
-                  <b>Sudo Mode</b> <small>An high-level reauth service to prevent unwanted destructive actions</small><br />
-
-                  <?php
-
-                    $sudostate = configItem($lang["config_table_safety_name"], 'sudo_mode');
-                    if($sudostate == "true") {
-                      echo "Sudo mode is <b>active</b>";
-                    } elseif($sudostate == "Not enabled") {
-                      echo "Sudo mode is by default <b>active</b> currently as no configuration is available";
-                    } else {
-                      echo "Sudo mode is <b>inactive</b>, this is not recommended.";
-                    }
-
-                  ?>
-                </li>
-
-            </ul>
+            <div class="card-action">
+              <a href="index.php?db=<?= $lang["config_db_name"]; ?>&tbl=<?= $lang["config_tbl_name"]; ?>" class="v0lture-action">Check for updates</a>
+            </div>
+          </div>
 
         </div>
 

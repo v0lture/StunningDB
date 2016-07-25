@@ -27,7 +27,7 @@
 
         $cards .=
         "
-          <div class='card v-bg-grey'>
+          <div class='card v0lture-norm-card'>
             <div class='card-content white-text'>
               <span class='card-title'>".$resp["key"]."</span>
 
@@ -57,7 +57,7 @@
 
 <div style="padding: 40px;">
 
-  <div class='card v-bg-grey'>
+  <div class='card v0lture-norm-card'>
     <div class='card-content white-text'>
       <span class='card-title'><?= $lang["config_gui_title"]; ?></span>
       <p><?= $lang["config_gui_msg"]; ?></p>
@@ -65,8 +65,8 @@
     </div>
 
     <div class="card-action">
-      <a href="assets/page_rsc/config.php?action=rst" class="v-text-blue"><?= $lang["btn_rst"]; ?></a>
-      <a href="assets/page_rsc/config.php?action=update" class="v-text-blue"><?= $lang["config_gui_update"]; ?></a>
+      <a href="assets/page_rsc/config.php?action=rst" class="v0lture-action"><?= $lang["btn_rst"]; ?></a>
+      <a href="assets/page_rsc/config.php?action=update" class="v0lture-action"><?= $lang["config_gui_update"]; ?></a>
     </div>
   </div>
 

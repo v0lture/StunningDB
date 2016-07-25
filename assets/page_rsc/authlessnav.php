@@ -12,9 +12,9 @@
 
 <!-- Navigation -->
 
-<div class="navbar-fixed v-bg-light-purple">
+<div class="navbar-fixed">
   <nav>
-    <div class="nav-wrapper v-bg-light-purple">
+    <div class="nav-wrapper v0lture-navbar">
 
       <a href="index.php" class="brand-logo text-light" style="margin-left: 15px;"><?= $lang["navbar_app"]; ?></a>
 

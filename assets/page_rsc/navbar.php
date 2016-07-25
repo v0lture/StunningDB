@@ -32,9 +32,9 @@
   <li><a href="javascript:fetchTableData('<?= $lang["config_db_name"]; ?>', '<?= $lang["config_table_name"]; ?>');"><?= $lang["navbar_settings"]; ?></a></li>
 </ul>
 
-<div class="navbar-fixed v-bg-light-purple">
+<div class="navbar-fixed">
   <nav>
-    <div class="nav-wrapper v-bg-light-purple">
+    <div class="nav-wrapper v0lture-navbar">
 
       <a href="index.php" class="brand-logo text-light" style="margin-left: 15px;"><?= $lang["navbar_app"]; ?></a>
 

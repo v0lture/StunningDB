@@ -59,3 +59,14 @@ function impromptuCallback(field) {
   Materialize.toast('Value set.', 5000);
   $(field).val($("#txtfield").val());
 }
+
+function view(element) {
+  if($(element).val() == "users") {
+    $("#db-refresh").hide();
+    $("#users-new").show();
+  } else {
+    $("#db-refresh").show();
+    $("#users-new").hide();
+    fetchDatabases();
+  }
+}

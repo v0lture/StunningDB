@@ -1,0 +1,63 @@
+.v0lture-navbar {
+  background: rgb(144,58,150);
+}
+
+.v0lture-breadcrumbs {
+
+}
+
+.v0lture-dbs-header {
+  background: #757575;
+  color: white;
+}
+
+.v0lture-dbs-content {
+  background: #757575 !important;
+  color: #75C7FF !important;
+}
+
+.v0lture-btn-light {
+  /* light purple */
+  background: #C630D1 !important;
+}
+
+.v0lture-btn-dark {
+  /* dark purple */
+  background: #9233AF !important;
+}
+
+.v0lture-btn-accent {
+  /* blue */
+  background: #75C7FF !important;
+}
+
+.v0lture-error-card {
+  background: #75C7FF !important;
+  color: white;
+}
+
+.v0lture-norm-card {
+  background: #757575;
+  color: white;
+}
+
+.v0lture-cancel {
+  color: white !important;
+}
+
+.v0lture-action {
+  color: #75C7FF !important;
+}
+
+.v0lture-modal {
+  background: #757575;
+  color: white;
+}
+
+.v0lture-progress-bg {
+  background: #303030;
+}
+
+.v0lture-progress {
+  background: #75C7FF;
+}

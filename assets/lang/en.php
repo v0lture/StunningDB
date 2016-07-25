@@ -4,6 +4,7 @@
     "1" => "mysql",
     "2" => "performance_schema",
     "3" => "information_schema",
+    "4" => "sys",
   );
 
   $lang = Array(

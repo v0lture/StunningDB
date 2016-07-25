@@ -19,7 +19,7 @@
         $p = $_POST["auth_password"];
         $h = $_POST["auth_host"];
         if($u == "" || $p == "" || $h == "") {
-            $error = '<div class="card v-bg-blue white-text">
+            $error = '<div class="card v0lture-error-card">
                         <div class="card-content">
                           <span class="card-title">'.$lang["auth_blank"].'</span>
                           <p>'.$lang["auth_blank_ctx"].'</p>
@@ -29,7 +29,7 @@
             $db = connectDB($u, $p, $h);
 
             if($db != "true") {
-              $error = '<div class="card v-bg-blue white-text">
+              $error = '<div class="card v0lture-error-card">
                           <div class="card-content">
                             <span class="card-title">'.$lang["auth_invalid"].'</span>
                             <p>'.$lang["auth_invalid_ctx"].'<br /><small>'.$db.'</small></p>
@@ -51,7 +51,7 @@
         if(testConn() != "Success") {
             header("Location: auth.php?confirm=reauth");
         } else if($u == "" || $p == "") {
-          $error = '<div class="card v-bg-blue white-text">
+          $error = '<div class="card v0lture-error-card">
                       <div class="card-content">
                         <span class="card-title">'.$lang["auth_blank"].'</span>
                         <p>'.$lang["auth_blank_ctx"].'</p>
@@ -60,7 +60,7 @@
         } else {
             $switch = switchUser($u, $p);
             if($switch != "success") {
-              $error = '<div class="card v-bg-blue white-text">
+              $error = '<div class="card v0lture-error-card">
                           <div class="card-content">
                             <span class="card-title">'.$lang["auth_invalid"].'</span>
                             <p>'.$lang["auth_invalid_ctx"].'</p>
@@ -102,7 +102,7 @@
                     <?php echo $error; ?>
 
                     <?php if($confirm == "login" || $confirm == "reauth"): ?>
-                    <div class="card v-bg-grey white-text">
+                    <div class="card v0lture-norm-card">
 
                       <div class="card-content">
 
@@ -134,7 +134,7 @@
 
                           </div>
 
-                          <button type="submit" class="btn v-bg-blue waves-effect waves-light">Log In</button>
+                          <button type="submit" class="btn v0lture-btn-dark waves-effect waves-light">Log In</button>
 
                         </form>
 
@@ -143,7 +143,7 @@
                     </div>
 
                     <?php elseif($confirm == "switch_user"): ?>
-                      <div class="card v-bg-grey white-text">
+                      <div class="card v0lture-norm-card">
 
                         <div class="card-content">
 
@@ -167,8 +167,8 @@
 
                             </div>
 
-                            <a href="index.php" class="btn btn-flat waves-effect waves-light white-text">Cancel</a>
-                            <button type="submit" class="btn v-bg-blue waves-effect waves-light">Switch</button>
+                            <a href="index.php" class="btn btn-flat waves-effect waves-light v0lture-cancel">Cancel</a>
+                            <button type="submit" class="btn v0lture-btn-accent waves-effect waves-light">Switch</button>
 
                           </form>
 
@@ -176,7 +176,7 @@
 
                       </div>
                     <?php elseif($confirm == "logout"): ?>
-                      <div class="card v-bg-grey white-text">
+                      <div class="card v0lture-norm-card">
 
                         <div class="card-content">
 
@@ -186,8 +186,8 @@
 
                             <div class="input-field">
 
-                                <a href="index.php" class="btn waves-effect waves-light v-bg-blue">Cancel</a>
-                                <button name="confirm_logout" value="true" type="submit" class="btn waves-effect waves-light v-bg-blue">Log Out</button>
+                                <a href="index.php" class="btn waves-effect waves-light v0lture-btn-dark">Cancel</a>
+                                <button name="confirm_logout" value="true" type="submit" class="btn waves-effect waves-light v0lture-btn-light">Log Out</button>
 
                             </div>
 

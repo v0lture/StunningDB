@@ -23,6 +23,15 @@ Afterwards, as long as the user has the `SELECT` privilege the configuration wil
 ## Changelogs
 Changelogs are labeled as release.beta.alpha.nightly.
 
+### 0.0.1.8
+:wrench: Fixed the information page being broken since v0.0.1.5
+
+:one: Unified all the css elements into one singular css file for easier theming
+
+:bulb: Added another system database under the `show_system_tables` flag
+
+:wrench: Some visual changes in the readme
+
 ### 0.0.1.7
 :wrench: Improved ways of adding new flags to be a bit easier
 
@@ -33,7 +42,7 @@ Changelogs are labeled as release.beta.alpha.nightly.
 
 :x: Removed sudo_mode flag
 
-:wrench: Changed the default value of limit_col_count to false, set settings_gui to true
+:wrench: Changed the default value of `limit_col_count` to `false`, set `settings_gui` to `true`
 
 :boom: Fixed a bug where direct settings database and table caused the settings menu not to load.
 
@@ -42,7 +51,7 @@ Changelogs are labeled as release.beta.alpha.nightly.
 ### 0.0.1.5
 :bulb: Redesigned the entire UI with Material Design in mind
 
-:boom: Added another config flag 'show_system_tables' which toggles visibility of the system related tables like *MySQL*, *performance_schema*, *information_schema*.
+:boom: Added another config flag `show_system_tables` which toggles visibility of the system related tables like **MySQL**, **performance_schema**, **information_schema**, and **sys**.
 
 :one: Simplified majority of view/edit functions into one page to minimize amount of page switching
 
