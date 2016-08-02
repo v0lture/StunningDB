@@ -36,7 +36,8 @@
   <nav>
     <div class="nav-wrapper v0lture-navbar">
 
-      <a href="index.php" class="brand-logo text-light" style="margin-left: 15px;"><?= $lang["navbar_app"]; ?></a>
+      <!-- <a href="index.php" class="brand-logo text-light" style="margin-left: 15px;"><?= $lang["navbar_app"]; ?></a> -->
+      <a href="index.php" class="brand-logo text-light"><img src="assets/bootstrap/img/logo.png" style="height: 54px; width: auto; padding-left: 15px; padding-top: 6px;"></img></a>
 
       <ul class="right hide-on-med-and-down">
 

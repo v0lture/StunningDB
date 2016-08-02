@@ -50,7 +50,7 @@
 }
 
 .v0lture-modal {
-  background: #757575;
+  background: #757575 !important;
   color: white;
 }
 
@@ -60,4 +60,19 @@
 
 .v0lture-progress {
   background: #75C7FF;
+}
+
+.v0lture-update-notification {
+  background: #757575;
+  color: white;
+  padding: 5px 20px 5px 20px;
+  margin-bottom: 0px;
+}
+
+.v0lture-update-notification > a {
+  margin-top: -55px;
+}
+
+.v0lture-update-notification > p {
+  margin-top: -10px;
 }

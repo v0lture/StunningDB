@@ -53,7 +53,7 @@
             <div class="card-content">
               <span class="card-title">v0ltureDB installation</span>
 
-              <p>Version installed <b>v0.0.1.8</b>.</p>
+              <p>Version installed <b><?= $version; ?></b>.</p>
 
             </div>
 

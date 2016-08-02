@@ -20,8 +20,26 @@ In order to use the configuration the user currently logged in as must have the 
 
 Afterwards, as long as the user has the `SELECT` privilege the configuration will be applied.
 
+## Updating
+As of `v0.0.1.9` there is now version checking. This does **not** install updates for you.
+
+To install the latest update, redownload the master branch and extract again in the current installation folder.
+
+It is recommended that you backup your current installation in case an update breaks a feature or is not supported by your server.
+
 ## Changelogs
 Changelogs are labeled as release.beta.alpha.nightly.
+
+### 0.0.1.9
+:bulb: Added 3 new flags `login_update_check` for checking updates at login, `updates_config` which updates the configuration whenever a new update has been installed, `updates_allowed` for disabling/enabling support for updating, and `global_update_notice` to toggle the visibility of the notice of any future updates.
+
+:bulb: Added updates view in settings (requires `settings_gui` to be enabled)
+
+:bulb: Added v0ltureDB's new logo in the navigation bar
+
+:wrench: Some minor text and styling changes
+
+**this version update checking is supported but not update installation**
 
 ### 0.0.1.8
 :wrench: Fixed the information page being broken since v0.0.1.5

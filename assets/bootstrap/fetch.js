@@ -7,12 +7,8 @@ function tableInit() {
   $('.tooltipped').tooltip({delay: 50});
   Materialize.updateTextFields();
   $('select').material_select();
+  $('ul.tabs').tabs();
 }
-
-$("[data-toggle='popover']").on('show.bs.popover', function () {
-  $('[data-toggle="tooltip"]').tooltip();
-  console.info("Popover shown.");
-});
 
 function fetchDatabases(hideerr = false) {
     var db_xhr = new XMLHttpRequest();

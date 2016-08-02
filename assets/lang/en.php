@@ -1,5 +1,7 @@
 <?php
 
+  $version = "0.0.1.9";
+
   $systemdbs = Array(
     "1" => "mysql",
     "2" => "performance_schema",
@@ -102,6 +104,9 @@
     'config_db_name'            => "v0lturedb_config",
     'config_table_name'         => "config",
 
+    'config_toggle_true' => "On",
+    'config_toggle_false' => "Off",
+
     'config_gui_msg' => "You can disable this view by disabling the <code>settings_gui</code> flag and refreshing the view.",
 
     'config_enable_gui' => 'Enable Settings GUI',
@@ -117,6 +122,17 @@
     // Create tables
     'createtbl_db_info' => "Inserting table into ",
     'createtbl_db_name' => "Database name: ",
+
+    // updates
+    'updates_available' => "A new update is available",
+    'updates_available_hide' => "Click Update to view information about the update",
+    'updates_available_sub' => "Download via GitHub",
+    'updates_none' => "Looking good.",
+    'updates_none_sub' => "Your version is up to date.",
+    'updates_disabled' => "Updates are disabled",
+    'updates_disabled_sub' => "Enable the flag <code>updates_allowed</code> or update your configuration to enable update support.",
+    'updates_invalid' => "Configuration is invalid",
+    'updates_invalid_sub' => "Update your configuration or reset it and try again.",
   );
 
 ?>
