@@ -13,6 +13,10 @@
       die("<script>ohno(\"".prepConfig()."\",'PHP \'php/config.php\' ')</script>");
     } else {
       $data = fetchTableData($lang["config_db_name"], $lang["config_table_name"]);
+      $serverversion = file_get_contents("http://testing.v0lture.com/v0ltureDB/version.json");
+      $serverversion = json_decode($serverversion, true);
+      $serverversion = $serverversion["version"];
+      $version = trim($version);
 
       if($data->num_rows == 0) {
         echo resetConfig();
@@ -66,17 +70,23 @@
   <div id="updates" class="col s12">
 
     <?php if(configItem('updates_allowed') == "true"): ?>
-      <?php if(trim($version) == trim(file_get_contents("http://testing.v0lture.com/v0ltureDB/version.txt"))): ?>
+      <?php if(trim($version) == $serverversion): ?>
         <div class="center-align" style="opacity: 0.75; padding-top: 50px;">
           <h3><i class="material-icons v0lture-cancel" style="font-size: 80px;">cloud_done</i></h3>
           <h5 class="v0lture-cancel" style="margin-top: -20px;"><?= $lang["updates_none"]; ?></h5>
           <p class="v0lture-action" style="margin-top: -10px;"><?= $lang["updates_none_sub"]; ?> (v<?= $version; ?>)</p>
         </div>
+      <?php elseif($serverversion == ""): ?>
+        <div class="center-align" style="opacity: 0.75; padding-top: 50px;">
+          <h3><i class="material-icons v0lture-cancel" style="font-size: 80px;">close</i></h3>
+          <h5 class="v0lture-cancel" style="margin-top: -20px;"><?= $lang["updates_unavailable"]; ?></h5>
+          <p class="v0lture-action" style="margin-top: -10px;"><?= $lang["updates_unavailable_sub"]; ?></p>
+        </div>
       <?php else: ?>
         <div class="center-align" style="opacity: 0.75; padding-top: 50px;">
           <h3><i class="material-icons v0lture-cancel" style="font-size: 80px;">cloud_download</i></h3>
           <h5 class="v0lture-cancel" style="margin-top: -20px;"><?= $lang["updates_available"]; ?></h5>
-          <p class="v0lture-action" style="margin-top: -10px;"><?= $lang["updates_available_sub"]; ?> (v<?= $version; ?> => v<?php echo trim(file_get_contents("http://testing.v0lture.com/v0ltureDB/version.txt")); ?>)</p>
+          <p class="v0lture-action" style="margin-top: -10px;"><?= $lang["updates_available_sub"]; ?> (v<?= $version; ?> => v<?= $serverversion; ?>)</p>
         </div>
       <?php endif; ?>
     <?php elseif(configItem('updates_allowed') == "false"): ?>

@@ -30,6 +30,11 @@ It is recommended that you backup your current installation in case an update br
 ## Changelogs
 Changelogs are labeled as release.beta.alpha.nightly.
 
+### 0.0.1.10
+:wrench: Fixes bug with `v0.0.1.9` where if v0ltureDB was using the latest version it would still show an update prompt.
+
+:bulb: Added view for when the version checking service is unavailable.
+
 ### 0.0.1.9
 :bulb: Added 3 new flags `login_update_check` for checking updates at login, `updates_config` which updates the configuration whenever a new update has been installed, `updates_allowed` for disabling/enabling support for updating, and `global_update_notice` to toggle the visibility of the notice of any future updates.
 

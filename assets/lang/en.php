@@ -127,10 +127,16 @@
     'updates_available' => "A new update is available",
     'updates_available_hide' => "Click Update to view information about the update",
     'updates_available_sub' => "Download via GitHub",
+
+    'updates_unavailable' => "Couldn't check for updates",
+    'updates_unavailable_sub' => "The version checking service may be offline, please try again later.",
+
     'updates_none' => "Looking good.",
     'updates_none_sub' => "Your version is up to date.",
+
     'updates_disabled' => "Updates are disabled",
     'updates_disabled_sub' => "Enable the flag <code>updates_allowed</code> or update your configuration to enable update support.",
+
     'updates_invalid' => "Configuration is invalid",
     'updates_invalid_sub' => "Update your configuration or reset it and try again.",
   );
