@@ -127,7 +127,7 @@
             </p>
 
           </div>
-          <div class="modal-footer v-bg-grey">
+          <div class="modal-footer v0lture-modal">
             <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat v0lture-action"><?= $lang["modal_error_dismiss"]; ?></a>
           </div>
         </div>

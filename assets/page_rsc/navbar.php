@@ -20,11 +20,6 @@
 <!-- Navigation -->
 
 <ul id="userdrpdown" class="dropdown-content">
-  <li style="padding: 15px;">
-    <b>User: </b><?= $u; ?><br />
-    <b>Host: </b><?= $h; ?><br />
-  </li>
-
   <li><a href="auth.php?confirm=switch_user"><?= $lang["navbar_switch_user"]; ?></a></li>
 
   <li><a href="auth.php?confirm=logout"><?= $lang["navbar_logout"]; ?></a></li>
@@ -41,8 +36,7 @@
 
       <ul class="right hide-on-med-and-down">
 
-        <li><a href="#!" id="nav_db"><?= $currentdb; ?> </a></li>
-        <li><a class="dropdown-button" href="#!" data-activates="userdrpdown"><?= $lang["navbar_title_user"]; ?> <i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><a class="dropdown-button" href="#!" data-activates="userdrpdown"><?= $u; ?>@<?= $h; ?><i class="material-icons right">arrow_drop_down</i></a></li>
 
       </ul>
 

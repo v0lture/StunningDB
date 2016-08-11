@@ -30,6 +30,13 @@ It is recommended that you backup your current installation in case an update br
 ## Changelogs
 Changelogs are labeled as release.beta.alpha.nightly.
 
+### 0.0.1.11
+:boom: Fixed scrolling issue in user dropdown from long usernames/hostnames
+
+:boom: Fixed footer colors in modals not being correct
+
+:boom: Removed unused '...' in navbar as it served no purpose
+
 ### 0.0.1.10
 :wrench: Fixes bug with `v0.0.1.9` where if v0ltureDB was using the latest version it would still show an update prompt.
 
