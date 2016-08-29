@@ -1,8 +1,12 @@
 # v0ltureDB
-A web app for managing MySQL databases without a desktop application by v0lture Programming.
+A web based application for managing MySQL databases without a desktop client by v0lture.
 
-# this software is not complete and is missing major features currently!
+# This software is not complete and is currently missing major features
 It is not recommended to use unless you want to give feedback this early but if you want to actively use the software please wait until an official release.
+
+If you have any comments, questions or ideas, send an email to support@v0lture.com
+
+We will not be held liable for any loss or damage to data or your servers or anything else that happens in using v0ltureDB. Your use of v0ltureDB is at your own risk.
 
 ## Installation
 
