@@ -30,6 +30,13 @@ It is recommended that you backup your current installation in case an update br
 ## Changelogs
 Changelogs are labeled as release.beta.alpha.nightly.
 
+### 0.0.1.12
+:bulb: Added idle timeout flag, redirects back to the login page after 10 minutes of inactivity.
+
+:boom: Changed warning modal to a message that appears above the breadcrumb.
+
+:x: Removed ability to hide table view
+
 ### 0.0.1.11
 :boom: Fixed scrolling issue in user dropdown from long usernames/hostnames
 

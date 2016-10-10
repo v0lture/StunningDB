@@ -63,7 +63,6 @@ function loadDb(dbname, compact) {
 
 function fetchTableData(db, tbl, bypass = "false") {
     var db_xhr = new XMLHttpRequest();
-    dbOnly('hide');
 
     // Destory old popovers and tooltips incase any were left open at load
     console.info("[v0ltureDB] Trying to load table "+tbl+" at database "+db+"...");

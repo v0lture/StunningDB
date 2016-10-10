@@ -1,6 +1,6 @@
 <?php
 
-  $version = "0.0.1.11";
+  $version = "0.0.1.12";
 
   $systemdbs = Array(
     "1" => "mysql",

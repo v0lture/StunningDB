@@ -10,6 +10,7 @@
     'updates_allowed' => "Allows for updates to be checked and installed.",
     'updates_config' => "Allows for the configuration to be updated whenever an update has been installed.",
     'global_update_notice' => "Allows whether or not the notice of a new update is shown at the top of pages.",
+    'enable_idle_timeout' => "Enable timeout after 10 minutes of inactivity in the application."
   );
 
   $keys = Array(
@@ -21,6 +22,7 @@
     '6' => "updates_allowed",
     '7' => "updates_config",
     '8' => "global_update_notice",
+    '9' => "enable_idle_timeout",
   );
 
   $defaults = Array(
@@ -32,6 +34,7 @@
     'updates_allowed' => "true",
     'updates_config' => "true",
     'global_update_notice' => "true",
+    'enable_idle_timeout' => "false",
   );
 
 ?>

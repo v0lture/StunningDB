@@ -155,3 +155,21 @@ table[data-sortable].sortable-theme-bootstrap th[data-sorted="true"] {
 .switch label input[type=checkbox]:checked+.lever {
   background-color: #C630D1;
 }
+
+.errorbar {
+  height: 64px;
+  background: #000;
+  color: #fff;
+  padding-left: 15px;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+}
+
+.errorbar > p {
+  margin-top: 8px;
+}
+
+.errorbar > p > span {
+  text-transform: uppercase;
+}
