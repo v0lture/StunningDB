@@ -53,7 +53,7 @@ table[data-sortable].sortable-theme-bootstrap th[data-sorted="true"][data-sorted
 }
 
 .table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>th, .table>caption+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>td, .table>thead:first-child>tr:first-child>td {
-  border-bottom-color: #75C7FF;
+  border-bottom-color: #9233AF;
   color: white;
 }
 
@@ -154,4 +154,22 @@ table[data-sortable].sortable-theme-bootstrap th[data-sorted="true"] {
 
 .switch label input[type=checkbox]:checked+.lever {
   background-color: #C630D1;
+}
+
+.errorbar {
+  height: 64px;
+  background: #000;
+  color: #fff;
+  padding-left: 15px;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+}
+
+.errorbar > p {
+  margin-top: 8px;
+}
+
+.errorbar > p > span {
+  text-transform: uppercase;
 }

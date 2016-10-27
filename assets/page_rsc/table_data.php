@@ -41,20 +41,14 @@
           die();
         } elseif(configItem('settings_gui') == "Unknown key") {
           resetConfig();
-          die('<h5 class="center-align white-text">Initializing settings...</h5>');
+          die("<script>oh('Configuration is being created, refresh to show changes.', 'Configuration creation needs a refresh')</script>");
         }
       }
 
       if($data == "MySQL error") {
-        die("Unable to fetch data from the table.");
+        die("<script>ohno('Cannot load table in this database', 'Failed to load table')</script>");
       } elseif($data->num_rows == 0) {
-        $error .=
-        '<div class="card v-bg-light-purple white-text" role="alert" style="margin-left: 25px; margin-right: 25px;">
-          <div class="card-content">
-            <span class="card-title">'.$lang["mysql_empty_result"].'</span>
-            <p>'.$lang["mysql_empty_result_ctx"].'</p>
-          </div>
-        </div>';
+        $error .= '<script>oh("'.$lang["mysql_empty_result"].'", "'.$lang["mysql_empty_result_ctx"].'")</script>';
       } else {
 
         // Fetch table primary key (if applicable)
@@ -73,8 +67,7 @@
           $inlinebtn = "class='btn v-bg-light-purple'";
         } else {
           // No primary keys
-          $error .=
-          '<script>oh("'.$lang["mysql_no_primary_key"].'", "PHP \'tabla_data.php\'")</script>';
+          $error .=  '<script>oh("'.$lang["mysql_no_primary_key"].'", "Table notice")</script>';
 
           $keyarray[1] = "";
           $inlinekey = "ERROR_KEY_IS_NOT_SET";

@@ -7,71 +7,34 @@
     require_once $cwd."/assets/lang/en.php";
     $error = "";
 
+    // select mode based off page variable
     if(isset($_GET["confirm"])) {
-        $confirm = $_GET["confirm"];
+      $confirm = $_GET["confirm"];
     } else {
-        $confirm = "login";
+      // otherwise, just login
+      $confirm = "login";
     }
 
     // Handle logging in
     if(isset($_POST["auth_username"]) && isset($_POST["auth_password"]) && isset($_POST["auth_host"])) {
-        $u = $_POST["auth_username"];
-        $p = $_POST["auth_password"];
-        $h = $_POST["auth_host"];
-        if($u == "" || $p == "" || $h == "") {
-            $error = '<div class="card v0lture-error-card">
-                        <div class="card-content">
-                          <span class="card-title">'.$lang["auth_blank"].'</span>
-                          <p>'.$lang["auth_blank_ctx"].'</p>
-                        </div>
-                      </div>';
+      $u = $_POST["auth_username"];
+      $p = $_POST["auth_password"];
+      $h = $_POST["auth_host"];
+
+
+      if($u == "" || $p == "" || $h == "") {
+        $error = "blank";
+      } else {
+        $db = connectDB($u, $p, $h);
+
+        if($db != "true") {
+          $error = "invalid";
         } else {
-            $db = connectDB($u, $p, $h);
-
-            if($db != "true") {
-              $error = '<div class="card v0lture-error-card">
-                          <div class="card-content">
-                            <span class="card-title">'.$lang["auth_invalid"].'</span>
-                            <p>'.$lang["auth_invalid_ctx"].'<br /><small>'.$db.'</small></p>
-                          </div>
-                        </div>';
-            } else {
-              header("Location: index.php");
-            }
-
+          header("Location: index.php");
         }
+      }
     }
 
-    // Handle switching users
-    if(isset($_POST["switch_username"]) && isset($_POST["switch_password"])) {
-
-        $u = $_POST["switch_username"];
-        $p = $_POST["switch_password"];
-
-        if(testConn() != "Success") {
-            header("Location: auth.php?confirm=reauth");
-        } else if($u == "" || $p == "") {
-          $error = '<div class="card v0lture-error-card">
-                      <div class="card-content">
-                        <span class="card-title">'.$lang["auth_blank"].'</span>
-                        <p>'.$lang["auth_blank_ctx"].'</p>
-                      </div>
-                    </div>';
-        } else {
-            $switch = switchUser($u, $p);
-            if($switch != "success") {
-              $error = '<div class="card v0lture-error-card">
-                          <div class="card-content">
-                            <span class="card-title">'.$lang["auth_invalid"].'</span>
-                            <p>'.$lang["auth_invalid_ctx"].'</p>
-                          </div>
-                        </div>';
-            } else {
-                header("Location: index.php");
-            }
-        }
-
-    }
     // Handle log out
     if(isset($_POST["confirm_logout"])) {
         logout();
@@ -84,124 +47,82 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
+  <head>
 
-        <?php require_once "assets/page_rsc/head.php"; ?>
+      <?php require_once "assets/page_rsc/head.php"; ?>
 
-    </head>
+  </head>
 
-    <body>
+  <body>
 
-        <?php require_once "assets/page_rsc/authlessnav.php"; ?>
+    <?php require_once "assets/page_rsc/authlessnav.php"; ?>
 
-        <div class="container">
-            <div class="row">
+    <?php if($error != ""): ?>
+      <?php
+        if($error == "invalid") {
+          $t = $lang["auth_invalid"];
+          $m = $lang["auth_invalid_ctx"];
+        } elseif($error == "blank") {
+          $t = $lang["auth_blank"];
+          $m = $lang["auth_blank_ctx"];
+        }
+      ?>
 
-                <div class="col-md-6 col-md-offset-3" style="padding-top: 40px;">
+      <div class="errorbar">
+        <p>
+          <span><i class="material-icons left">warning</i> <b><?= $t; ?></b></span><br />
+          <?= $m; ?>
+        </p>
+      </div>
+      <div style="height: 64px;"></div>
+    <?php endif; ?>
 
-                    <?php echo $error; ?>
+    <?php if($confirm == "reauth" && $error == ""): ?>
+      <div class="errorbar">
+        <p>
+          <span><i class="material-icons left">warning</i> <b><?= $lang["auth_reauth"]; ?></b></span><br />
+          <?= $lang["auth_reauth_ctx"]; ?>
+        </p>
+      </div>
+      <div style="height: 64px;"></div>
+    <?php endif; ?>
 
-                    <?php if($confirm == "login" || $confirm == "reauth"): ?>
-                    <div class="card v0lture-norm-card">
+    <div class="container">
 
-                      <div class="card-content">
+      <div class="card white-text grey darken-2">
 
-                        <span class="card-title">Authenticate</span>
+        <div class="card-content">
 
-                        <form class="form-horizontal" method="POST" action="auth.php">
+          <span class="card-title">Log in to server</span>
+          <p>Enter the credentials to access the MySQL server</p>
 
-                          <div class="input-field">
+          <br />
 
-                            <input id="auth_username" type="text" name="auth_username">
-
-                            <label for="auth_username"><?= $lang["auth_username"]; ?></label>
-
-                          </div>
-
-                          <div class="input-field">
-
-                            <input id="auth_password" type="password" name="auth_password">
-
-                            <label for="auth_password"><?= $lang["auth_password"]; ?></label>
-
-                          </div>
-
-                          <div class="input-field">
-
-                            <input id="auth_host" type="text" name="auth_host">
-
-                            <label for="auth_host"><?= $lang["auth_host"]; ?></label>
-
-                          </div>
-
-                          <button type="submit" class="btn v0lture-btn-dark waves-effect waves-light">Log In</button>
-
-                        </form>
-
-                      </div>
-
-                    </div>
-
-                    <?php elseif($confirm == "switch_user"): ?>
-                      <div class="card v0lture-norm-card">
-
-                        <div class="card-content">
-
-                          <span class="card-title">Switch User</span>
-
-                          <form class="form-horizontal" method="POST" action="auth.php?confirm=switch_user">
-
-                            <div class="input-field">
-
-                              <input id="switch_username" type="text" name="switch_username">
-
-                              <label for="switch_username"><?= $lang["auth_username"]; ?></label>
-
-                            </div>
-
-                            <div class="input-field">
-
-                              <input id="switch_password" type="password" name="switch_password">
-
-                              <label for="switch_password"><?= $lang["auth_password"]; ?></label>
-
-                            </div>
-
-                            <a href="index.php" class="btn btn-flat waves-effect waves-light v0lture-cancel">Cancel</a>
-                            <button type="submit" class="btn v0lture-btn-accent waves-effect waves-light">Switch</button>
-
-                          </form>
-
-                        </div>
-
-                      </div>
-                    <?php elseif($confirm == "logout"): ?>
-                      <div class="card v0lture-norm-card">
-
-                        <div class="card-content">
-
-                          <span class="card-title">Confirm Log Out</span>
-
-                          <form class="form-horizontal" method="POST" action="auth.php">
-
-                            <div class="input-field">
-
-                                <a href="index.php" class="btn waves-effect waves-light v0lture-btn-dark">Cancel</a>
-                                <button name="confirm_logout" value="true" type="submit" class="btn waves-effect waves-light v0lture-btn-light">Log Out</button>
-
-                            </div>
-
-                          </form>
-
-                        </div>
-
-                      </div>
-                    <?php endif; ?>
-
-                </div>
-
+          <form method="POST" action="auth.php" class="row">
+            <div class="input-field col s6">
+              <input type="text" id="auth_username" name="auth_username"></input>
+              <label for="auth_username"><?= $lang["auth_username"]; ?></label>
             </div>
+
+            <div class="input-field col s6">
+              <input type="password" id="auth_password" name="auth_password"></input>
+              <label for="auth_password"><?= $lang["auth_password"]; ?></label>
+            </div>
+
+            <div class="input-field col s12">
+              <input type="text" id="auth_host" name="auth_host"></input>
+              <label for="auth_host"><?= $lang["auth_host"]; ?></label>
+            </div>
+
+            <br />
+            <button type="submit" class="btn waves-effect waves-light white-text purple">Login</button>
+          </form>
         </div>
 
-    </body>
+      </div>
+
+    </div>
+
+
+  </body>
 </html>

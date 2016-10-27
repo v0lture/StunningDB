@@ -1,5 +1,4 @@
 <?php
-+
 
     // Working directory of first executing file
     $lcwd = dirname(__FILE__);
@@ -62,6 +61,8 @@
           </div>
         </div>
 
+
+        <!-- Run query prompt -->
         <div id="queryprompt" class="modal v0lture-modal">
 
           <div class="modal-content">
@@ -98,6 +99,7 @@
 
         </div>
 
+        <!-- Error modal -->
         <div id="errormodal" class="modal v0lture-modal">
           <div class="modal-content">
             <h4><?= $lang["modal_error_title"]; ?></h4>
@@ -115,6 +117,7 @@
           </div>
         </div>
 
+        <!-- Warning  modal -->
         <div id="warnmodal" class="modal v0lture-modal">
           <div class="modal-content">
             <h4><?= $lang["modal_warn_title"]; ?></h4>
@@ -132,6 +135,7 @@
           </div>
         </div>
 
+        <!-- new database prompt -->
         <div id="newdb" class="modal bottom-sheet v0lture-modal">
           <div class="modal-content">
             <h4><?= $lang["db_create"]; ?></h4>
@@ -156,9 +160,7 @@
               <h4><?= $lang["editor_title"]; ?></h4>
 
               <div id="editor-xhr">
-
-
-
+                <!-- To be filled based off an Ajax request -->
               </div>
 
             </div>
@@ -175,9 +177,7 @@
               <h4><?= $lang["editor_new_title"]; ?></h4>
 
               <div id="new-xhr">
-
-
-
+                <!-- To be filled based off an Ajax request -->
               </div>
 
             </div>
@@ -188,6 +188,7 @@
           </form>
         </div>
 
+        <!-- New.. fab -->
         <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
           <a class="btn-floating btn-large v0lture-btn-light tooltipped" data-position="left" data-delay="50" data-tooltip="New..." onclick="$('.fixed-action-btn').openFAB();">
             <i class="large material-icons">add</i>
@@ -221,7 +222,7 @@
         </div>
 
         <div class="row" id="fullview" style="height: calc(100vh - 64px);">
-
+          <!-- side bar -->
           <div class="col s3 grey darken-3 scrollbar" style="height: calc(100vh - 64px); padding-top: 25px; overflow: auto;" id="dbview">
 
             <div class="progress v0lture-progress-bg" id="db-loading" style="margin-top: -25px; margin-bottom: 25px; display:none;">
@@ -262,12 +263,17 @@
               <div class="indeterminate v0lture-progress"></div>
             </div>
 
+            <!-- error bar -->
+            <div class="errorbar" onclick="$('.errorbar').slideUp()" style="display: none;">
+              <p><span><b>General message</b></span><br />Context provided</p>
+            </div>
+
             <!-- control nav -->
             <nav style="margin-bottom: -5px;">
               <div class="nav-wrapper v0lture-btn-light">
                 <div class="col s12">
                   <a href="#!" class="breadcrumb"><?= $h; ?></a>
-                  <a href="javascript:dbOnly('show')" class="breadcrumb" <?= $cls; ?> id="bc-db"><?= $dbl; ?></a>
+                  <a href="#!" class="breadcrumb" <?= $cls; ?> id="bc-db"><?= $dbl; ?></a>
                   <a href="#!" class="breadcrumb" id="bc-tbl" <?= $cls; ?>><?= $tbl; ?></a>
                 </div>
               </div>
@@ -286,6 +292,10 @@
           </div>
 
         </div>
+
+        <?php if(configItem('enable_idle_timeout') == "true"): ?>
+          <script src="assets/bootstrap/idletimeout.js"></script>
+        <?php endif; ?>
 
         <script>
           <?php

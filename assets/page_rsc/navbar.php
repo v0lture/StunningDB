@@ -20,8 +20,6 @@
 <!-- Navigation -->
 
 <ul id="userdrpdown" class="dropdown-content">
-  <li><a href="auth.php?confirm=switch_user"><?= $lang["navbar_switch_user"]; ?></a></li>
-
   <li><a href="auth.php?confirm=logout"><?= $lang["navbar_logout"]; ?></a></li>
 
   <li><a href="javascript:fetchTableData('<?= $lang["config_db_name"]; ?>', '<?= $lang["config_table_name"]; ?>');"><?= $lang["navbar_settings"]; ?></a></li>
