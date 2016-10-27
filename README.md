@@ -30,6 +30,13 @@ It is recommended that you backup your current installation in case an update br
 ## Changelogs
 Changelogs are labeled as release.beta.alpha.nightly.
 
+### 0.0.1.13
+:wrench: Improved some warning messages
+
+:bulb: Redesigned and simplified login page
+
+:wrench: Made some blue elements purple
+
 ### 0.0.1.12
 :bulb: Added idle timeout flag, redirects back to the login page after 10 minutes of inactivity.
 

@@ -18,7 +18,7 @@
 
 .v0lture-btn-light {
   /* light purple */
-  background: #C630D1 !important;
+  background: #9233AF !important;
 }
 
 .v0lture-btn-dark {
@@ -28,11 +28,11 @@
 
 .v0lture-btn-accent {
   /* blue */
-  background: #75C7FF !important;
+  background: #9233AF !important;
 }
 
 .v0lture-error-card {
-  background: #75C7FF !important;
+  background: #9233AF !important;
   color: white;
 }
 

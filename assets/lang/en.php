@@ -57,9 +57,11 @@
     'auth_blank_ctx' => "Check all of the fields and try submitting again.",
     'auth_invalid' => "Invalid credentials",
     'auth_invalid_ctx' => "Check for any capitalization and spelling errors and try again.",
+    'auth_reauth' => "Reauthentication needed to continue",
+    'auth_reauth_ctx' => "In order to proceed with the action, you need to login.",
     'auth_username' => "Username",
     'auth_password' => "Password",
-    'auth_host' => "Host",
+    'auth_host' => "Host Address",
 
     // databases
     'db_create' => "New Database",

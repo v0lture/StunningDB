@@ -222,7 +222,7 @@
         </div>
 
         <div class="row" id="fullview" style="height: calc(100vh - 64px);">
-
+          <!-- side bar -->
           <div class="col s3 grey darken-3 scrollbar" style="height: calc(100vh - 64px); padding-top: 25px; overflow: auto;" id="dbview">
 
             <div class="progress v0lture-progress-bg" id="db-loading" style="margin-top: -25px; margin-bottom: 25px; display:none;">
@@ -264,7 +264,7 @@
             </div>
 
             <!-- error bar -->
-            <div class="errorbar" onclick="$('.errorbar').slideUp()">
+            <div class="errorbar" onclick="$('.errorbar').slideUp()" style="display: none;">
               <p><span><b>General message</b></span><br />Context provided</p>
             </div>
 
