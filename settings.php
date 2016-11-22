@@ -69,7 +69,9 @@
 
   <div id="updates" class="col s12">
 
+    <!-- do we allow updates? -->
     <?php if(configItem('updates_allowed') == "true"): ?>
+      <!-- we are up to date -->
       <?php if(trim($version) == $serverversion): ?>
         <div class="center-align" style="opacity: 0.75; padding-top: 50px;">
           <h3><i class="material-icons v0lture-cancel" style="font-size: 80px;">cloud_done</i></h3>
@@ -77,12 +79,14 @@
           <p class="v0lture-action" style="margin-top: -10px;"><?= $lang["updates_none_sub"]; ?> (v<?= $version; ?>)</p>
         </div>
       <?php elseif($serverversion == ""): ?>
+        <!-- incase version check if down -->
         <div class="center-align" style="opacity: 0.75; padding-top: 50px;">
           <h3><i class="material-icons v0lture-cancel" style="font-size: 80px;">close</i></h3>
           <h5 class="v0lture-cancel" style="margin-top: -20px;"><?= $lang["updates_unavailable"]; ?></h5>
           <p class="v0lture-action" style="margin-top: -10px;"><?= $lang["updates_unavailable_sub"]; ?></p>
         </div>
       <?php else: ?>
+        <!-- update available -->
         <div class="center-align" style="opacity: 0.75; padding-top: 50px;">
           <h3><i class="material-icons v0lture-cancel" style="font-size: 80px;">cloud_download</i></h3>
           <h5 class="v0lture-cancel" style="margin-top: -20px;"><?= $lang["updates_available"]; ?></h5>

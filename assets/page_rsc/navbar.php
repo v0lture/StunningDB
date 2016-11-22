@@ -1,19 +1,19 @@
 <?php
 
-    require_once "load.php";
-    if(testConn() != "Success") {
-        header("Location: auth.php?confirm=reauth");
-    } else {
-        $h = $_SESSION["host"];
-        $u = $_SESSION["username"];
+  require_once "load.php";
+  if(testConn() != "Success") {
+      header("Location: auth.php?confirm=reauth");
+  } else {
+      $h = $_SESSION["host"];
+      $u = $_SESSION["username"];
 
-        if(isset($_GET["db"])) {
-          $currentdb = $_GET["db"];
-        } else {
-          $currentdb = "...";
-        }
-    }
-    global $lang;
+      if(isset($_GET["db"])) {
+        $currentdb = $_GET["db"];
+      } else {
+        $currentdb = "...";
+      }
+  }
+  global $lang;
 
 ?>
 
@@ -23,6 +23,9 @@
   <li><a href="auth.php?confirm=logout"><?= $lang["navbar_logout"]; ?></a></li>
 
   <li><a href="javascript:fetchTableData('<?= $lang["config_db_name"]; ?>', '<?= $lang["config_table_name"]; ?>');"><?= $lang["navbar_settings"]; ?></a></li>
+
+  <li><a href="local.php#lang"><?= $lang["navbar_local_lang"]; ?></a></li>
+  <li><a href="local.php"><?= $lang["navbar_local"]; ?></a></li>
 </ul>
 
 <div class="navbar-fixed">

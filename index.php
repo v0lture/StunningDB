@@ -1,29 +1,32 @@
 <?php
 
-    // Working directory of first executing file
-    $lcwd = dirname(__FILE__);
+  // Working directory of first executing file
+  $lcwd = dirname(__FILE__);
 
-    require_once $lcwd."/assets/page_rsc/load.php";
+  require_once $lcwd."/assets/page_rsc/load.php";
 
-    if(testConn() != "Success") {
-      header("Location: auth.php?confirm=reauth");
+  // check if we are logged in or not
+  if(testConn() != "Success") {
+    header("Location: auth.php?confirm=reauth");
+  } else {
+    // see if we linked a DB and TBL here
+    if(isset($_GET["db"]) && isset($_GET["tbl"])) {
+      $dbl = $_GET["db"];
+      $tbl = $_GET["tbl"];
+      $new = "'".$dbl."', '".$tbl."'";
+      $cls = "";
     } else {
-      if(isset($_GET["db"]) && isset($_GET["tbl"])) {
-        $dbl = $_GET["db"];
-        $tbl = $_GET["tbl"];
-        $new = "'".$dbl."', '".$tbl."'";
-        $cls = "";
-      } else {
-        $dbl = "";
-        $tbl = "";
-        $new = "";
-        $cls = "style='display:none;'";
-      }
-
-      if(isset($_GET["msg"])) {
-        $script = 'ohno("'.$_GET["msg"].'", "PHP");';
-      }
+      $dbl = "";
+      $tbl = "";
+      $new = "";
+      $cls = "style='display:none;'";
     }
+
+    // See if there is an error that redirected to here
+    if(isset($_GET["msg"])) {
+      $script = 'ohno("'.$_GET["msg"].'", "PHP");';
+    }
+  }
 ?>
 
 <!DOCTYPE html>
@@ -69,6 +72,7 @@
             <h4><?= $lang["modal_query_title"]; ?></h4>
             <p><?= $lang["modal_query_info"]; ?></p>
 
+            <!-- progress bar -->
             <div class="center-align" id="queryrunning">
               <div class="progress v0lture-progress-bg">
                 <div class="indeterminate v0lture-progress"></div>
@@ -76,12 +80,13 @@
               <h5 class="v0lture-action"><?= $lang["modal_query_running"]; ?></h5>
             </div>
 
+            <!-- response states -->
             <div class="center-align" id="queryresponse">
               <h5 class="v0lture-action" id="queryresponsefailed"><?= $lang["modal_query_failed"]; ?></h5>
 
               <h5 class="v0lture-action" id="queryresponsesuccess"><?= $lang["modal_query_success"]; ?></h5>
 
-              <p id="queryresponsetext">waiting</p>
+              <p id="queryresponsetext"><?= $lang["modal_query_waiting"]; ?></p>
             </div>
 
             <div class="input-field" id="queryfieldbox">
@@ -190,31 +195,31 @@
 
         <!-- New.. fab -->
         <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-          <a class="btn-floating btn-large v0lture-btn-light tooltipped" data-position="left" data-delay="50" data-tooltip="New..." onclick="$('.fixed-action-btn').openFAB();">
+          <a class="btn-floating btn-large v0lture-btn-light tooltipped" data-position="left" data-delay="50" data-tooltip="<?= $lang["tooltip_new"]; ?>" onclick="$('.fixed-action-btn').openFAB();">
             <i class="large material-icons">add</i>
           </a>
           <ul>
 
             <li>
-              <a href="javascript:runQuery(false)" class="btn-floating black tooltipped" data-position="left" data-delay="50" data-tooltip="Run Query...">
+              <a href="javascript:runQuery(false)" class="btn-floating black tooltipped" data-position="left" data-delay="50" data-tooltip="<?= $lang["tooltip_run_query"]; ?>">
                 <i class="material-icons">code</i>
               </a>
             </li>
 
             <li>
-              <a href="javascript:$('#newdb').openModal();" class="btn-floating v0lture-btn-dark tooltipped" data-position="left" data-delay="50" data-tooltip="New Database">
+              <a href="javascript:$('#newdb').openModal();" class="btn-floating v0lture-btn-dark tooltipped" data-position="left" data-delay="50" data-tooltip="<?= $lang["tooltip_new_db"]; ?>">
                 <i class="material-icons">dns</i>
               </a>
             </li>
 
             <li>
-              <a class="btn-floating v0lture-btn-dark tooltipped" onclick="newTable(<?= $new; ?>)" id="newtable" data-position="left" data-delay="50" data-tooltip="New Table">
+              <a class="btn-floating v0lture-btn-dark tooltipped" onclick="newTable(<?= $new; ?>)" id="newtable" data-position="left" data-delay="50" data-tooltip="<?= $lang["tooltip_new_tbl"]; ?>">
                 <i class="material-icons">border_all</i>
               </a>
             </li>
 
             <li>
-              <a class="btn-floating v0lture-btn-dark tooltipped" data-position="left" data-delay="50" id="newrow" data-tooltip="New Row" onclick="loadInsert(<?= $new; ?>)">
+              <a class="btn-floating v0lture-btn-dark tooltipped" data-position="left" data-delay="50" id="newrow" data-tooltip="<?= $lang["tooltip_new_row"]; ?>" onclick="loadInsert(<?= $new; ?>)">
                 <i class="large material-icons">drag_handle</i>
               </a>
             </li>
@@ -231,19 +236,21 @@
 
             <div style="color: white; padding-left: 25px; padding-right: 25px;">
 
+              <!-- view switcher -->
               <?php if(configItem('view_switcher') == "true"): ?>
                 <div class="input-field" style="width: 50%;">
                   <select onchange="view(this)">
-                    <option value="databases">Databases</option>
-                    <option value="users">Users</option>
+                    <option value="databases"><?= $lang["view_db"]; ?></option>
+                    <option value="users"><?= $lang["view_users"]; ?></option>
                   </select>
                 </div>
                 <div class="right" style="margin-top: -55px;">
                   <a href="javascript:fetchDatabases()" class="btn waves-effect waves-light v-bg-blue" id="db-refresh"><i class="material-icons">refresh</i></a>
                   <a href="javascript:createUser()" class="btn waves-effect waves-light v-bg-blue" id="users-new" style="display:none;"><i class="material-icons">person_add</i></a>
                 </div>
+              <!-- just show databases -->
               <?php else: ?>
-                <h5>Databases</h5>
+                <h5><?= $lang["view_db"]; ?></h5>
                 <div class="right" style="margin-top: -40px;">
                   <a href="javascript:fetchDatabases()" class="btn waves-effect waves-light v-bg-blue" ><i class="material-icons">refresh</i></a>
                 </div>
@@ -265,7 +272,7 @@
 
             <!-- error bar -->
             <div class="errorbar" onclick="$('.errorbar').slideUp()" style="display: none;">
-              <p><span><b>General message</b></span><br />Context provided</p>
+              <p><span><b>-</b></span><br />-</p>
             </div>
 
             <!-- control nav -->
@@ -293,10 +300,12 @@
 
         </div>
 
+        <!-- idle time out -->
         <?php if(configItem('enable_idle_timeout') == "true"): ?>
           <script src="assets/bootstrap/idletimeout.js"></script>
         <?php endif; ?>
 
+        <!-- handle ?msg= errors -->
         <script>
           <?php
 

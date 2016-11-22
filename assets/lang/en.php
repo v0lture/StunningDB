@@ -1,19 +1,17 @@
 <?php
 
-  $version = "0.0.1.13";
-
-  $systemdbs = Array(
-    "1" => "mysql",
-    "2" => "performance_schema",
-    "3" => "information_schema",
-    "4" => "sys",
+  // properties for loading a language
+  $lang_properties = Array(
+    'friendly' => "English US",
+    'code' => "EN",
+    'supports' => "0.0.1.14"
   );
 
   $lang = Array(
 
     // modal
     'modal_error_title' => "Failed to complete operation.",
-    'modal_error_dismiss' => "Okay",
+    'modal_error_dismiss' => "Dismiss",
     'modal_error_action' => "Check that you have the required previliges and the server is online. Also check that all required fields are filled.",
     'modal_error_response' => "Server responed with: ",
     'modal_error_src' => "Source of error: ",
@@ -30,6 +28,7 @@
     'modal_query_success' => "Query OK",
     'modal_query_field' => "Query",
     'modal_query_btn' => "Run Query",
+    'modal_query_waiting' => "Waiting...",
 
     // Navbar
     'navbar_current_db' => "Current DB",
@@ -41,6 +40,9 @@
     'navbar_title_user' => "User",
     'navbar_title_app' => "App",
     'navbar_app' => "v0ltureDB",
+    'navbar_local_lang' => "Language",
+    'navbar_local' => "Account Setup",
+    'navbar_info' => "Info",
 
     // Buttons
     'btn_refresh' => "Refresh",
@@ -55,13 +57,17 @@
     // auth
     'auth_blank' => "Fields cannot be blank.",
     'auth_blank_ctx' => "Check all of the fields and try submitting again.",
-    'auth_invalid' => "Invalid credentials",
+    'auth_invalid' => "Could not login to server",
     'auth_invalid_ctx' => "Check for any capitalization and spelling errors and try again.",
     'auth_reauth' => "Reauthentication needed to continue",
     'auth_reauth_ctx' => "In order to proceed with the action, you need to login.",
     'auth_username' => "Username",
     'auth_password' => "Password",
     'auth_host' => "Host Address",
+    'auth_title' => "Log in to MySQL server",
+    'auth_sub' => "Enter the credentials to access and manage the MySQL server",
+    'auth_login' => "Login",
+    'auth_nopass' => "This user account does not have a set password and this is very insecure for your server.",
 
     // databases
     'db_create' => "New Database",
@@ -141,6 +147,25 @@
 
     'updates_invalid' => "Configuration is invalid",
     'updates_invalid_sub' => "Update your configuration or reset it and try again.",
+
+    // tooltips
+    'tooltip_new' => "New...",
+    'tooltip_run_query' => "Run query...",
+    'tooltip_new_db' => "New database",
+    'tooltip_new_tbl' => "New table",
+    'tooltip_new_row' => "New row",
+
+    // view switcher
+    'view_db' => "Databases",
+    'view_users' => "Users",
+
+    // local page
+    'local_language' => "Language",
+    'local_language_current' => "Currently using ",
+    'local_language_select' => "Use this language",
+    'local_language_reset' => "Reset to original language",
+    'local_language_reload' => "After setting a new language, reload the page to show the new language.",
+
   );
 
 ?>

@@ -1,77 +1,78 @@
 <?php
 
-    session_start();
+  session_start();
 
-    function connectDB($username, $password, $host) {
-        $db = new mysqli($host, $username, $password);
+  function connectDB($username, $password, $host) {
+    $db = new mysqli($host, $username, $password);
 
-        session_regenerate_id();
+    session_regenerate_id();
 
-        if($db->connect_error) {
-            return $db->connect_error;
-        } else {
-            $_SESSION["username"] = $username;
-            $_SESSION["password"] = $password;
-            $_SESSION["host"] = $host;
-            return "true";
-        }
+    // check if conn'd successfully
+    if($db->connect_error) {
+      return $db->connect_error;
+    } else {
+      $_SESSION["username"] = $username;
+      $_SESSION["password"] = $password;
+      $_SESSION["host"] = $host;
+      return "true";
+    }
+  }
 
+  function resumeConnection() {
+    // check if variables are actually set or not before using them
+    if(isset($_SESSION["username"]) && isset($_SESSION["password"]) && isset($_SESSION["host"])) {
+      $u = $_SESSION["username"];
+      $p = $_SESSION["password"];
+      $h = $_SESSION["host"];
+    } else {
+      $u = "";
+      $p = "";
+      $h = "";
     }
 
-    function resumeConnection() {
-        $u = $_SESSION["username"];
-        $p = $_SESSION["password"];
-        $h = $_SESSION["host"];
+    if($u == "" || $h == "") {
+      return "Not stored";
+    } else {
+      // conn and post back
+      $db = new mysqli($h, $u, $p);
+      if($db ->connect_error) {
+        return $db->connect_error;
+      } else {
+        return $db;
+      }
+    }
+  }
 
-        if($u == "" || $p == "" || $h == "") {
-            return "Not stored";
-        } else {
-            $db = new mysqli($h, $u, $p);
-            if($db ->connect_error) {
-                return $db->connect_error;
-            } else {
-                return $db;
-            }
-        }
 
+  // test connection and respond back with true/false based on status
+  function testConn() {
+    // check variables
+    if(isset($_SESSION["username"]) && isset($_SESSION["password"]) && isset($_SESSION["host"])) {
+      $u = $_SESSION["username"];
+      $p = $_SESSION["password"];
+      $h = $_SESSION["host"];
+    } else {
+      $u = "";
+      $p = "";
+      $h = "";
     }
 
-    function testConn() {
-        $u = $_SESSION["username"];
-        $p = $_SESSION["password"];
-        $h = $_SESSION["host"];
-        if($u == "" || $p == "" || $h == "") {
-            return "Not stored";
-        } else {
-            $conn = new mysqli($h, $u, $p);
-            if($conn->connect_error) {
-                return "Error: [".$conn->connect_errno."]".$conn->connect_error;
-            } else {
-                return "Success";
-            }
-        }
+    if($u == "" || $h == "") {
+      return "Not stored";
+    } else {
+      // conn and post back
+      $conn = new mysqli($h, $u, $p);
+      if($conn->connect_error) {
+        return "Error: [".$conn->connect_errno."] ".$conn->connect_error;
+      } else {
+        return "Success";
+      }
     }
+  }
 
-    function logout() {
-        session_unset();
-        session_regenerate_id();
-    }
-
-    function switchUser($u, $p) {
-        if(isset($_SESSION["host"])) {
-
-            $h = $_SESSION["host"];
-            $con = connectDB($u, $p, $h);
-            if($con != "true") {
-                return $con;
-            } else {
-                return "success";
-            }
-
-
-        } else {
-            return "Must have preexisting host";
-        }
-    }
+  function logout() {
+    session_unset();
+    session_regenerate_id();
+  }
 
 ?>

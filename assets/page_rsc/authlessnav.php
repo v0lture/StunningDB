@@ -21,7 +21,8 @@
       <ul class="right hide-on-med-and-down">
 
         <li><a href="#!"><?= $u; ?></a></li>
-        <li><a href="info.php">Info</a></li>
+        <li><a href="info.php"><?= $lang["navbar_info"]; ?></a></li>
+        <li><a href="local.php#lang"><?= $lang["navbar_local_lang"]; ?></a></li>
 
       </ul>
 

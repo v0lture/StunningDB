@@ -76,3 +76,28 @@
 .v0lture-update-notification > p {
   margin-top: -10px;
 }
+
+/* tabs */
+.tabs .tab a:hover {
+  color: #9233AF;
+}
+
+.tabs .tab a.active {
+  color: #C630D1;
+}
+
+.tabs .tab a {
+  color: #C630D1;
+}
+
+.tabs .tab, .tabs {
+  background: #4F5159;
+}
+
+.tabs .tab.disabled a {
+  color: #fff !important;
+}
+
+.tabs .indicator {
+  background-color: #75C7FF;
+}

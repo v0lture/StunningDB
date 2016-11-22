@@ -1,5 +1,5 @@
 function ohno(response, src) {
-  $("#errormodal").openModal();
+  $("#errormodal").modal('open');
 
   $("#errorresponse").html(response);
   $("#errorsrc").html(src);
@@ -28,14 +28,14 @@ function newtable_openprompt(field, select) {
 
 function openPrompt(field, title) {
   $("#txtbtn").attr("onclick", "impromptuCallback('"+field+"')");
-  $("#txtprompt").openModal();
+  $("#txtprompt").modal('open');
   $("#txttitle").text(title);
   $("#txtfield").val($(field).val());
   $("#txtbtn").attr("onclick", "impromptuCallback('"+field+"')");
 }
 
 function impromptuCallback(field) {
-  $("#txtprompt").closeModal();
+  $("#txtprompt").modal('close');
   Materialize.toast('Value set.', 5000);
   $(field).val($("#txtfield").val());
 }

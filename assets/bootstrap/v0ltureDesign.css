@@ -124,25 +124,7 @@ table[data-sortable].sortable-theme-bootstrap th[data-sorted="true"] {
   padding-right: 24dp;
 }
 
-.tabs .tab a {
-  color: #C630D1;
-}
 
-.tabs .tab a:hover {
-  color: #9233AF;
-}
-
-.tabs .tab {
-  background: #4F5159;
-}
-
-.tabs .tab.disabled a {
-  color: #fff !important;
-}
-
-.tabs .indicator {
-  background-color: #75C7FF;
-}
 
 .pagination li {
   margin-top: -6px;

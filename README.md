@@ -31,8 +31,28 @@ To install the latest update, redownload the master branch and extract again in 
 
 It is recommended that you backup your current installation in case an update breaks a feature or is not supported by your server.
 
+## Translating
+View `translate.md` for details on translating v0ltureDB.
+
 ## Changelogs
 Changelogs are labeled as release.beta.alpha.nightly.
+
+### 0.0.1.14
+:wrench: Improved a bunch of backend code
+
+:x: Removed old code that is no longer in use
+
+:speech_balloon: Removed more hardcoded text and placed it into translation file
+
+:wrench: Instead of every MySQL error being reported as invalid credentials, we give to the actual error.
+
+:wrench: Added support for user account with no password (with warning)
+
+:bulb: Added language switching support
+
+:raised_hands: Updated Materialize to v0.97.8
+
+:wrench: Fixed code changes due to Materialize update
 
 ### 0.0.1.13
 :wrench: Improved some warning messages

@@ -36,7 +36,9 @@
 
       if($dbl == $lang["config_db_name"]) {
         if(configItem('settings_gui') == "true") {
+          set_error_handler(function() {});
           include "settings.php";
+          restore_error_handler();
           include "../../settings.php";
           die();
         } elseif(configItem('settings_gui') == "Unknown key") {

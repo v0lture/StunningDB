@@ -1,12 +1,37 @@
 <?php
+
+  // move version here
+  $version = "0.0.1.14";
+
+  $systemdbs = Array(
+    "1" => "mysql",
+    "2" => "performance_schema",
+    "3" => "information_schema",
+    "4" => "sys",
+  );
+
+  // check if lang is set
+  if(!isset($_COOKIE["lang"])) {
+    // set to expire in a year
+    setcookie("lang", "en", time()+31540000);
+    $l = "en";
+  } else {
+    $l = $_COOKIE["lang"];
+  }
+
   $cwd = dirname(__FILE__);
 
-  require_once $cwd."/../lang/en.php";
+  // make sure the language exists and there wasnt any unexpected file changes
+  if(file_exists($cwd."/../lang/".$l.".php")) {
+    require_once $cwd."/../lang/".$l.".php";
+  } else {
+    setcookie("lang", "en", time()+31540000);
+    require_once $cwd."/../lang/en.php";
+  }
   require_once $cwd."/../lang/config_desc.php";
 
   require_once $cwd."/../php/session.php";
   require_once $cwd."/../php/databases.php";
-  require_once $cwd."/../php/sudo.php";
   require_once $cwd."/../php/tables.php";
   require_once $cwd."/../php/config.php";
 ?>
