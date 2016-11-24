@@ -50,3 +50,13 @@ function view(element) {
     fetchDatabases();
   }
 }
+
+// handle popstate
+window.addEventListener("popstate", function(e){
+  var s = e.state;
+  // If the browser goes back one, handle that and try to load it
+  if(s != undefined || s != null || s != "") {
+    fetchTableData(s.database, s.table);
+  }
+
+})

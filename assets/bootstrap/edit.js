@@ -1,5 +1,5 @@
 function loadEditor(db, tbl, key, keyvalue){
-  $("#editorModal").openModal();
+  $("#editorModal").modal('open');
 
   if(db != undefined && tbl != undefined && key != undefined && keyvalue != undefined) {
     var editor_xhr = new XMLHttpRequest();
@@ -19,14 +19,14 @@ function loadEditor(db, tbl, key, keyvalue){
     editor_xhr.open("GET", "assets/page_rsc/modal.php?do=edit&db="+db+"&tbl="+tbl+"&key="+key+"&keyvalue="+keyvalue, true);
     editor_xhr.send();
   } else {
-    $("#editorModal").closeModal();
+    $("#editorModal").modal('close');
     ohno('Missing variables that are required to complete function.', "JS 'loadEditor()'");
   }
 }
 
 function loadInsert(db, tbl){
 
-  $("#newModal").openModal();
+  $("#newModal").modal('open');
 
   if(db != undefined && tbl != undefined) {
     var modal_xhr = new XMLHttpRequest();
@@ -35,7 +35,7 @@ function loadInsert(db, tbl){
       if(modal_xhr.readyState == 4) {
 
         if(modal_xhr.status != 200) {
-          $("#newModal").closeModal();
+          $("#newModal").modal('close');
           ohno(inline_xhr.responseText, "JS 'loadInsert()' -> PHP 'PAGE_RSC/modal.php'");
         } else {
 
@@ -50,7 +50,7 @@ function loadInsert(db, tbl){
     modal_xhr.send();
   } else {
 
-    $("#newModal").closeModal();
+    $("#newModal").modal('close');
     ohno('An active database and table are needed to insert a new row.', 'JS \'loadInsert()\'');
 
   }
@@ -113,7 +113,7 @@ function newDB() {
       if(inline_xhr.status != 200) {
         ohno(inline_xhr.responseText, "JS 'newDB()' -> PHP 'databases.php'");
       } else {
-        $("#newdb").closeModal();
+        $("#newdb").modal('close');
         Materialize.toast('Database "'+db+'" was created.', 5000, 'mdtst');
         fetchDatabases('true');
         tableInit();
@@ -127,7 +127,7 @@ function newDB() {
 
 function runQuery(usefield) {
   if(usefield == false) {
-    $("#queryprompt").openModal();
+    $("#queryprompt").modal('open');
     $("#queryrunning").hide();
     $("#queryresponse").hide();
     $("#queryaction").show();

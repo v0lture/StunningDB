@@ -4,6 +4,7 @@
 
     $columnlimit = 10;
 
+    // test max
     if(testConn() != "Success"){
         http_response_code(403);
         die("Not authenticated.");
@@ -17,11 +18,14 @@
       $dbl = $_GET["db"];
       $tbl = $_GET["tbl"];
 
+      // get page
       if(isset($_GET["page"])) {
         $page = $_GET["page"];
       } else {
         $page = 1;
       }
+
+      //vars
       $headers_defined = false;
       $headers_count = 0;
       $table_head = "";
@@ -34,23 +38,19 @@
       $tdct = 0;
       $rownum = 0;
 
+      // check if db is settings
       if($dbl == $lang["config_db_name"]) {
-        if(configItem('settings_gui') == "true") {
-          set_error_handler(function() {});
-          include "settings.php";
-          restore_error_handler();
-          include "../../settings.php";
-          die();
-        } elseif(configItem('settings_gui') == "Unknown key") {
-          resetConfig();
-          die("<script>oh('Configuration is being created, refresh to show changes.', 'Configuration creation needs a refresh')</script>");
-        }
+        set_error_handler(function() {});
+        include "settings.php";
+        restore_error_handler();
+        include "../../settings.php";
+        die();
       }
 
       if($data == "MySQL error") {
-        die("<script>ohno('Cannot load table in this database', 'Failed to load table')</script>");
+        die("<script>ohno('".$lang["mysql_tbl_error_ctx"]."', '".$lang["mysql_tbl_error"]."')</script>");
       } elseif($data->num_rows == 0) {
-        $error .= '<script>oh("'.$lang["mysql_empty_result"].'", "'.$lang["mysql_empty_result_ctx"].'")</script>';
+        $error .= '<script>oh("'.$lang["mysql_empty_result"].'", "'.$lang["mysql_empty_result_t"].'")</script>';
       } else {
 
         // Fetch table primary key (if applicable)

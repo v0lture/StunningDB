@@ -24,7 +24,7 @@
 
     // See if there is an error that redirected to here
     if(isset($_GET["msg"])) {
-      $script = 'ohno("'.$_GET["msg"].'", "PHP");';
+      $script = 'oh("'.$_GET["msg"].'", "PHP");';
     }
   }
 ?>
@@ -45,6 +45,7 @@
             require_once $lcwd."/assets/page_rsc/navbar.php";
         ?>
 
+        <!-- text prompt -->
         <div id="txtprompt" class="modal v0lture-modal">
           <div class="modal-content">
             <h4 id="txttitle"><?= $lang["impromptu_title"]; ?></h4>
@@ -63,7 +64,6 @@
 
           </div>
         </div>
-
 
         <!-- Run query prompt -->
         <div id="queryprompt" class="modal v0lture-modal">
@@ -207,7 +207,7 @@
             </li>
 
             <li>
-              <a href="javascript:$('#newdb').openModal();" class="btn-floating v0lture-btn-dark tooltipped" data-position="left" data-delay="50" data-tooltip="<?= $lang["tooltip_new_db"]; ?>">
+              <a href="javascript:$('#newdb').modal('open');" class="btn-floating v0lture-btn-dark tooltipped" data-position="left" data-delay="50" data-tooltip="<?= $lang["tooltip_new_db"]; ?>">
                 <i class="material-icons">dns</i>
               </a>
             </li>
@@ -228,7 +228,7 @@
 
         <div class="row" id="fullview" style="height: calc(100vh - 64px);">
           <!-- side bar -->
-          <div class="col s3 grey darken-3 scrollbar" style="height: calc(100vh - 64px); padding-top: 25px; overflow: auto;" id="dbview">
+          <div class="col s3 scrollbar" style="height: calc(100vh - 64px); padding-top: 25px; overflow: auto;" id="dbview">
 
             <div class="progress v0lture-progress-bg" id="db-loading" style="margin-top: -25px; margin-bottom: 25px; display:none;">
               <div class="indeterminate v0lture-progress"></div>

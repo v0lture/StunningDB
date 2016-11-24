@@ -8,6 +8,8 @@ function tableInit() {
   Materialize.updateTextFields();
   $('select').material_select();
   $('ul.tabs').tabs();
+  // v0.0.2.1: Fix modals not initializing issue
+  $('.modal').modal();
 }
 
 function fetchDatabases(hideerr = false) {
@@ -77,6 +79,11 @@ function fetchTableData(db, tbl, bypass = "false") {
 
     $("#bc-db").show();
     $("#bc-tbl").show();
+
+    // pop into history
+    var obj = {database: db, table: tbl};
+    history.pushState(obj, "v0ltureDB: "+db+":"+tbl, "index.php?db="+db+"&tbl="+tbl);
+    document.title = "v0ltureDB: "+tbl+" @ "+db;
 
     db_xhr.onreadystatechange = function(){
       if(db_xhr.readyState == 4) {

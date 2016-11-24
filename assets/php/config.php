@@ -47,6 +47,7 @@
     }
   }
 
+  // wipe table and recreate it
   function resetConfig() {
     global $db;
     global $lang;
@@ -66,10 +67,18 @@
       }
 
     } else {
-      return "Config never been initialized.";
+      // return "Config never been initialized.";
+      // instead of returning that error, initalize and try again
+      $pc = prepConfig();
+      if($pc == "Ready") {
+        resetConfig();
+      } else {
+        return "Initialization error: ".$pc;
+      }
     }
   }
 
+  // place keys into config that didn't exist previously
   function updateConfig() {
     global $db;
     global $lang;
@@ -85,6 +94,8 @@
     }
   }
 
+
+  // create tables and databases
   function prepConfig() {
 
     global $db;

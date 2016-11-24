@@ -1,7 +1,7 @@
 <?php
 
   // move version here
-  $version = "0.0.1.14";
+  $version = "0.0.2.1";
 
   $systemdbs = Array(
     "1" => "mysql",
@@ -17,6 +17,13 @@
     $l = "en";
   } else {
     $l = $_COOKIE["lang"];
+  }
+
+  // update language
+  if(isset($_GET["set_lang"])) {
+    // expire in a year
+    $l = $_GET["set_lang"];
+    setcookie("lang", $t, time()+31540000);
   }
 
   $cwd = dirname(__FILE__);

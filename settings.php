@@ -9,18 +9,25 @@
     $error = "";
     $cards = "";
 
+    // we should initialize the database and table if we haven't already
     if(prepConfig() != "Ready") {
       die("<script>ohno(\"".prepConfig()."\",'PHP \'php/config.php\' ')</script>");
     } else {
+      // get config and server version
       $data = fetchTableData($lang["config_db_name"], $lang["config_table_name"]);
       $serverversion = file_get_contents("http://testing.v0lture.com/v0ltureDB/version.json");
+      // process server version
       $serverversion = json_decode($serverversion, true);
       $serverversion = $serverversion["version"];
       $version = trim($version);
 
+      // if we are empty, reset the config
       if($data->num_rows == 0) {
         echo resetConfig();
       }
+
+      // process keys
+
       while($resp = $data->fetch_assoc()) {
 
         if($resp["val"] == "true") {
@@ -62,8 +69,8 @@
 <div class="row">
   <div class="col s12" style="padding: 0px;">
     <ul class="tabs">
-      <li class="tab col s6"><a href="#updates">Updates</a>
-      <li class="tab col s6"><a href="#config" class="active">Config</a>
+      <li class="tab"><a href="#updates">Updates</a>
+      <li class="tab"><a href="#config" class="active">Config</a>
     </ul>
   </div>
 

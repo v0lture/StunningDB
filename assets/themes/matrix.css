@@ -1,0 +1,228 @@
+.v0lture-navbar {
+  background: black;
+}
+
+body {
+  background: #1d1d1d;
+}
+
+.v0lture-breadcrumbs {
+
+}
+
+.v0lture-dbs-header {
+  background: #1d1d1d;
+  color: white;
+}
+
+.v0lture-dbs-content {
+  background: #1d1d1d !important;
+  color: #f5f5f5 !important;
+}
+
+.v0lture-btn-light {
+  /* light purple */
+  background: green !important;
+}
+
+.v0lture-btn-dark {
+  /* dark purple */
+  background: green !important;
+}
+
+.v0lture-btn-accent {
+  /* blue */
+  background: green !important;
+}
+
+.v0lture-error-card {
+  background: green !important;
+  color: white;
+}
+
+.v0lture-norm-card, .card {
+  background: black !important;
+  color: white;
+}
+
+.v0lture-cancel {
+  color: white !important;
+}
+
+.v0lture-action {
+  color: green !important;
+}
+
+.v0lture-modal {
+  background: #1d1d1d !important;
+  color: white;
+}
+
+.v0lture-progress-bg {
+  background: #1d1d1d;
+}
+
+.v0lture-progress {
+  background: green;
+}
+
+.v0lture-update-notification {
+  background: #1d1d1d;
+  color: white;
+  padding: 5px 20px 5px 20px;
+  margin-bottom: 0px;
+}
+
+.v0lture-update-notification > a {
+  margin-top: -55px;
+}
+
+.v0lture-update-notification > p {
+  margin-top: -10px;
+}
+
+/* tabs */
+.tabs .tab a:hover {
+  color: green;
+}
+
+.tabs .tab a.active {
+  color: rgba(0, 255, 0, 0.6);
+}
+
+.tabs .tab a {
+  color: white;
+}
+
+.tabs .tab, .tabs {
+  background: #161616;
+}
+
+.tabs .tab.disabled a {
+  color: green !important;
+}
+
+.tabs .indicator {
+  background-color: green;
+}
+
+/* dropdown */
+.dropdown-content li>a, .dropdown-content li>span {
+  color: green;
+}
+
+/* input field */
+.input-field input[type=text]:focus + label {
+  color: green;
+}
+
+.input-field input[type=password]:focus + label {
+  color: green;
+}
+
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid green;
+  box-shadow: 0 1px 0 0 green;
+}
+
+.input-field input[type=password]:focus {
+  border-bottom: 1px solid green;
+  box-shadow: 0 1px 0 0 green;
+}
+
+/* switches */
+.switch label input[type=checkbox]:checked+.lever:after {
+  background-color: green;
+}
+
+.switch label input[type=checkbox]:checked+.lever {
+  background-color: rgba(0,255,0,0.5);
+}
+
+/* Override v0lture Design colors */
+/* Bg */
+.v-bg-green        { background: green !important; }
+.v-bg-blue         { background: green !important; }
+.v-bg-light-purple { background: green !important; }
+.v-bg-dark-purple  { background: green !important; }
+.v-bg-grey         { background: #1d1d1d !important; }
+
+/* Fg */
+.v-text-green        { color: green !important; }
+.v-text-blue         { color: green !important; }
+.v-text-light-purple { color: green !important; }
+.v-text-dark-purple  { color: green !important; }
+.v-text-grey         { color: #1d1d1d !important; }
+
+/* modals */
+.modal-footer {
+  background: #000 !important;
+}
+
+.modal {
+  background: #000 !important;
+}
+
+/* elements */
+#dbview {
+  background: #0e0e0e;
+}
+
+.collapsible-header, .collection .collection-item {
+  border: none;
+}
+
+.collapsible-header > i {
+  color: green;
+}
+
+/* tables */
+.table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>th, .table>caption+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>td, .table>thead:first-child>tr:first-child>td {
+  background: black;
+}
+
+table[data-sortable].sortable-theme-bootstrap tbody td {
+  padding: 14px;
+}
+
+table {
+  font-family: 'Lato', sans-serif !important;
+}
+
+table[data-sortable].sortable-theme-bootstrap th[data-sorted="true"][data-sorted-direction="ascending"]:after {
+  border-bottom-color: green;
+}
+
+table[data-sortable].sortable-theme-bootstrap th[data-sorted="true"][data-sorted-direction="descending"]:after {
+  border-top-color: green;
+}
+
+.table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>th, .table>caption+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>td, .table>thead:first-child>tr:first-child>td {
+  border-bottom-color: #1d1d1d;
+  color: white;
+}
+
+table[data-sortable].sortable-theme-bootstrap th[data-sorted="true"] {
+  border-bottom-color: rgb(0, 177, 0) !important;
+  color: green !important;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+  background: #1d1d1d;
+  color: white;
+}
+
+.table-striped>tbody>tr:nth-of-type(even) {
+  background: #2a2a2a;
+  color: white;
+}
+
+table[data-sortable].sortable-theme-bootstrap tbody td {
+  border: none;
+  border-radius: 0;
+}
+
+table[data-sortable] th {
+  border-radius: 0;
+  font-weight: normal;
+}

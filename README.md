@@ -24,6 +24,13 @@ In order to use the configuration the user currently logged in as must have the 
 
 Afterwards, as long as the user has the `SELECT` privilege the configuration will be applied.
 
+## Local configuration
+This is the configuration stored on your browser. Your selected language and theme are stored here so it works even without an active server connection.
+
+To manage these settings, click on **Account Setup** in the user dropdown or **Language** if you are not logged in.
+
+To reset these settings, under each category, press the **Reset** or **Restore...** button to reset that category to its defaults.
+
 ## Updating
 As of `v0.0.1.9` there is now version checking. This does **not** install updates for you.
 
@@ -34,10 +41,40 @@ It is recommended that you backup your current installation in case an update br
 ## Translating
 View `translate.md` for details on translating v0ltureDB.
 
+## Themes
+**v0ltureDB Default** The preselected theme or the defaulted one whenever the selected theme is invalid or a fresh install.
+
+**Dark** A black-to-grey background with white text, pleasent on the eyes.
+
+**Matrix** Black background with green text, for all your stereotypical hacker needs.
+
 ## Changelogs
 Changelogs are labeled as release.beta.alpha.nightly.
 
-### 0.0.1.14
+### 0.0.2.1: Bug Fixes + Themes
+:wrench: Correct version number
+
+:wrench: Fixed issue where modals won't open due to init function changing
+
+:wrench: Fixed some more cases of older use of open/close modals
+
+:wrench: Improved UI on smaller displays
+
+:wrench: Fixed issue where table no rows result was malformed
+
+:bulb: Added theme support
+
+:bulb: Themes added: Dark, Matrix
+
+:x: Removed `settings_gui` flag and made settings load the GUI by default and no longer added support for the table editor
+
+:wrench: Fixed bug where settings could not be accessed until running `prepConfig()` and `resetConfig()` manually
+
+:wrench: Changed ?msg= errors to the warning handler and not the error handler
+
+:bulb: Added database and table tracking in browser history
+
+### 0.0.2.0
 :wrench: Improved a bunch of backend code
 
 :x: Removed old code that is no longer in use

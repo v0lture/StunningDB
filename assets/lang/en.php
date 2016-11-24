@@ -4,7 +4,7 @@
   $lang_properties = Array(
     'friendly' => "English US",
     'code' => "EN",
-    'supports' => "0.0.1.14"
+    'supports' => "0.0.2.1"
   );
 
   $lang = Array(
@@ -96,6 +96,9 @@
     'mysql_empty_result' => "There were no rows with the query",
     'mysql_too_many_columns' => "There are too many columns in the current table to show without possible text overflow from the view.",
     'mysql_no_primary_key' => "The table has no primary key.",
+    'mysql_tbl_error' => "Cannot load table in this database",
+    "mysql_tbl_error_ctx" => "Failed to load table",
+    'mysql_empty_result_t' => "No rows",
 
     // Editor modal
     'editor_title' => "Edit row",
@@ -161,10 +164,20 @@
 
     // local page
     'local_language' => "Language",
-    'local_language_current' => "Currently using ",
+    'local_current' => "Currently using ",
     'local_language_select' => "Use this language",
     'local_language_reset' => "Reset to original language",
     'local_language_reload' => "After setting a new language, reload the page to show the new language.",
+    'local_themes' => "Themes",
+    'local_themes_info' => "Pick a look and feel for v0ltureDB",
+    'local_themes_reset' => "Restore original theme",
+    'local_themes_pick' => "Pick this theme",
+
+    'themes' => Array(
+      'db' => "v0ltureDB Default",
+      'dark' => "Dark Mode",
+      'matrix' => "Matrix",
+    ),
 
   );
 

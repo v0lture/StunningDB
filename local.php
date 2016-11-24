@@ -2,13 +2,6 @@
 
   // Working directory of first executing file
   $lcwd = dirname(__FILE__);
-
-  // handle changing language before we load all the scripts so it updates
-  if(isset($_GET["set_lang"])) {
-    // expire in a year
-    setcookie("lang", $_GET["set_lang"], time()+31540000);
-  }
-
   require_once $lcwd."/assets/page_rsc/load.php";
 
 ?>
@@ -63,15 +56,18 @@
       <div class="col s12">
         <ul class="tabs">
           <li class="tab"><a href="#lang"><?= $lang["local_language"]; ?></a></li>
+          <li class="tab"><a href="#themes"><?= $lang["local_themes"]; ?></a></li>
         </ul>
       </div>
 
       <!-- sets -->
+
+      <!-- language -->
       <div id="lang" class="col s12">
         <!-- current language -->
-        <div class="card grey darken-1 white-text">
+        <div class="card v0lture-norm-card white-text">
           <div class="card-content">
-            <span class="card-title"><?= $lang["local_language_current"]."<b>".$lang_properties["friendly"]."</b>"; ?></span>
+            <span class="card-title"><?= $lang["local_current"]."<b>".$lang_properties["friendly"]."</b>"; ?></span>
             <p><?= $lang["local_language_reload"]; ?>
           </div>
           <div class="card-action">
@@ -91,7 +87,7 @@
               if($val != "config_desc.php") {
                 echo
                 '<div class="col s3">
-                  <div class="card grey darken-1 white-text">
+                  <div class="card v0lture-norm-card white-text">
                     <div class="card-content">
                       <span class="card-title" style="text-transform: uppercase;">'.str_replace(".php", "", $val).'</span>
                     </div>
@@ -101,6 +97,44 @@
                   </div>
                 </div>';
               }
+            }
+
+          ?>
+        </div>
+      </div>
+
+      <!-- themes -->
+      <div id="themes" class="col s12">
+        <!-- current language -->
+        <div class="card v0lture-norm-card white-text">
+          <div class="card-content">
+            <span class="card-title"><?= $lang["local_current"]."<b>".$lang["themes"][$_COOKIE["theme"]]."</b>"; ?></span>
+            <p><?= $lang["local_themes_info"]; ?>
+          </div>
+          <div class="card-action">
+            <a href="local.php?set_theme=db" class="v0lture-action"><?= $lang["local_themes_reset"]; ?></a>
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- available languages -->
+          <?php
+
+            $langs = $lcwd."/assets/themes/";
+            $r = array_diff(scandir($langs), array('..', '.'));
+
+            foreach($r as &$val) {
+              echo
+              '<div class="col s3">
+                <div class="card v0lture-norm-card white-text">
+                  <div class="card-content">
+                    <span class="card-title">'.$lang["themes"][str_replace(".css", "", $val)].'</span>
+                  </div>
+                  <div class="card-action">
+                    <a class="v0lture-action" href="local.php?set_theme='.str_replace(".css", "", $val).'">'.$lang["local_themes_pick"].'</a>
+                  </div>
+                </div>
+              </div>';
             }
 
           ?>
