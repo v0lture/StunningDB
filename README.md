@@ -44,12 +44,21 @@ View `translate.md` for details on translating v0ltureDB.
 ## Themes
 **v0ltureDB Default** The preselected theme or the defaulted one whenever the selected theme is invalid or a fresh install.
 
-**Dark** A black-to-grey background with white text, pleasent on the eyes.
+**Dark** A black-to-grey background with white text, pleasant on the eyes.
 
 **Matrix** Black background with green text, for all your stereotypical hacker needs.
 
 ## Changelogs
 Changelogs are labeled as release.beta.alpha.nightly.
+
+### 0.0.2.2
+:bulb: Added username and host hints to auth page for direct linking username/host combos.
+
+:wrench: Readded vanished logout code
+
+:wrench: Fixed some typos
+
+:bulb: Replaced `info.php` with more detailed information in local settings.
 
 ### 0.0.2.1: Bug Fixes + Themes
 :wrench: Correct version number

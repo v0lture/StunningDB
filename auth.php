@@ -48,6 +48,19 @@
       header("Location: auth.php");
     }
 
+    // hints
+    if(isset($_GET["hint_username"])) {
+      $hu = $_GET["hint_username"];
+    } else {
+      $hu = "";
+    }
+
+    if(isset($_GET["hint_host"])) {
+      $hh = $_GET["hint_host"];
+    } else {
+      $hh = "";
+    }
+
 
 ?>
 
@@ -62,7 +75,7 @@
 
   <body>
 
-    <?php require_once "assets/page_rsc/authlessnav.php"; ?>
+    <?php require_once "assets/page_rsc/navbar.php"; ?>
 
     <?php if($error != ""): ?>
       <?php
@@ -93,41 +106,68 @@
       <div style="height: 64px;"></div>
     <?php endif; ?>
 
-    <div class="container">
 
-      <div class="card white-text grey darken-2">
+    <?php if($confirm == "reauth" || $confirm == "login"): ?>
+      <div class="container">
 
-        <div class="card-content">
+        <div class="card white-text v0lture-norm-card">
 
-          <span class="card-title"><?= $lang["auth_title"]; ?></span>
-          <p><?= $lang["auth_sub"]; ?></p>
+          <div class="card-content">
 
-          <br />
-
-          <form method="POST" action="auth.php" class="row">
-            <div class="input-field col s6">
-              <input type="text" id="auth_username" name="auth_username" required></input>
-              <label for="auth_username"><?= $lang["auth_username"]; ?></label>
-            </div>
-
-            <div class="input-field col s6">
-              <input type="password" id="auth_password" name="auth_password"></input>
-              <label for="auth_password"><?= $lang["auth_password"]; ?></label>
-            </div>
-
-            <div class="input-field col s12">
-              <input type="text" id="auth_host" name="auth_host" required></input>
-              <label for="auth_host"><?= $lang["auth_host"]; ?></label>
-            </div>
+            <span class="card-title"><?= $lang["auth_title"]; ?></span>
+            <p><?= $lang["auth_sub"]; ?></p>
 
             <br />
-            <button type="submit" class="btn waves-effect waves-light white-text purple"><?= $lang["auth_login"]; ?></button>
-          </form>
+
+            <form method="POST" action="auth.php" class="row">
+              <div class="input-field col s6">
+                <input type="text" id="auth_username" name="auth_username" value="<?= $hu; ?>" required></input>
+                <label for="auth_username"><?= $lang["auth_username"]; ?></label>
+              </div>
+
+              <div class="input-field col s6">
+                <input type="password" id="auth_password" name="auth_password"></input>
+                <label for="auth_password"><?= $lang["auth_password"]; ?></label>
+              </div>
+
+              <div class="input-field col s12">
+                <input type="text" id="auth_host" name="auth_host" value="<?= $hh; ?>" required></input>
+                <label for="auth_host"><?= $lang["auth_host"]; ?></label>
+              </div>
+
+              <br />
+              <button type="submit" class="btn waves-effect waves-light white-text v0lture-btn-accent"><?= $lang["auth_login"]; ?></button>
+            </form>
+          </div>
+
         </div>
 
       </div>
+    <?php elseif($confirm == "logout"): ?>
+      <div class="container">
+        <div class="card white-text v0lture-norm-card">
 
-    </div>
+          <div class="card-content">
+
+            <span class="card-title"><?= $lang["auth_confirm_logout"]; ?></span>
+            <p><?= $lang["auth_confirm_logout_ctx"]; ?></p>
+
+            <br />
+
+            <form method="POST" action="auth.php" class="row">
+              <input type="checkbox" hidden checked name="confirm_logout"></input>
+
+              <br />
+              <div class="center-align">
+                <button type="submit" class="btn waves-effect waves-light white-text v0lture-btn-accent"><?= $lang["btn_cancel"]; ?></button>
+                <button type="submit" class="btn waves-effect waves-light white-text v0lture-btn-accent"><?= $lang["btn_continue"]; ?></button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    <?php endif; ?>
 
 
   </body>

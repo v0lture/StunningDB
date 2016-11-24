@@ -2,7 +2,9 @@
 
   require_once "load.php";
   if(testConn() != "Success") {
-      header("Location: auth.php?confirm=reauth");
+    // load authlessnav
+    include("authlessnav.php");
+    return;
   } else {
       $h = $_SESSION["host"];
       $u = $_SESSION["username"];

@@ -53,6 +53,8 @@
     'btn_enable' => "Enable",
     'btn_close' => "Close",
     'btn_rst' => "Reset",
+    'btn_cancel' => "Cancel",
+    'btn_continue' => "Continue",
 
     // auth
     'auth_blank' => "Fields cannot be blank.",
@@ -68,6 +70,8 @@
     'auth_sub' => "Enter the credentials to access and manage the MySQL server",
     'auth_login' => "Login",
     'auth_nopass' => "This user account does not have a set password and this is very insecure for your server.",
+    'auth_confirm_logout' => "Leaving already?",
+    'auth_confirm_logout_ctx' => "Confirm that you want to log out of v0ltureDB below or hit cancel to return.",
 
     // databases
     'db_create' => "New Database",
@@ -172,11 +176,34 @@
     'local_themes_info' => "Pick a look and feel for v0ltureDB",
     'local_themes_reset' => "Restore original theme",
     'local_themes_pick' => "Pick this theme",
+    'local_cfg' => "Installation",
 
     'themes' => Array(
       'db' => "v0ltureDB Default",
       'dark' => "Dark Mode",
       'matrix' => "Matrix",
+    ),
+
+    'installation_info' => Array(
+      'compatibility' => "Server Compatibility",
+      'compatibility_recheck' => "Recheck",
+      'compatibility_success' => "Your server is compatible with v0ltureDB",
+      'compatibility_failure' => "Your server is <b>not</b> compatible with v0ltureDB",
+      'version' => "v0ltureDB Version",
+      'version_prefix' => "You currently have <b>",
+      'version_suffix' => "</b> installed.",
+      'version_check' => "Check for updates",
+      'server_version' => "MySQL Server Version",
+      'server_version_noconn' => "You must be logged in first to view the server version.",
+      'server_version_prefix' => "You are connected to a MySQL server running: ",
+      'auth' => "Authenticated as",
+      'auth_user_prefix' => "Username: ",
+      'auth_user_suffix' => "",
+      'auth_host_prefix' => "Host: ",
+      'auth_host_suffix' => "",
+      'auth_login' => "Log in",
+      'auth_logout' => "Log out",
+      'auth_none' => "Must be logged in to view who you are logged as",
     ),
 
   );
