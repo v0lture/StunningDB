@@ -51,6 +51,13 @@ View `translate.md` for details on translating v0ltureDB.
 ## Changelogs
 Changelogs are labeled as release.beta.alpha.nightly.
 
+### 0.0.2.3
+:wrench: Fixed config not creating properly
+
+:wrench: Modified navbar to be cleaner and more accurate
+
+:boom: Removed old variables from language file
+
 ### 0.0.2.2
 :bulb: Added username and host hints to auth page for direct linking username/host combos.
 
