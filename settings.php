@@ -23,7 +23,7 @@
 
       // if we are empty, reset the config
       if($data->num_rows == 0) {
-        echo resetConfig();
+        resetConfig();
       }
 
       // process keys

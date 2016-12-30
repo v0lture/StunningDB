@@ -20,14 +20,10 @@
 ?>
 
 <!-- Navigation -->
-
 <ul id="userdrpdown" class="dropdown-content">
   <li><a href="auth.php?confirm=logout"><?= $lang["navbar_logout"]; ?></a></li>
-
-  <li><a href="javascript:fetchTableData('<?= $lang["config_db_name"]; ?>', '<?= $lang["config_table_name"]; ?>');"><?= $lang["navbar_settings"]; ?></a></li>
-
-  <li><a href="local.php#lang"><?= $lang["navbar_local_lang"]; ?></a></li>
-  <li><a href="local.php"><?= $lang["navbar_local"]; ?></a></li>
+  <li><a href="javascript:fetchTableData('<?= $lang["config_db_name"]; ?>', '<?= $lang["config_table_name"]; ?>');"><?= $lang["navbar_vdb_settings"]; ?></a></li>
+  <li><a href="local.php"><?= $lang["navbar_user_settings"]; ?></a></li>
 </ul>
 
 <div class="navbar-fixed">

@@ -7,7 +7,7 @@
 
   // check if we are logged in or not
   if(testConn() != "Success") {
-    header("Location: auth.php?confirm=reauth");
+    header("Location: auth.php");
   } else {
     // see if we linked a DB and TBL here
     if(isset($_GET["db"]) && isset($_GET["tbl"])) {

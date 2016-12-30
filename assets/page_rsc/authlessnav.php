@@ -22,7 +22,7 @@
 
         <li><a href="#!"><?= $u; ?></a></li>
         <li><a href="info.php"><?= $lang["navbar_info"]; ?></a></li>
-        <li><a href="local.php#lang"><?= $lang["navbar_local_lang"]; ?></a></li>
+        <li><a href="local.php"><?= $lang["navbar_user_settings"]; ?></a></li>
 
       </ul>
 

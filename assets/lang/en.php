@@ -31,18 +31,12 @@
     'modal_query_waiting' => "Waiting...",
 
     // Navbar
-    'navbar_current_db' => "Current DB",
-    'navbar_drop_db' => "Drop Database",
-    'navbar_mng_tbl' => "Manage Tables",
-    'navbar_switch_user' => "Switch User",
-    'navbar_logout' => "Log Out",
-    'navbar_settings' => "Settings",
-    'navbar_title_user' => "User",
-    'navbar_title_app' => "App",
     'navbar_app' => "v0ltureDB",
-    'navbar_local_lang' => "Language",
-    'navbar_local' => "Account Setup",
-    'navbar_info' => "Info",
+    'navbar_logout' => "Log Out",
+    'navbar_user_settings' => "Local Settings",
+    'navbar_vdb_settings' => "vDB Settings",
+    'navbar_info' => "Install info",
+
 
     // Buttons
     'btn_refresh' => "Refresh",

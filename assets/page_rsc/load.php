@@ -1,7 +1,7 @@
 <?php
 
   // move version here
-  $version = "0.0.2.2";
+  $version = "0.0.2.3";
 
   $systemdbs = Array(
     "1" => "mysql",
