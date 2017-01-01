@@ -20,12 +20,20 @@
   <?php
     $dat = fetchDatabases();
     while($res = $dat->fetch_assoc()) {
-      if(configItem('show_system_tables') == "true" || configItem('show_system_tables') == "Unknown key" || configItem('show_system_tables') == "Not enabled" && $res["Database"] != $lang["config_db_name"]) {
-        echo "<li>";
-        echo '<div class="collapsible-header v0lture-dbs-header truncate"><i class="material-icons hide-on-med-and-down">dns</i>'.$res["Database"].'</div>';
+      if(configItem('show_system_tables') == "true" || configItem('show_system_tables') == "Unknown key" || configItem('show_system_tables') == "Not enabled") {
+        if ($res["Database"] == $lang["config_db_name"]) {
+          echo "<li>";
+          echo '<div class="collapsible-header v0lture-dbs-header truncate"><i class="material-icons hide-on-med-and-down">build</i>'.$res["Database"].'</div>';
 
-        echo '<div class="collapsible-body"><div class="collection">';
-        echo "<a href='#' onclick='dropDB(\"".$res["Database"]."\")' class='btn waves-effect waves-light v0lture-btn-light white-text' style='width:100%;'>".$lang["db_drop"]."</a>";
+          echo '<div class="collapsible-body"><div class="collection">';
+        } else {
+          echo "<li>";
+          echo '<div class="collapsible-header v0lture-dbs-header truncate"><i class="material-icons hide-on-med-and-down">dns</i>'.$res["Database"].'</div>';
+
+          echo '<div class="collapsible-body"><div class="collection">';
+          echo "<a href='#' onclick='dropDB(\"".$res["Database"]."\")' class='btn waves-effect waves-light v0lture-btn-light white-text' style='width:100%;'>".$lang["db_drop"]."</a>";
+        }
+
         $tables = fetchTables($res["Database"]);
 
         if($tables != "MySQL error") {
@@ -75,6 +83,7 @@
           </div>';
         } else {
           echo '<div class="collapsible-body"><div class="collection">';
+          echo "<a href='#' onclick='dropDB(\"".$res["Database"]."\")' class='btn waves-effect waves-light v0lture-btn-light white-text' style='width:100%;'>".$lang["db_drop"]."</a>";
           $tables = fetchTables($res["Database"]);
 
           while($data = $tables->fetch_assoc()) {

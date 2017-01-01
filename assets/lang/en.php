@@ -4,7 +4,7 @@
   $lang_properties = Array(
     'friendly' => "English US",
     'code' => "EN",
-    'supports' => "0.0.2.1"
+    'supports' => "0.0.2.4"
   );
 
   $lang = Array(

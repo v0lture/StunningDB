@@ -62,6 +62,29 @@
     }
 
 
+    //Check to see if user is logged and redirect if they are
+    if(empty($_GET)) {
+      if(testConn() == "Success") {
+        header("Location: index.php");
+      }
+      // see if we linked a DB and TBL here
+      if(isset($_GET["db"]) && isset($_GET["tbl"])) {
+        $dbl = $_GET["db"];
+        $tbl = $_GET["tbl"];
+        $new = "'".$dbl."', '".$tbl."'";
+        $cls = "";
+      } else {
+        $dbl = "";
+        $tbl = "";
+        $new = "";
+        $cls = "style='display:none;'";
+      }
+
+      // See if there is an error that redirected to here
+      if(isset($_GET["msg"])) {
+        $script = 'oh("'.$_GET["msg"].'", "PHP");';
+      }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -159,7 +182,9 @@
 
               <br />
               <div class="center-align">
-                <button type="submit" class="btn waves-effect waves-light white-text v0lture-btn-accent"><?= $lang["btn_cancel"]; ?></button>
+                <a href="index.php">
+                  <button type="button" class="btn waves-effect waves-light white-text v0lture-btn-accent"><?= $lang["btn_cancel"]; ?></button>
+                </a>
                 <button type="submit" class="btn waves-effect waves-light white-text v0lture-btn-accent"><?= $lang["btn_continue"]; ?></button>
               </div>
             </form>

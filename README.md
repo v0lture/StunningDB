@@ -51,6 +51,17 @@ View `translate.md` for details on translating v0ltureDB.
 ## Changelogs
 Changelogs are labeled as release.beta.alpha.nightly.
 
+## 0.0.2.4
+:bulb: Added redirect when user goes to auth.php and is logged in
+
+:wrench: Fixed logout confirmation logging out no matter what button was pressed
+
+:wrench: Fixed "Drop database" option disappearing when show_system_tables was set to "false"
+
+:wrench: Fixed icon being wrong for config in database view when show_system_tables was set to "true"
+
+:boom: Removed "Drop database" option from config database
+
 ### 0.0.2.3
 :wrench: Fixed config not creating properly
 
