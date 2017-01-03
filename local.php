@@ -167,7 +167,7 @@
                 <p><?= $lang["installation_info"]["version_prefix"].$version.$lang["installation_info"]["version_suffix"]; ?></p>
               </div>
               <div class="card-action">
-                <a href="local.php?set_theme=db" class="v0lture-action"><?= $lang["installation_info"]["version_check"]; ?></a>
+                <a href="index.php?db=<?= $lang["config_db_name"]; ?>&tbl=<?= $lang["config_table_name"]; ?>" class="v0lture-action"><?= $lang["installation_info"]["version_check"]; ?></a>
               </div>
             </div>
           </div>
