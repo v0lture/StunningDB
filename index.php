@@ -213,7 +213,7 @@
             </li>
 
             <li>
-              <a class="btn-floating v0lture-btn-dark tooltipped" onclick="newTable(<?= $new; ?>)" id="newtable" data-position="left" data-delay="50" data-tooltip="<?= $lang["tooltip_new_tbl"]; ?>">
+              <a class="btn-floating v0lture-btn-dark tooltipped" href="new.php" id="newtable" data-position="left" data-delay="50" data-tooltip="<?= $lang["tooltip_new_tbl"]; ?>">
                 <i class="material-icons">border_all</i>
               </a>
             </li>

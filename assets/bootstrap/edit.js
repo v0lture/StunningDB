@@ -173,6 +173,7 @@ function dropDB(database) {
           ohno(queryxhr.responseText, 'JS dropDB("'+database+'") -> PHP page_rsc/query.php');
         } else {
           Materialize.toast('Database '+database+' was dropped.', 5000);
+          fetchDatabases();
         }
       }
     }
