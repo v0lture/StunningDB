@@ -55,7 +55,7 @@ function view(element) {
 window.addEventListener("popstate", function(e){
   var s = e.state;
   // If the browser goes back one, handle that and try to load it
-  if(s != undefined || s != null || s != "") {
+  if(s != null && s.database != null && s.table != null) {
     fetchTableData(s.database, s.table);
   }
 

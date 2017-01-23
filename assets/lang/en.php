@@ -82,7 +82,7 @@
     // Set to blank to use column name
     'tbl_popover_entire_value' => "Entire value",
     'tbl_na' => "N/A",
-    'tbl_key' => "<span class='material-icons'>vpn_key</span>",
+    'tbl_key' => "<span class='material-icons' style='font-size: 12px;'>vpn_key</span>",
 
     // Tables
     'tblh_name' => "Name",
