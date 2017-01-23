@@ -194,26 +194,26 @@
         </div>
 
         <!-- New.. fab -->
-        <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-          <a class="btn-floating btn-large v0lture-btn-light tooltipped" data-position="left" data-delay="50" data-tooltip="<?= $lang["tooltip_new"]; ?>" onclick="$('.fixed-action-btn').openFAB();">
+        <div class="fixed-action-btn horizontal" style="bottom: 45px; right: 24px;">
+          <a class="btn-floating btn-large v0lture-btn-light tooltipped" data-position="top" data-delay="50" data-tooltip="<?= $lang["tooltip_new"]; ?>" onclick="$('.fixed-action-btn').openFAB();">
             <i class="large material-icons">add</i>
           </a>
           <ul>
 
             <li>
-              <a href="javascript:runQuery(false)" class="btn-floating black tooltipped" data-position="left" data-delay="50" data-tooltip="<?= $lang["tooltip_run_query"]; ?>">
+              <a href="javascript:runQuery(false)" class="btn-floating black tooltipped" data-position="top" data-delay="50" data-tooltip="<?= $lang["tooltip_run_query"]; ?>">
                 <i class="material-icons">code</i>
               </a>
             </li>
 
             <li>
-              <a href="javascript:$('#newdb').modal('open');" class="btn-floating v0lture-btn-dark tooltipped" data-position="left" data-delay="50" data-tooltip="<?= $lang["tooltip_new_db"]; ?>">
+              <a href="javascript:$('#newdb').modal('open');" class="btn-floating v0lture-btn-dark tooltipped" data-position="top" data-delay="50" data-tooltip="<?= $lang["tooltip_new_db"]; ?>">
                 <i class="material-icons">dns</i>
               </a>
             </li>
 
             <li>
-              <a class="btn-floating v0lture-btn-dark tooltipped" href="new.php" id="newtable" data-position="left" data-delay="50" data-tooltip="<?= $lang["tooltip_new_tbl"]; ?>">
+              <a class="btn-floating v0lture-btn-dark tooltipped" href="new.php" id="newtable" data-position="top" data-delay="50" data-tooltip="<?= $lang["tooltip_new_tbl"]; ?>">
                 <i class="material-icons">border_all</i>
               </a>
             </li>

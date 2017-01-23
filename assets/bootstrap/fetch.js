@@ -9,7 +9,9 @@ function tableInit() {
   $('select').material_select();
   $('ul.tabs').tabs();
   // v0.0.2.1: Fix modals not initializing issue
-  $('.modal').modal();
+  $('.modal').modal({
+    dismissable: false,
+  });
 }
 
 function fetchDatabases(hideerr = false) {
