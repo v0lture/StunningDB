@@ -223,3 +223,8 @@ table[data-sortable] th {
 .collapsible-header > i {
   color: #000;
 }
+
+.error {
+  background: #757575;
+  color: white;
+}

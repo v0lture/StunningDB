@@ -101,3 +101,8 @@
 .tabs .indicator {
   background-color: #75C7FF;
 }
+
+/* errors */
+.error {
+  background: #C630D1;
+}
