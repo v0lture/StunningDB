@@ -95,21 +95,30 @@ table[data-sortable].sortable-theme-bootstrap th[data-sorted="true"] {
 }
 
 .input-field input[type=text]:focus + label {
-  color: #ACFFA3;
+  color: #9233AF;
 }
 
 .input-field input[type=password]:focus + label {
-  color: #ACFFA3;
+  color: #9233AF;
+}
+
+.input-field input[type=number]:focus + label {
+  color: #9233AF;
 }
 
 .input-field input[type=text]:focus {
-  border-bottom: 1px solid #ACFFA3;
-  box-shadow: 0 1px 0 0 #ACFFA3;
+  border-bottom: 1px solid #9233AF;
+  box-shadow: 0 1px 0 0 #9233AF;
 }
 
 .input-field input[type=password]:focus {
-  border-bottom: 1px solid #ACFFA3;
-  box-shadow: 0 1px 0 0 #ACFFA3;
+  border-bottom: 1px solid #9233AF;
+  box-shadow: 0 1px 0 0 #9233AF;
+}
+
+.input-field input[type=number]:focus {
+  border-bottom: 1px solid #9233AF;
+  box-shadow: 0 1px 0 0 #9233AF;
 }
 
 .mdtst {
@@ -152,4 +161,46 @@ table[data-sortable].sortable-theme-bootstrap th[data-sorted="true"] {
 
 .errorbar > p > span {
   text-transform: uppercase;
+}
+
+/* new table */
+.newtbl-header {
+  text-transform: uppercase;
+  margin: 0;
+  color: white;
+}
+
+.newtbl-h-content {
+  margin: 0;
+  color: white;
+}
+
+.newtbl-controls {
+  padding: 15px;
+}
+
+.newtbl-controls > .col {
+  padding: 15px;
+  background: rgba(0,0,0,0.25);
+}
+
+.newtbl-controls > .col > .controls {
+  float: right;
+  padding: 5px;
+  margin-top: -50px;
+}
+
+.newtbl-controls > .col > .controls > a {
+  background: rgba(0,0,0,0.15);
+}
+
+.row-data {
+  padding: 15px;
+  color: white;
+}
+
+.error {
+  padding: 5px;
+  width: 100%;
+  margin: 0;
 }

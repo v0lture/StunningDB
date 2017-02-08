@@ -51,6 +51,11 @@ View `translate.md` for details on translating v0ltureDB.
 ## Changelogs
 Changelogs are labeled as release.beta.alpha.nightly.
 
+## 0.0.3.0
+:bulb: **BETA** Added new table support
+
+:wrench: Minor adjustments to theming
+
 ## 0.0.2.4
 :bulb: Added redirect when user goes to auth.php and is logged in
 

@@ -4,7 +4,7 @@
   $lang_properties = Array(
     'friendly' => "English US",
     'code' => "EN",
-    'supports' => "0.0.2.4"
+    'supports' => "0.0.3.0"
   );
 
   $lang = Array(
@@ -198,6 +198,84 @@
       'auth_login' => "Log in",
       'auth_logout' => "Log out",
       'auth_none' => "Must be logged in to view who you are logged as",
+    ),
+
+    // new table
+    'new_table' => Array(
+      "selected_db" => "Selected database:",
+      "new_name" => "Name of new table:",
+      "new_col_t" => "Add a new column:",
+      "clear" => "Reset the table:",
+      "submit" => "Create the table:",
+
+      "errors" => Array(
+        "mustbenumeric" => "Length must be numeric",
+        "invalidtype" => "Invalid type",
+        "missing" => "Missing required data",
+        "missingdb" => "Missing database and table names",
+      ),
+
+      "modals" => Array(
+
+        "titles" => Array(
+          "selected_db" => "Change selected database",
+          "new_name" => "Set table name",
+          "get_started" => "Get started with creating a new table",
+          "new_col" => "Define a new column",
+        ),
+
+        "msg" => Array(
+          "select_db" => "Select the database to create the new table under:",
+          "name_table" => "Name your new table:",
+        ),
+        
+        "fields" => Array(
+          "value" => "Value",
+          "blank" => "Field cannot be blank",
+          "name" => "Column name",
+          "type" => "Type",
+          "length" => "Length",
+          "add_parameters" => "Additional parameters",
+        ),
+
+        "btn" => Array(
+          "save" => "Save",
+          "name_tbl" => "Name Table",
+          "select_db" => "Select Database",
+          "cancel_init" => "Cancel initialization",
+        ),
+      ),
+
+      "tooltips" => Array(
+        "change" => "Change...",
+        "new" => "New",
+        "clear" => "Clear",
+        "submit" => "Submit",
+      ),
+
+      "table" => Array(
+        "name" => "Name",
+        "type" => "Type",
+        "length" => "Length",
+        "params" => "Additional parameters",
+        "actions" => "Actions",
+        "suffix" => "Suffix parameters",
+      ),
+
+      "btn" => Array(
+        "edit" => "Edit",
+        "delete" => "Delete",
+      ),
+
+      "new_col" => Array(
+        "add_params" => "ADDITIONAL PARAMETERS",
+        "param_help" => Array(
+          "auto_increment" => "For every new row, this field will increment by one unless explicitly specified.",
+          "primary" => "Sets an index key to enable additional functions with individual rows such as editing, dropping, and more.<br />At least one <code>PRIMARY</code> field is required to edit your table's data.",
+          "unique" => "Prevents duplicates of a value in this column.",
+          "null" => "Make this column have no value",
+        ),
+      ),
     ),
 
   );

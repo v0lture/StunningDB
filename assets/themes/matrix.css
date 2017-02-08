@@ -238,4 +238,5 @@ table[data-sortable] th {
 
 .error {
   background: green;
+  text-transform: uppercase;
 }
