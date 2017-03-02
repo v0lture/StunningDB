@@ -51,12 +51,12 @@ View `translate.md` for details on translating v0ltureDB.
 ## Changelogs
 Changelogs are labeled as release.beta.alpha.nightly.
 
-## 0.0.3.0
+### 0.0.3.0 - 2017-02-08
 :bulb: **BETA** Added new table support
 
 :wrench: Minor adjustments to theming
 
-## 0.0.2.4
+### 0.0.2.4 - 2016-12-31
 :bulb: Added redirect when user goes to auth.php and is logged in
 
 :wrench: Fixed logout confirmation logging out no matter what button was pressed
@@ -67,14 +67,14 @@ Changelogs are labeled as release.beta.alpha.nightly.
 
 :boom: Removed "Drop database" option from config database
 
-### 0.0.2.3
+### 0.0.2.3 - 2016-12-30
 :wrench: Fixed config not creating properly
 
 :wrench: Modified navbar to be cleaner and more accurate
 
 :boom: Removed old variables from language file
 
-### 0.0.2.2
+### 0.0.2.2 - 2016-11-23
 :bulb: Added username and host hints to auth page for direct linking username/host combos.
 
 :wrench: Readded vanished logout code
@@ -83,7 +83,7 @@ Changelogs are labeled as release.beta.alpha.nightly.
 
 :bulb: Replaced `info.php` with more detailed information in local settings.
 
-### 0.0.2.1: Bug Fixes + Themes
+### 0.0.2.1 - 2016-11-23
 :wrench: Correct version number
 
 :wrench: Fixed issue where modals won't open due to init function changing
@@ -106,7 +106,7 @@ Changelogs are labeled as release.beta.alpha.nightly.
 
 :bulb: Added database and table tracking in browser history
 
-### 0.0.2.0
+### 0.0.2.0 - 2016-11-22
 :wrench: Improved a bunch of backend code
 
 :x: Removed old code that is no longer in use
@@ -123,33 +123,33 @@ Changelogs are labeled as release.beta.alpha.nightly.
 
 :wrench: Fixed code changes due to Materialize update
 
-### 0.0.1.13
+### 0.0.1.13 - 2016-10-27
 :wrench: Improved some warning messages
 
 :bulb: Redesigned and simplified login page
 
 :wrench: Made some blue elements purple
 
-### 0.0.1.12
+### 0.0.1.12 - 2016-10-11
 :bulb: Added idle timeout flag, redirects back to the login page after 10 minutes of inactivity.
 
 :boom: Changed warning modal to a message that appears above the breadcrumb.
 
 :x: Removed ability to hide table view
 
-### 0.0.1.11
+### 0.0.1.11 - 2016-08-11
 :boom: Fixed scrolling issue in user dropdown from long usernames/hostnames
 
 :boom: Fixed footer colors in modals not being correct
 
 :boom: Removed unused '...' in navbar as it served no purpose
 
-### 0.0.1.10
+### 0.0.1.10 - 2016-08-03
 :wrench: Fixes bug with `v0.0.1.9` where if v0ltureDB was using the latest version it would still show an update prompt.
 
 :bulb: Added view for when the version checking service is unavailable.
 
-### 0.0.1.9
+### 0.0.1.9 - 2016-08-02
 :bulb: Added 3 new flags `login_update_check` for checking updates at login, `updates_config` which updates the configuration whenever a new update has been installed, `updates_allowed` for disabling/enabling support for updating, and `global_update_notice` to toggle the visibility of the notice of any future updates.
 
 :bulb: Added updates view in settings (requires `settings_gui` to be enabled)
@@ -160,7 +160,7 @@ Changelogs are labeled as release.beta.alpha.nightly.
 
 **this version update checking is supported but not update installation**
 
-### 0.0.1.8
+### 0.0.1.8 - 2016-07-25
 :wrench: Fixed the information page being broken since v0.0.1.5
 
 :one: Unified all the css elements into one singular css file for easier theming
@@ -169,7 +169,7 @@ Changelogs are labeled as release.beta.alpha.nightly.
 
 :wrench: Some visual changes in the readme
 
-### 0.0.1.7
+### 0.0.1.7 - 2016-07-22
 :wrench: Improved ways of adding new flags to be a bit easier
 
 :bulb: Added Update Configuration option which will update your config to support any new flags without wiping your old changes
