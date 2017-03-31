@@ -112,28 +112,6 @@
 
     </div>
 
-    <!-- init -->
-    <div id="init" class="modal v0lture-modal">
-      <div class="modal-content">
-        <h4><?= $lang["new_table"]["modals"]["titles"]["get_started"]; ?></h4>
-
-        <p>
-          <?= $lang["new_table"]["modals"]["msg"]["select_db"]; ?>
-          <a href="#!" onclick="impromptuPrompt('<?= $lang["new_table"]["modals"]["titles"]["selected_db"]; ?>', 'selected_db', true)" class="right btn-flat waves-effect waves-light v0lture-action"><?= $lang["new_table"]["modals"]["btn"]["select_db"]; ?></a>
-        </p>
-        
-
-        <p>
-          <?= $lang["new_table"]["modals"]["msg"]["name_table"]; ?>
-          <a href="#!" onclick="impromptuPrompt('<?= $lang["new_table"]["modals"]["titles"]["new_name"]; ?>', 'table_name', true)" class="right btn-flat waves-effect waves-light v0lture-action"><?= $lang["new_table"]["modals"]["btn"]["name_tbl"]; ?></a>
-        </p>
-
-      </div>
-      <div class="modal-footer v0lture-modal">
-        <a href="#!" class="waves-effect waves-light btn-flat v0lture-cancel modal-action modal-close"><?= $lang["btn_close"]; ?></a>
-      </div>
-    </div>
-
     <!-- single line data -->
     <div id="impromptu" class="modal v0lture-modal">
       <div class="modal-content">

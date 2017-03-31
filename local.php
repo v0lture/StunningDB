@@ -52,7 +52,10 @@
         <ul class="tabs">
           <li class="tab"><a href="#lang"><?= $lang["local_language"]; ?></a></li>
           <li class="tab"><a href="#themes"><?= $lang["local_themes"]; ?></a></li>
+
+          <?php if(testConn() == "Success"): ?>
           <li class="tab"><a href="#install"><?= $lang["local_cfg"]; ?></a></li>
+          <?php endif; ?>
         </ul>
       </div>
 
@@ -138,6 +141,7 @@
       </div>
 
       <!-- install -->
+      <?php if(testConn() == "Success"): ?>
       <div id="install" class="col s12">
 
         <div class="row">
@@ -216,6 +220,8 @@
         </div>
 
       </div>
+      <?php endif; ?>
+
     </div>
 
     <!-- handle ?msg= errors -->

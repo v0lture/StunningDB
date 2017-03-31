@@ -99,6 +99,7 @@
           </div>
 
           <div class="modal-footer v0lture-modal" id="queryaction">
+            <a href="#" class="modal-action modal-close waves-effect waves-ligh btn-flat v0lture-cancel"><?= $lang["btn_close"]; ?></a>
             <a href="javascript:runQuery(true)" class="waves-effect waves-light btn-flat v0lture-action"><?= $lang["modal_query_btn"]; ?></a>
           </div>
 

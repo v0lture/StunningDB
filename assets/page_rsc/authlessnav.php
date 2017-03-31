@@ -20,8 +20,8 @@
 
       <ul class="right hide-on-med-and-down">
 
-        <li><a href="#!"><?= $u; ?></a></li>
-        <li><a href="info.php"><?= $lang["navbar_info"]; ?></a></li>
+        <li><a href="auth.php"><?= $u; ?></a></li>
+        <li><a href="local.php#install"><?= $lang["navbar_info"]; ?></a></li>
         <li><a href="local.php"><?= $lang["navbar_user_settings"]; ?></a></li>
 
       </ul>
