@@ -40,10 +40,7 @@
 
       // check if db is settings
       if($dbl == $lang["config_db_name"]) {
-        set_error_handler(function() {});
         include "settings.php";
-        restore_error_handler();
-        include "../../settings.php";
         die();
       }
 

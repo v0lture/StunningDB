@@ -77,6 +77,8 @@ function inlineChange(db, tbl, key, col, valid, keyvalue, custom = false) {
         $("#db-loading").hide();
         if(inline_xhr.status != 200) {
           ohno(inline_xhr.responseText, "JS 'inlineChange()' -> PHP 'PAGE_RSC/inline.php'");
+        } else if(inline_xhr.status == 200) {
+          Materialize.toast('Column successfully set to "'+custom+'".', 1000);
         }
       }
     }

@@ -42,9 +42,12 @@ function impromptuCallback(field) {
 
 function view(element) {
   if($(element).val() == "users") {
+    // user view
     $("#db-refresh").hide();
     $("#users-new").show();
+    fetchUsers();
   } else {
+    // databases view
     $("#db-refresh").show();
     $("#users-new").hide();
     fetchDatabases();

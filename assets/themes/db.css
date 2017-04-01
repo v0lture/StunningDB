@@ -107,3 +107,11 @@
   background: #C630D1;
   color: white;
 }
+
+.permission-denied {
+    color: #C630D1;
+}
+
+.permission-denied-text {
+    color: #fff;
+}

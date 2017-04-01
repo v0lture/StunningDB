@@ -33,6 +33,25 @@ function fetchDatabases(hideerr = false) {
     db_xhr.send();
 }
 
+function fetchUsers(hideerr = false) {
+    var db_xhr = new XMLHttpRequest();
+
+    $("#db-loading").show();
+    db_xhr.onreadystatechange = function(){
+      if(db_xhr.readyState == 4) {
+        $("#db-loading").hide();
+        if(db_xhr.status != 200) {
+          ohno(db_xhr.responseText, "JS 'fetchUsers()' -> PHP 'PAGE_RSC/users.php'");
+        } else {
+          $("#db-xhr").html(db_xhr.responseText);
+          tableInit();
+        }
+      }
+    }
+    db_xhr.open("GET", "assets/page_rsc/users.php", true);
+    db_xhr.send();
+}
+
 function loadDb(dbname, compact) {
     var db_xhr = new XMLHttpRequest();
     $("#error").hide();

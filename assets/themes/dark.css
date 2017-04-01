@@ -228,3 +228,11 @@ table[data-sortable] th {
   background: #757575;
   color: white;
 }
+
+.permission-denied {
+    color: #e0e0e0;
+}
+
+.permission-denied-text {
+    color: #6a6a6a;
+}
