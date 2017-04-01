@@ -4,7 +4,7 @@
   $lang_properties = Array(
     'friendly' => "English US",
     'code' => "EN",
-    'supports' => "0.0.3.1"
+    'supports' => "0.0.3.2"
   );
 
   $lang = Array(
@@ -12,11 +12,11 @@
     // modal
     'modal_error_title' => "Failed to complete operation.",
     'modal_error_dismiss' => "Dismiss",
-    'modal_error_action' => "Check that you have the required previliges and the server is online. Also check that all required fields are filled.",
-    'modal_error_response' => "Server responed with: ",
+    'modal_error_action' => "Check that you have the required privileges and the server is online. Also check that all required fields are filled.",
+    'modal_error_response' => "Server responded with: ",
     'modal_error_src' => "Source of error: ",
 
-    'modal_warn_action' => "This warning should not effect the operation performed unless an error occurs after this event.",
+    'modal_warn_action' => "This warning should not affect the operation performed unless an error occurs after this event.",
     'modal_warn_response' => "Server warning: ",
     'modal_warn_src' => "Source of warning: ",
     'modal_warn_title' => "Warning.",
@@ -276,6 +276,11 @@
           "null" => "Make this column have no value",
         ),
       ),
+    ),
+
+    'users' => Array(
+        'permission_denied' => "Feature disabled",
+        'permission_denied_sub' => "Showing users has been disabled by the v0ltureDB Configuration &mdash; Set <code>show_users</code> to true to enable this feature."
     ),
 
   );

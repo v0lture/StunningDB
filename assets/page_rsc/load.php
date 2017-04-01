@@ -1,7 +1,7 @@
 <?php
 
   // move version here
-  $version = "0.0.3.1";
+  $version = "0.0.3.2";
 
   $systemdbs = Array(
     "1" => "mysql",
@@ -42,4 +42,5 @@
   require_once $cwd."/../php/tables.php";
   require_once $cwd."/../php/config.php";
   require_once $cwd."/../php/tables-v2.php";
+  require_once $cwd."/../php/user.php";
 ?>
