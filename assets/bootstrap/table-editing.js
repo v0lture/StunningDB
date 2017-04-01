@@ -1,7 +1,8 @@
 // open init
 function initWrap(){
   tableInit();
-  $("#init").modal('open');
+  Materialize.toast('Select the database you want to create a table under by clicking the edit button.', 10000);
+  Materialize.toast('Afterwards, name your new table and begin adding rows.', 10000);
 }
 
 // var
@@ -12,7 +13,7 @@ var suffix = "'></input>";
 function impromptuPrompt(title, formID, text) {
   // open modal and set title
   $("#impromptu").modal('open');
-  $("#impromptu > .modal-content > h4").text(title);
+  $("#impromptu > .modal-content > h4").html(title);
   $("#impromptu > .modal-content > #blank-error").hide();
   // set callback
   $("#impromptuCallback").attr("onclick", "handleImpromptuCB('"+title+"', '"+formID+"', "+text+")");
@@ -119,3 +120,58 @@ function newCol() {
   }
 
 }
+
+// Handle submitting with Ajax
+$("#tabledata").submit(function(e) {            
+    submitCols();
+    e.preventDefault();
+});
+
+
+// submit with ajax
+function submitCols() {
+    $.ajax({
+        url: $("#tabledata").attr('action'),
+        type: $("#tabledata").attr('method'),
+        dataType: 'json',
+        data: $("#tabledata").serialize(),
+        success: function(data) {
+            var d = $("#selected_db").val();
+            var t = $("#table_name").val();
+            window.location.href = "index.php?db="+d+"&tbl="+t;
+        },
+        error: function(xhr, err) {
+            if(err == "error"){
+                var resp = JSON.parse(xhr.responseText);
+                $("#error-wrapper").html("<p class='error'><i class='material-icons left'>code</i> "+resp.query+"</p><p class='error'><i class='material-icons left'>hourglass_empty</i> "+resp.error);
+
+                // toss to analyzer
+                analyzeError(resp.error, resp.query);
+            }
+            console.warn(xhr);   
+        }
+    });
+}
+
+// analyze errors
+function analyzeError(error, query){
+
+    error = error.toLowerCase();
+
+    // unknown database
+    if(error.includes("unknown database")){
+        impromptuPrompt('The database you choose does not exist &mdash; try another.', 'selected_db', true)
+    }
+
+    // YOU NEED AT LEAST ONE COLUMN TO SUBMIT A TABLE
+    if(error.includes("you need at least one column to submit a table")){
+        $("#newcol").modal('open');
+        Materialize.toast('One column is required to submit a table', 1500);
+    }
+
+}
+
+// and prevent navigation away
+window.onbeforeunload = function(){
+  return 'Are you sure you want to navigate away from this page? You will lose table configuration data.';
+};

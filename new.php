@@ -144,6 +144,11 @@
 
     ?>
 
+    <!-- handle error: js -->
+    <div id='error-wrapper'>
+
+    </div>
+
     <!-- top bar controls -->
     <div class="row newtbl-controls">
 
@@ -188,7 +193,7 @@
         <h4 class="newtbl-h-content"><span style="opacity:0;">.</span></h4>
 
         <div class="controls">
-          <a href="#!" onclick="$('#tabledata').submit()" class="btn-floating waves-effect waves-light tooltipped" data-delay="50" data-position="bottom" data-tooltip="<?= $lang["new_table"]["tooltips"]["submit"]; ?>"><i class="material-icons">send</i></a>
+          <a href="#!" onclick="submitCols()" class="btn-floating waves-effect waves-light tooltipped" data-delay="50" data-position="bottom" data-tooltip="<?= $lang["new_table"]["tooltips"]["submit"]; ?>"><i class="material-icons">send</i></a>
         </div>
       </div>
 

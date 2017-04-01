@@ -4,7 +4,7 @@
   $lang_properties = Array(
     'friendly' => "English US",
     'code' => "EN",
-    'supports' => "0.0.3.2"
+    'supports' => "0.0.3.3"
   );
 
   $lang = Array(
@@ -213,6 +213,7 @@
         "invalidtype" => "Invalid type",
         "missing" => "Missing required data",
         "missingdb" => "Missing database and table names",
+        "missingcol" => "You need at least one column to submit a table"
       ),
 
       "modals" => Array(

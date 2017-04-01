@@ -1,21 +1,32 @@
 <?php 
-  require_once "load.php";
+    require_once "load.php";
+    error_reporting(0);
+
   if(testConn() == "Success") {
-    if($_POST["table_name"] == "" || $_POST["selected_db"] == ""){
-      header("Location: ../../new.php?error=".$lang["new_table"]["errors"]["missingdb"]."&query=N/A");
+    if($_POST["table_name"] == "" || $_POST["selected_db"] == ""){   
+        http_response_code(400);   
+        echo json_encode(Array("status" => "error", "error" => $lang["new_table"]["errors"]["missingdb"], "query" => "none &mdash; Failed prechecks"));
     } else {
       $tbl = new Tables($db, $_POST["selected_db"]);
 
-      $result = $tbl->newTbl($_POST["table_name"], $_POST["col"]);
-      if($result["error"] == "success"){
-        header("Location: ../../index.php?db=".$_POST["selected_db"]."&tbl=".$_POST["table_name"]);
-      } else {
-        header("Location: ../../new.php?error=".$result["error"]."&query=".$result["query"]);
-      }
+        if($_POST["col"] == "") {
+                http_response_code(400);
+                echo json_encode(Array("status" => "error", "error" => $lang["new_table"]["errors"]["missingcol"], "query" => "none &mdash; Failed prechecks"));
+        } else {
+            $result = $tbl->newTbl($_POST["table_name"], $_POST["col"]);
+            if($result["error"] == "success"){
+                http_response_code(200);
+                echo json_encode(Array("status" => "success"));
+            } else {
+                http_response_code(400);
+                echo json_encode(Array("status" => "error", "error" => $result["error"], "query" => $result["query"]));
+            }
+        }
+      
     }
 
   } else {
-    // :( not logged in
-    header("Location: ../../auth.php?confirm=reauth");
+      http_response_code(401);
+      echo json_encode(Array("status" => "error", "error" => "unauthorized", "query" => "none"));
   }
 ?>
